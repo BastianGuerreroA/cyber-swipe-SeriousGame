@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://cskrj3olvgnwh"]
+
+[ext_resource type="Script" uid="uid://cd7hfie8rbifm" path="res://LoginLSG/login_lsg.gd" id="1_nm6j7"]
+[ext_resource type="Texture2D" uid="uid://hkks2s2erhn8" path="res://assests/Gemini/LSG-LOGO.png" id="1_vder7"]
+[ext_resource type="Texture2D" uid="uid://b5moy2ykr82eq" path="res://assests/LegacyQuest/Graphics/Mini_Text_UG.png" id="2_nm6j7"]
+[ext_resource type="FontFile" uid="uid://bk705lrm6lrwv" path="res://assests/Pixelbasel_Font_1_00/Pixelbasel.ttf" id="4_5nube"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ikjbm"]
+texture = ExtResource("2_nm6j7")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ttv7r"]
+font = ExtResource("4_5nube")
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="LoginPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_nm6j7")
+
+[node name="BotonLSG" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 3840.0
+offset_bottom = 3840.0
+scale = Vector2(0.03, 0.03)
+texture_normal = ExtResource("1_vder7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PanelLogin" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+offset_right = 722.50806
+offset_bottom = 321.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ikjbm")
+
+[node name="BotonCerrar" type="Button" parent="PanelLogin"]
+layout_mode = 0
+offset_right = 41.0
+offset_bottom = 41.0
+scale = Vector2(1, 0.9716494)
+pivot_offset = Vector2(1, 0.88934135)
+theme_override_colors/font_color = Color(0.98039216, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_5nube")
+theme_override_font_sizes/font_size = 36
+text = "X"
+icon_alignment = 1
+expand_icon = true
+
+[node name="LogoLSG" type="TextureRect" parent="PanelLogin"]
+layout_mode = 1
+offset_left = 299.0
+offset_top = 23.0
+offset_right = 4139.0
+offset_bottom = 3863.0
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("1_vder7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelLogin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -50.5
+offset_right = 164.0
+offset_bottom = 66.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EtiqUsuario" type="Label" parent="PanelLogin/VBoxContainer"]
+layout_mode = 2
+text = "USUARIO"
+label_settings = SubResource("LabelSettings_ttv7r")
+vertical_alignment = 1
+
+[node name="InputUsuario" type="LineEdit" parent="PanelLogin/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_5nube")
+placeholder_text = "Username..."
+
+[node name="EtiqClave" type="Label" parent="PanelLogin/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_5nube")
+text = "CONTRASEÑA"
+vertical_alignment = 1
+
+[node name="InputClave" type="LineEdit" parent="PanelLogin/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_5nube")
+placeholder_text = "Contraseña..."
+virtual_keyboard_type = 6
+secret = true
+
+[node name="Button" type="Button" parent="PanelLogin/VBoxContainer"]
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_5nube")
+theme_override_font_sizes/font_size = 17
+text = "INICIAR SESIÓN"
+
+[connection signal="pressed" from="BotonLSG" to="." method="_on_boton_lsg_pressed"]
+[connection signal="pressed" from="PanelLogin/BotonCerrar" to="." method="_on_boton_cerrar_pressed"]

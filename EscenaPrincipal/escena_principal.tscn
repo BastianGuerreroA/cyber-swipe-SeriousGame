@@ -1,0 +1,129 @@
+[gd_scene load_steps=16 format=3 uid="uid://odfyj72oue6"]
+
+[ext_resource type="Texture2D" uid="uid://cd867roe3oh4u" path="res://assests/free-city-backgrounds-pixel-art/city 8/7.png" id="1_o6xc7"]
+[ext_resource type="Script" uid="uid://daceevk44bc1f" path="res://EscenaPrincipal/escena_principal.gd" id="1_q275c"]
+[ext_resource type="Texture2D" uid="uid://c44uedwobr222" path="res://assests/LegacyQuest/Backgrounds/Poker/BG_Poker_UG_Dark_Gray.png" id="2_d1cnf"]
+[ext_resource type="Texture2D" uid="uid://d1muwdeuupni1" path="res://assests/LegacyQuest/Graphics/Mini_Title_UG.png" id="3_hn0be"]
+[ext_resource type="Texture2D" uid="uid://17w3mq6ny6do" path="res://assests/LegacyQuest/Graphics/Poker_Title_UG.png" id="3_tg03s"]
+[ext_resource type="PackedScene" uid="uid://cb432op86dqwa" path="res://Iconos/iconos.tscn" id="4_jcddw"]
+[ext_resource type="FontFile" uid="uid://bk705lrm6lrwv" path="res://assests/Pixelbasel_Font_1_00/Pixelbasel.ttf" id="5_potmh"]
+[ext_resource type="PackedScene" uid="uid://bmu1i26chrdre" path="res://Carta/carta_escena.tscn" id="6_4ta2l"]
+[ext_resource type="Script" uid="uid://boctujgcb14h6" path="res://EscenaPrincipal/card_manager.gd" id="6_tg03s"]
+[ext_resource type="AudioStream" uid="uid://vojpxr0efp03" path="res://assests/Musica/una-sola-tecla.mp3" id="7_1y13l"]
+[ext_resource type="Texture2D" uid="uid://b2er314hxb5i6" path="res://assests/Gemini/SEO.png" id="7_4ta2l"]
+[ext_resource type="Texture2D" uid="uid://b7cmh0ip45am7" path="res://assests/Gemini/hacker.png" id="8_potmh"]
+[ext_resource type="AudioStream" uid="uid://c6bkhto670vdx" path="res://assests/Musica/2016_ Clement Panchout_ Life is full of Joy.mp3" id="13_pe32j"]
+[ext_resource type="PackedScene" uid="uid://cskrj3olvgnwh" path="res://LoginLSG/login_lsg.tscn" id="13_xs3pw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hn0be"]
+font = ExtResource("5_potmh")
+font_size = 30
+
+[node name="EscenaPrincipal" type="Node2D" node_paths=PackedStringArray("MusicaFondo")]
+script = ExtResource("1_q275c")
+MusicaFondo = NodePath("AudioStreamPlayer2D")
+
+[node name="Ciudad" type="TextureRect" parent="."]
+self_modulate = Color(0.4656148, 0.4110218, 0.38725305, 1)
+light_mask = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1152.0
+offset_top = -648.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_o6xc7")
+
+[node name="FondoCarta" type="Node2D" parent="."]
+scale = Vector2(0.7267002, 0.73095965)
+
+[node name="Sprite2D" type="Sprite2D" parent="FondoCarta"]
+texture = ExtResource("2_d1cnf")
+
+[node name="TextureRect2" type="TextureRect" parent="FondoCarta"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -423.83368
+offset_top = 551.33
+offset_right = 456.16632
+offset_bottom = 761.83
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+texture = ExtResource("3_hn0be")
+
+[node name="TextureRect" type="TextureRect" parent="FondoCarta"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -425.20978
+offset_top = -565.0107
+offset_right = 424.79022
+offset_bottom = -354.51068
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+texture = ExtResource("3_tg03s")
+
+[node name="Iconos" parent="FondoCarta/TextureRect" instance=ExtResource("4_jcddw")]
+light_mask = 0
+layout_mode = 0
+offset_left = 145.86487
+offset_top = 60.19484
+offset_right = 145.86487
+offset_bottom = 60.19484
+scale = Vector2(2.065, 2.065)
+
+[node name="LabelContexto" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -295.5
+offset_top = -256.0
+offset_right = 295.5
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Intentos de login, ¿Que deberiamos hacer?"
+label_settings = SubResource("LabelSettings_hn0be")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TypingSound" type="AudioStreamPlayer2D" parent="LabelContexto"]
+stream = ExtResource("7_1y13l")
+volume_db = -27.262
+
+[node name="CardManager" type="Node2D" parent="." node_paths=PackedStringArray("label_contexto", "typing_sound")]
+script = ExtResource("6_tg03s")
+carta_escena = ExtResource("6_4ta2l")
+imagenes = Array[Texture2D]([ExtResource("7_4ta2l"), ExtResource("8_potmh")])
+label_contexto = NodePath("../LabelContexto")
+typing_sound = NodePath("../LabelContexto/TypingSound")
+
+[node name="SpawnPoint" type="Node2D" parent="CardManager"]
+position = Vector2(0, 175)
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LoginPanel" parent="CanvasLayer" instance=ExtResource("13_xs3pw")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_pe32j")
+volume_db = -30.991
+parameters/looping = true
