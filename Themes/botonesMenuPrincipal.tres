@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c1nsvuunjifsk"]
+
+[ext_resource type="Texture2D" uid="uid://c0m8wnasryral" path="res://assests/Interfaz/Ornate Retro UI/spritesheets/BlackGreyUISheet.png" id="1_hoo5k"]
+[ext_resource type="FontFile" uid="uid://0jlmj72sqjkq" path="res://assests/Fuente/acknowtt.ttf" id="2_7n1mr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iygum"]
+atlas = ExtResource("1_hoo5k")
+region = Rect2(242, 72, 55, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e1es3"]
+texture = SubResource("AtlasTexture_iygum")
+expand_margin_left = 25.0
+expand_margin_right = 25.0
+expand_margin_bottom = 30.0
+region_rect = Rect2(2, 0, 48, 16)
+
+[resource]
+default_font = ExtResource("2_7n1mr")
+Button/font_sizes/font_size = 40
+Button/styles/normal = SubResource("StyleBoxTexture_e1es3")

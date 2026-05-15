@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://8pah7aw402av"]
+
+[ext_resource type="FontFile" uid="uid://0jlmj72sqjkq" path="res://assests/Fuente/acknowtt.ttf" id="1_utqpr"]
+
+[resource]
+Button/font_sizes/font_size = 34
+Button/fonts/font = ExtResource("1_utqpr")
+Label/font_sizes/font_size = 39
+Label/fonts/font = ExtResource("1_utqpr")

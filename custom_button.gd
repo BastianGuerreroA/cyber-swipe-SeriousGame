@@ -1,0 +1,13 @@
+extends Button
+class_name CustomButton
+
+
+
+
+
+func _on_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_mouse_entered() -> void:
+	pass # Replace with function body.

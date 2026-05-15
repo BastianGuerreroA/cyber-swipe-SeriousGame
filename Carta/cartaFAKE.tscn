@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://gfm31isqdru4"]
+[gd_scene format=3 uid="uid://gfm31isqdru4"]
 
 [ext_resource type="Texture2D" uid="uid://c44uedwobr222" path="res://assests/LegacyQuest/Backgrounds/Poker/BG_Poker_UG_Dark_Gray.png" id="1_bfwq4"]
 [ext_resource type="Texture2D" uid="uid://17w3mq6ny6do" path="res://assests/LegacyQuest/Graphics/Poker_Title_UG.png" id="2_46qyw"]
@@ -6,9 +6,9 @@
 [ext_resource type="FontFile" uid="uid://bk705lrm6lrwv" path="res://assests/Pixelbasel_Font_1_00/Pixelbasel.ttf" id="4_5i1g2"]
 [ext_resource type="PackedScene" uid="uid://bmu1i26chrdre" path="res://Carta/carta_escena.tscn" id="5_1bi16"]
 
-[node name="EscenaCarta" type="Node2D"]
+[node name="EscenaCarta" type="Node2D" unique_id=1984245590]
 
-[node name="Fondo" type="TextureRect" parent="."]
+[node name="Fondo" type="TextureRect" parent="." unique_id=458314019]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -23,18 +23,23 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_bfwq4")
 
-[node name="TextureRect" type="TextureRect" parent="Fondo"]
+[node name="TextureRect" type="TextureRect" parent="Fondo" unique_id=1860875755]
+visible = false
 layout_mode = 0
 offset_right = 850.0
 offset_bottom = 210.5
 texture = ExtResource("2_46qyw")
 
-[node name="Iconos" parent="Fondo/TextureRect" instance=ExtResource("3_1bi16")]
+[node name="Iconos" parent="Fondo/TextureRect" unique_id=141548570 instance=ExtResource("3_1bi16")]
 light_mask = 0
-position = Vector2(153.00003, 55.5)
+layout_mode = 0
+offset_left = 153.00003
+offset_top = 55.5
+offset_right = 153.00003
+offset_bottom = 55.5
 scale = Vector2(1.6140778, 1.6140778)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1432553767]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -54,5 +59,5 @@ text = "Un empleado ha recibido un correo extraño del banco.
 ¿Qué hacemos?"
 horizontal_alignment = 1
 
-[node name="CartaEscena" parent="." instance=ExtResource("5_1bi16")]
+[node name="CartaEscena" parent="." unique_id=1747737243 instance=ExtResource("5_1bi16")]
 position = Vector2(-5.0000005, 163.00002)

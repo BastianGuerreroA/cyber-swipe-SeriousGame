@@ -122,6 +122,11 @@ func mostrar_contexto(texto: String):
 func _on_carta_procesada(direccion: float, data):
 	if direccion == data["correcto"]:
 		print("Respuesta correcta")
+		# 1. Buscamos el nodo ContadorScore navegando por el árbol
+		var contador = get_node_or_null("../CanvasLayer/MarginContainer/ContadorScore")
+		# 2. Si lo encuentra y tiene la función que creamos, sumamos 1 punto
+		if contador and contador.has_method("sumar_punto"):
+			contador.sumar_punto(1)
 	else:
 		print("Respuesta incorrecta")
 	

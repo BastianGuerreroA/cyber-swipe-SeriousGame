@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://di5rfu0k72qav"]
+
+[ext_resource type="Theme" uid="uid://dndsbs88ttxmu" path="res://Themes/MenuPrincipal_Theme.tres" id="1_jlo30"]
+[ext_resource type="Theme" uid="uid://bladguv0bfvp6" path="res://Themes/botonesMenuPrincipal_hover.tres" id="2_durs7"]
+[ext_resource type="Script" uid="uid://ccklts343cten" path="res://Pause_Menu/resumegame_boton.gd" id="3_2kg7u"]
+[ext_resource type="Script" uid="uid://bxx8vywcptnmx" path="res://Pause_Menu/exit_game_boton.gd" id="3_durs7"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jlo30")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -119.0
+offset_right = 140.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 35
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_durs7")
+theme_override_constants/separation = 29
+
+[node name="TituloMenu" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "JUEGO PAUSADO"
+
+[node name="Resume" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Volver"
+script = ExtResource("3_2kg7u")
+
+[node name="ExitGame" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Salir"
+script = ExtResource("3_durs7")
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Resume" to="PanelContainer/MarginContainer/VBoxContainer/Resume" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ExitGame" to="PanelContainer/MarginContainer/VBoxContainer/ExitGame" method="_on_pressed"]
