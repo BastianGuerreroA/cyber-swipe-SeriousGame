@@ -1,35 +1,103 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb432op86dqwa"]
+[gd_scene load_steps=23 format=3 uid="uid://cb432op86dqwa"]
 
+[ext_resource type="Script" uid="uid://hdx8s6blculo" path="res://Iconos/Script_iconos.gd" id="1_j6ltj"]
 [ext_resource type="Texture2D" uid="uid://biod0svu3nocd" path="res://assests/IconosEstadosMetricas/Presupuesto/Presupuesto_2.png" id="1_taawk"]
 [ext_resource type="Texture2D" uid="uid://c24nikc4j0w4y" path="res://assests/IconosEstadosMetricas/Integridad/Integridad_2.png" id="2_j6ltj"]
+[ext_resource type="Texture2D" uid="uid://ck8fi22ffa80k" path="res://assests/IconosEstadosMetricas/Presupuesto/Presupuesto_0.png" id="2_l0hga"]
 [ext_resource type="Texture2D" uid="uid://cgtxhyj8m1a36" path="res://assests/IconosEstadosMetricas/Disponibilidad/Disponibilidad_2.png" id="3_lwk15"]
+[ext_resource type="Texture2D" uid="uid://b5fytxkhhju8n" path="res://assests/IconosEstadosMetricas/Presupuesto/Presupuesto_1.png" id="3_o00g7"]
 [ext_resource type="Texture2D" uid="uid://bjwsttcg524qq" path="res://assests/IconosEstadosMetricas/Confidencialidad/Confidencialidad_2.png" id="4_8p5x2"]
+[ext_resource type="Texture2D" uid="uid://ca0cb0uxd3kvp" path="res://assests/IconosEstadosMetricas/Presupuesto/Presupuesto_3.png" id="5_nrryd"]
+[ext_resource type="Texture2D" uid="uid://bkchxfg2kkx68" path="res://assests/IconosEstadosMetricas/Presupuesto/Presupuesto_4.png" id="6_nd1qk"]
+[ext_resource type="Texture2D" uid="uid://ixo5nrh1y7yj" path="res://assests/IconosEstadosMetricas/Integridad/Integridad_0.png" id="7_ojgvm"]
+[ext_resource type="Texture2D" uid="uid://t8rooqqex0mq" path="res://assests/IconosEstadosMetricas/Integridad/Integridad_1.png" id="8_a20gu"]
+[ext_resource type="Texture2D" uid="uid://vhr0x3g56n6x" path="res://assests/IconosEstadosMetricas/Integridad/Integridad_3.png" id="10_cl152"]
+[ext_resource type="Texture2D" uid="uid://cperohjgrqhxe" path="res://assests/IconosEstadosMetricas/Integridad/Integridad_4.png" id="11_hbusn"]
+[ext_resource type="Texture2D" uid="uid://btuw6trji6f00" path="res://assests/IconosEstadosMetricas/Disponibilidad/Disponibilidad_0.png" id="12_bm52q"]
+[ext_resource type="Texture2D" uid="uid://cmofj2filje26" path="res://assests/IconosEstadosMetricas/Disponibilidad/Disponibilidad_1.png" id="13_rgpoq"]
+[ext_resource type="Texture2D" uid="uid://c7fq7wkndjwr4" path="res://assests/IconosEstadosMetricas/Disponibilidad/Disponibilidad_3.png" id="15_f88ox"]
+[ext_resource type="Texture2D" uid="uid://co3k01vy0jhq" path="res://assests/IconosEstadosMetricas/Disponibilidad/Disponibilidad_4.png" id="16_asb8m"]
+[ext_resource type="Texture2D" uid="uid://dt54ykst6lcs0" path="res://assests/IconosEstadosMetricas/Confidencialidad/Confidencialidad_0.png" id="17_hfvkt"]
+[ext_resource type="Texture2D" uid="uid://ctghb17bc0248" path="res://assests/IconosEstadosMetricas/Confidencialidad/Confidencialidad_1.png" id="18_ldc1a"]
+[ext_resource type="Texture2D" uid="uid://dmmvqog8gcr02" path="res://assests/IconosEstadosMetricas/Confidencialidad/Confidencialidad_3.png" id="20_1q6we"]
+[ext_resource type="Texture2D" uid="uid://bct0txvfpw8qx" path="res://assests/IconosEstadosMetricas/Confidencialidad/Confidencialidad_4.png" id="21_naw03"]
+[ext_resource type="Texture2D" uid="uid://qaa6psbxs8lf" path="res://assests/IconosEstadosMetricas/Indicador_azul.png" id="22_o00g7"]
 
-[node name="Iconos" type="Control"]
+[node name="IconosMetricas" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_j6ltj")
+presupuesto = Array[Texture2D]([ExtResource("2_l0hga"), ExtResource("3_o00g7"), ExtResource("1_taawk"), ExtResource("5_nrryd"), ExtResource("6_nd1qk")])
+integridad = Array[Texture2D]([ExtResource("7_ojgvm"), ExtResource("8_a20gu"), ExtResource("2_j6ltj"), ExtResource("10_cl152"), ExtResource("11_hbusn")])
+disponibilidad = Array[Texture2D]([ExtResource("12_bm52q"), ExtResource("13_rgpoq"), ExtResource("3_lwk15"), ExtResource("15_f88ox"), ExtResource("16_asb8m")])
+confidencialidad = Array[Texture2D]([ExtResource("17_hfvkt"), ExtResource("18_ldc1a"), ExtResource("4_8p5x2"), ExtResource("20_1q6we"), ExtResource("21_naw03")])
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-offset_left = -171.0
-offset_top = -27.0
-offset_right = 8425.0
-offset_bottom = 997.0
-scale = Vector2(0.04, 0.04)
-theme_override_constants/separation = 1500
+layout_mode = 0
+offset_left = -160.99998
+offset_top = -24.999998
+offset_right = 10643.0
+offset_bottom = 1303.0
+scale = Vector2(0.035, 0.035)
+size_flags_horizontal = 4
+theme_override_constants/separation = 1691
 
-[node name="Presupuesto" type="TextureRect" parent="HBoxContainer"]
+[node name="VBoxContainer_p" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Circulo_Preupuesto" type="TextureRect" parent="HBoxContainer/VBoxContainer_p"]
+visible = false
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+texture = ExtResource("22_o00g7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Presupuesto" type="TextureRect" parent="HBoxContainer/VBoxContainer_p"]
 layout_mode = 2
 texture = ExtResource("1_taawk")
 
-[node name="Intregridad" type="TextureRect" parent="HBoxContainer"]
+[node name="VBoxContainer_I" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Circulo_Integridad" type="TextureRect" parent="HBoxContainer/VBoxContainer_I"]
+visible = false
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+texture = ExtResource("22_o00g7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Intregridad" type="TextureRect" parent="HBoxContainer/VBoxContainer_I"]
 layout_mode = 2
 texture = ExtResource("2_j6ltj")
 
-[node name="Disponibilidad" type="TextureRect" parent="HBoxContainer"]
+[node name="VBoxContainer_D" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Circulo_Disponibilidad" type="TextureRect" parent="HBoxContainer/VBoxContainer_D"]
+visible = false
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+texture = ExtResource("22_o00g7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Disponibilidad" type="TextureRect" parent="HBoxContainer/VBoxContainer_D"]
 layout_mode = 2
 texture = ExtResource("3_lwk15")
 
-[node name="Confidencialidad" type="TextureRect" parent="HBoxContainer"]
+[node name="VBoxContainer_C" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Circulo_Confidencialidad" type="TextureRect" parent="HBoxContainer/VBoxContainer_C"]
+visible = false
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+texture = ExtResource("22_o00g7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Confidencialidad" type="TextureRect" parent="HBoxContainer/VBoxContainer_C"]
 layout_mode = 2
 texture = ExtResource("4_8p5x2")

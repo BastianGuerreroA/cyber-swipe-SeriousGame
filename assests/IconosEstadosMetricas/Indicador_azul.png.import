@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b63gbwf5bf7c6"
-path="res://.godot/imported/Integridad_2.png-4ca128a22d154536f2887394afbc8ae6.ctex"
+uid="uid://qaa6psbxs8lf"
+path="res://.godot/imported/Indicador_azul.png-2192a6f4efbd49cc7188fb7d93986aa6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assests/IconosEstadosMetricas/Integridad_2.png"
-dest_files=["res://.godot/imported/Integridad_2.png-4ca128a22d154536f2887394afbc8ae6.ctex"]
+source_file="res://assests/IconosEstadosMetricas/Indicador_azul.png"
+dest_files=["res://.godot/imported/Indicador_azul.png-2192a6f4efbd49cc7188fb7d93986aa6.ctex"]
 
 [params]
 

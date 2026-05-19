@@ -2,6 +2,9 @@ extends Area2D
 
 # Definimos una señal que avisará al administrador
 signal carta_procesada(direccion)
+signal intencion_decision(estado) # -1 izquierda, 0 centro, 1 derecha
+
+var intencion_actual: int = 0 # Para no enviar la señal 60 veces por segundo
 
 
 @onready var sprite = $Sprite2D
@@ -87,20 +90,27 @@ func actualizar_efecto_visual():
 	actualizar_overlay(porcentaje)
 	
 func actualizar_overlay(porcentaje: float):
-	# zona muerta inicial (de 0.1 a 0.05) para que el texto aparezca antes.
+	var nueva_intencion = 0
+	
 	if abs(porcentaje) < 0.05:
 		overlay.modulate.a = 0
-		return
-	
-	# El clamp asegura que el valor de opacidad (.a) nunca supere el 1.0.
-	var intensidad = clamp(abs(porcentaje) * 3.0, 0.0, 0.8)
-	
-	overlay.modulate.a = intensidad
-	
-	if porcentaje > 0:
-		label.text = texto_derecha
+		nueva_intencion = 0
 	else:
-		label.text = texto_izquierda
+		var intensidad = clamp(abs(porcentaje) * 3.0, 0.0, 0.8)
+		overlay.modulate.a = intensidad
+		
+		if porcentaje > 0:
+			label.text = texto_derecha
+			nueva_intencion = 1
+		else:
+			label.text = texto_izquierda
+			nueva_intencion = -1
+			
+	# Si cambiamos de dirección, avisamos al Manager
+	if nueva_intencion != intencion_actual:
+		intencion_actual = nueva_intencion
+		intencion_decision.emit(intencion_actual)
+
 
 func _input(event):
 	# Detecta cuando se suelta el click o toque
@@ -138,6 +148,10 @@ func regresar_al_centro():
 	
 	overlay.visible = false
 	overlay.modulate.a = 0	
+	
+	intencion_actual = 0
+	intencion_decision.emit(0)
+
 
 func ejecutar_salida(direccion: float):
 	# Mueve la carta fuera de la pantalla según decisión

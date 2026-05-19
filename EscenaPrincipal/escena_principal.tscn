@@ -78,13 +78,14 @@ texture = ExtResource("3_tg03s")
 [node name="Iconos" parent="FondoCarta/TextureRect" instance=ExtResource("4_jcddw")]
 light_mask = 0
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
+offset_left = 0.20980835
+offset_top = 103.97291
+offset_right = 0.20980835
+offset_bottom = 103.97291
 grow_horizontal = 2
-grow_vertical = 2
 scale = Vector2(2.065, 2.065)
 
 [node name="LabelContexto" type="Label" parent="."]
@@ -161,3 +162,4 @@ bus = &"FondoGame"
 parameters/looping = true
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/BotonPausa" to="." method="_on_boton_pausa_pressed"]
+[connection signal="metricas_actualizadas" from="CardManager" to="FondoCarta/TextureRect/Iconos" method="_on_card_manager_metricas_actualizadas"]

@@ -1,5 +1,7 @@
 extends Node2D
 
+signal metricas_actualizadas(p, c, i, d)
+
 @export var carta_escena: PackedScene # Escena de la carta
 @export var imagenes: Array[Texture2D] = [] # Arreglo de texturas cargado desde el inspector
 @export var label_contexto: Label
@@ -10,6 +12,12 @@ extends Node2D
 var tween_texto: Tween = null
 var texto_actual: String = ""
 var chars_mostrados: int = 0
+
+# Valores internos del 0 al 100
+var presupuesto_actual: int = 50
+var confidencialidad_actual: int = 50
+var integridad_actual: int = 50
+var disponibilidad_actual: int = 50
 
 var cartas = [
 	{
@@ -102,7 +110,7 @@ func generar_carta():
 	
 	nueva_carta.configurar(data, textura) # Configuración completa de la carta
 	nueva_carta.carta_procesada.connect(_on_carta_procesada.bind(data)) # Conectar señal
-	
+	nueva_carta.intencion_decision.connect(_on_intencion_decision.bind(data))
 	# Mostrar contexto con animación
 	mostrar_contexto(data["contexto"])
 
@@ -130,17 +138,43 @@ func mostrar_contexto(texto: String):
 	)
 
 func _on_carta_procesada(direccion: float, data):
+	
+	# 1. Determinar qué efecto usar según hacia dónde deslizó (-1.0 es Izquierda)
+	var efecto = data["efecto_izquierda"] if direccion == -1.0 else data["efecto_derecha"]
+	
+	# 2. Aplicar las sumas/restas y evitar que baje de 0 o pase de 100 con 'clamp'
+	presupuesto_actual = clamp(presupuesto_actual + efecto["presupuesto"], 0, 100)
+	confidencialidad_actual = clamp(confidencialidad_actual + efecto["confidencialidad"], 0, 100)
+	integridad_actual = clamp(integridad_actual + efecto["integridad"], 0, 100)
+	disponibilidad_actual = clamp(disponibilidad_actual + efecto["disponibilidad"], 0, 100)
+	
+	# 3. Avisar a los iconos para que cambien las imágenes
+	metricas_actualizadas.emit(presupuesto_actual, confidencialidad_actual, integridad_actual, disponibilidad_actual)
+
+	# 4. Lógica original del Puntaje de Score
 	if direccion == data["correcto"]:
 		print("Respuesta correcta")
-		# 1. Buscamos el nodo ContadorScore navegando por el árbol
 		var contador = get_node_or_null("../CanvasLayer/MarginContainer/ContadorScore")
-		# 2. Si lo encuentra y tiene la función que creamos, sumamos 1 punto
 		if contador and contador.has_method("sumar_punto"):
 			contador.sumar_punto(1)
 	else:
 		print("Respuesta incorrecta")
 	
-	# Aquí luego puedes conectar con lógica de juego:
-	# seguridad += 1, riesgo -= 1, etc.
-	
+	var nodo_iconos = get_node_or_null("../FondoCarta/TextureRect/Iconos")
+	if nodo_iconos and nodo_iconos.has_method("mostrar_indicadores"):
+		nodo_iconos.mostrar_indicadores(null)
+
 	generar_carta()
+	
+func _on_intencion_decision(estado: int, data):
+	var efecto = null
+	
+	if estado == -1: # Deslizando a la Izquierda
+		efecto = data["efecto_izquierda"]
+	elif estado == 1: # Deslizando a la Derecha
+		efecto = data["efecto_derecha"]
+	# Si estado es 0, efecto queda en null (apagará los círculos)
+	
+	var nodo_iconos = get_node_or_null("../FondoCarta/TextureRect/Iconos")
+	if nodo_iconos and nodo_iconos.has_method("mostrar_indicadores"):
+		nodo_iconos.mostrar_indicadores(efecto)
