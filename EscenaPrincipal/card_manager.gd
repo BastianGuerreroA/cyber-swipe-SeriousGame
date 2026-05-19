@@ -13,44 +13,54 @@ var chars_mostrados: int = 0
 
 var cartas = [
 	{
-		"imagen": 0, # Sugerencia: Icono de un correo con logo del SII falso
+		"imagen": 0, 
 		"contexto": "Llega un correo urgente del 'SII' advirtiendo sobre una multa por diferencias en la Declaración de Renta. Pide descargar un PDF adjunto para ver el detalle en 24 horas o habrá embargo.",
 		"texto_izquierda": "Borrar correo",
 		"texto_derecha": "Descargar PDF",
-		"correcto": -1.0, # Izquierda
-		"explicacion": "El SII nunca envía archivos PDF adjuntos ni links de descarga directa para multas. Es un clásico ataque de Phishing para instalar malware."
+		"correcto": -1.0, 
+		"explicacion": "El SII nunca envía archivos PDF adjuntos ni links de descarga directa para multas. Es un clásico ataque de Phishing para instalar malware.",
+		"efecto_izquierda": { "presupuesto": 0, "confidencialidad": +10, "integridad": +10, "disponibilidad": 0 },
+		"efecto_derecha": { "presupuesto": -20, "confidencialidad": -30, "integridad": -30, "disponibilidad": -10 }
 	},
 	{
-		"imagen": 1, # Sugerencia: Icono de WhatsApp o un personaje de un contador
+		"imagen": 1, 
 		"contexto": "Recibes un WhatsApp de un número desconocido, pero tiene la foto de tu contador. Dice: 'Hola, cambié de número. Tuve un problema con el banco, ¿me puedes transferir urgente los honorarios a esta nueva Cuenta RUT?'",
 		"texto_izquierda": "Transferir rápido",
 		"texto_derecha": "Llamar al número antiguo",
-		"correcto": 1.0, # Derecha
-		"explicacion": "Es el 'Cuento del Tío' digital (Suplantación de identidad). Siempre debes verificar por otro canal de comunicación antes de transferir dinero a cuentas nuevas."
+		"correcto": 1.0, 
+		"explicacion": "Es el 'Cuento del Tío' digital (Suplantación de identidad). Siempre debes verificar por otro canal de comunicación antes de transferir dinero a cuentas nuevas.",
+		"efecto_izquierda": { "presupuesto": -40, "confidencialidad": -10, "integridad": 0, "disponibilidad": 0 },
+		"efecto_derecha": { "presupuesto": +10, "confidencialidad": +10, "integridad": 0, "disponibilidad": 0 }
 	},
 	{
-		"imagen": 0, # Sugerencia: Icono de un Pendrive USB
+		"imagen": 0, 
 		"contexto": "El encargado de bodega encuentra un pendrive plateado tirado en el estacionamiento de la empresa. Te lo trae a tu escritorio para que lo revises y veas si tiene el nombre del dueño adentro.",
 		"texto_izquierda": "Entregar a TI / Botar",
 		"texto_derecha": "Conectarlo al PC",
-		"correcto": -1.0, # Izquierda
-		"explicacion": "Ataque de 'Baiting' (Cebo). Conectar un USB desconocido puede ejecutar un código malicioso instantáneamente en la red de la empresa sin que te des cuenta."
+		"correcto": -1.0, 
+		"explicacion": "Ataque de 'Baiting' (Cebo). Conectar un USB desconocido puede ejecutar un código malicioso instantáneamente en la red de la empresa sin que te des cuenta.",
+		"efecto_izquierda": { "presupuesto": 0, "confidencialidad": 0, "integridad": +15, "disponibilidad": +10 },
+		"efecto_derecha": { "presupuesto": -15, "confidencialidad": -20, "integridad": -35, "disponibilidad": -25 }
 	},
 	{
-		"imagen": 1, # Sugerencia: Icono de un Servidor o una alerta de Windows
+		"imagen": 1, 
 		"contexto": "Aparece un mensaje en el servidor principal de ventas: 'Actualización crítica de sistema pendiente'. Requiere reiniciar el equipo y tomará unos 45 minutos. Estamos en pleno horario de atención a clientes.",
 		"texto_izquierda": "Posponer 1 semana",
 		"texto_derecha": "Actualizar ahora",
-		"correcto": 1.0, # Derecha
-		"explicacion": "Los ciberdelincuentes aprovechan las vulnerabilidades no parcheadas. Aunque cueste ventas momentáneas, posponer parches de seguridad abre la puerta a ataques de Ransomware."
+		"correcto": 1.0, 
+		"explicacion": "Los ciberdelincuentes aprovechan las vulnerabilidades no parcheadas. Aunque cueste ventas momentáneas, posponer parches de seguridad abre la puerta a ataques de Ransomware.",
+		"efecto_izquierda": { "presupuesto": +15, "confidencialidad": -20, "integridad": -30, "disponibilidad": +15 },
+		"efecto_derecha": { "presupuesto": -15, "confidencialidad": +20, "integridad": +30, "disponibilidad": -20 }
 	},
 	{
-		"imagen": 0, # Sugerencia: Icono de dos personas o un candado abierto
+		"imagen": 0, 
 		"contexto": "Entró un practicante nuevo. Como aún no le crean su correo, tu socio sugiere que use la cuenta compartida 'ventas@mipyme.cl' y le demos la clave 'Ventas2026' por mientras.",
 		"texto_izquierda": "Prestarle la cuenta",
 		"texto_derecha": "Exigir cuenta propia",
-		"correcto": 1.0, # Derecha
-		"explicacion": "Compartir credenciales rompe el principio de 'No repudio'. Si ocurre una filtración o un error grave desde esa cuenta, será imposible auditar quién fue el responsable."
+		"correcto": 1.0, 
+		"explicacion": "Compartir credenciales rompe el principio de 'No repudio'. Si ocurre una filtración o un error grave desde esa cuenta, será imposible auditar quién fue el responsable.",
+		"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -25, "integridad": -15, "disponibilidad": 0 },
+		"efecto_derecha": { "presupuesto": -10, "confidencialidad": +25, "integridad": +10, "disponibilidad": 0 }
 	}
 ]
 

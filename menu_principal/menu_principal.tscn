@@ -28,7 +28,7 @@ grow_vertical = 2
 theme = ExtResource("1_ujlky")
 script = ExtResource("1_cvvk7")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Fondo" type="TextureRect" parent="."]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_kbxwo")
 layout_mode = 1
@@ -56,11 +56,7 @@ grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="MarginContainer"]
 
-[node name="LoginPanel" parent="MarginContainer/CanvasLayer" instance=ExtResource("1_g85l6")]
-offset_left = -1.0
-offset_right = -1.0
-
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/CanvasLayer"]
+[node name="LogoJuego" type="TextureRect" parent="MarginContainer/CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -76,6 +72,10 @@ scale = Vector2(0.5803638, 0.5803638)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("13_4tagf")
+
+[node name="LoginPanel" parent="MarginContainer/CanvasLayer" instance=ExtResource("1_g85l6")]
+offset_left = -1.0
+offset_right = -1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2

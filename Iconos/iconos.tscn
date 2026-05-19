@@ -1,33 +1,35 @@
 [gd_scene load_steps=5 format=3 uid="uid://cb432op86dqwa"]
 
-[ext_resource type="Texture2D" uid="uid://ncslvcwdv1ip" path="res://assests/IconGodotNode/IconGodotNode/white/icon_character.png" id="1_taawk"]
-[ext_resource type="Texture2D" uid="uid://bykopn7woo215" path="res://assests/IconGodotNode/IconGodotNode/white/icon_case.png" id="2_j6ltj"]
-[ext_resource type="Texture2D" uid="uid://dc4gq4hql4m1h" path="res://assests/IconGodotNode/IconGodotNode/white/icon_skull.png" id="3_lwk15"]
-[ext_resource type="Texture2D" uid="uid://c2kh114r4icqb" path="res://assests/IconGodotNode/IconGodotNode/white/icon_lock.png" id="4_8p5x2"]
+[ext_resource type="Texture2D" uid="uid://biod0svu3nocd" path="res://assests/IconosEstadosMetricas/Presupuesto/Presupuesto_2.png" id="1_taawk"]
+[ext_resource type="Texture2D" uid="uid://c24nikc4j0w4y" path="res://assests/IconosEstadosMetricas/Integridad/Integridad_2.png" id="2_j6ltj"]
+[ext_resource type="Texture2D" uid="uid://cgtxhyj8m1a36" path="res://assests/IconosEstadosMetricas/Disponibilidad/Disponibilidad_2.png" id="3_lwk15"]
+[ext_resource type="Texture2D" uid="uid://bjwsttcg524qq" path="res://assests/IconosEstadosMetricas/Confidencialidad/Confidencialidad_2.png" id="4_8p5x2"]
 
 [node name="Iconos" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 214.0
-offset_bottom = 20.0
-scale = Vector2(1.265, 1.265)
-theme_override_constants/separation = 50
+layout_mode = 1
+offset_left = -171.0
+offset_top = -27.0
+offset_right = 8425.0
+offset_bottom = 997.0
+scale = Vector2(0.04, 0.04)
+theme_override_constants/separation = 1500
 
-[node name="Confianza" type="TextureRect" parent="HBoxContainer"]
+[node name="Presupuesto" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_taawk")
 
-[node name="Productividad" type="TextureRect" parent="HBoxContainer"]
+[node name="Intregridad" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_j6ltj")
 
-[node name="Riesgo" type="TextureRect" parent="HBoxContainer"]
+[node name="Disponibilidad" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("3_lwk15")
 
-[node name="Seguridad" type="TextureRect" parent="HBoxContainer"]
+[node name="Confidencialidad" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_8p5x2")
