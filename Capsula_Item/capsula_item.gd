@@ -13,6 +13,10 @@ extends PanelContainer
 var id_capsula: int = -1
 
 func _ready() -> void:
+	# Ajustar el punto de pivote al centro de la textura para que gire sobre su propio eje
+	if boton_chevron.texture_normal:
+		boton_chevron.pivot_offset = boton_chevron.texture_normal.get_size() / 2
+		
 	# 1. Por defecto, ocultamos la parte desplegable (acordeón cerrado)
 	contenedor_desplegable.visible = false
 	
