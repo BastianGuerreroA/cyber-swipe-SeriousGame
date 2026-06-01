@@ -1,0 +1,67 @@
+{
+	"usuario": {
+		"nombre": "Bastián Guerrero",
+		"puntos_totales": 120,
+		"progreso_general": 1
+	},
+	"capsulas": [
+		{
+			"id": 1,
+			"titulo": "Bloqueo de Pantalla",
+			"mini_descripcion": "Protege tu dispositivo con PIN y biometría.",
+			"contenido_estudio": "Un bloqueo de pantalla es la primera línea de defensa...\n\n### Mejores Prácticas:\n1. Usa PIN de 6 dígitos.\n2. Habilita huella dactilar.",
+			"estado": "Disponible",
+			"cartas": [
+				{
+					"imagen": 0,
+					"contexto": "Un compañero de trabajo te pide tu teléfono desbloqueado para hacer una llamada rápida pero sale de la oficina con él.",
+					"texto_izquierda": "Confiar en él",
+					"texto_derecha": "Pedirle que lo devuelva",
+					"correcto": 1.0,
+					"explicacion": "Nunca dejes tu dispositivo desbloqueado fuera de tu vista.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -30,
+						"integridad": -10,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 10,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
+				}
+			]
+		},
+		{
+			"id": 2,
+			"titulo": "Phishing y Correos Falsos",
+			"mini_descripcion": "Aprende a identificar correos fraudulentos.",
+			"contenido_estudio": "El Phishing busca robar tus credenciales simulando ser una entidad confiable...",
+			"estado": "Bloqueado",
+			"cartas": [
+				{
+					"imagen": 1,
+					"contexto": "Llega un correo de 'Netflix' diciendo que tu cuenta está suspendida y pide tu clave.",
+					"texto_izquierda": "Ignorar correo",
+					"texto_derecha": "Ingresar clave",
+					"correcto": -1.0,
+					"explicacion": "Las plataformas oficiales nunca piden claves por correo.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": 10,
+						"integridad": 0,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": -10,
+						"confidencialidad": -40,
+						"integridad": -20,
+						"disponibilidad": 0
+					}
+				}
+			]
+		}
+	]
+}

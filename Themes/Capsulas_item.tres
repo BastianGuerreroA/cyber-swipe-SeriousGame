@@ -1,0 +1,115 @@
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://iped3ruqi0lu"]
+
+[ext_resource type="Texture2D" uid="uid://c0m8wnasryral" path="res://assests/Interfaz/Ornate Retro UI/spritesheets/BlackGreyUISheet.png" id="1_xvt6l"]
+[ext_resource type="Texture2D" uid="uid://3fxq2n7mr1h1" path="res://assests/CyberUI/Paneles/Panel_1_pixel.png" id="2_p1130"]
+[ext_resource type="FontFile" uid="uid://0jlmj72sqjkq" path="res://assests/Fuente/acknowtt.ttf" id="4_ddnal"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2xtwl"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvt6l"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v880c"]
+atlas = ExtResource("1_xvt6l")
+region = Rect2(116, 70, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v880c"]
+texture = SubResource("AtlasTexture_v880c")
+expand_margin_left = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 10.0
+region_rect = Rect2(116, 70, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iygum"]
+atlas = ExtResource("1_xvt6l")
+region = Rect2(242, 72, 55, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e1es3"]
+texture = SubResource("AtlasTexture_iygum")
+expand_margin_left = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 10.0
+region_rect = Rect2(2, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1chhn"]
+atlas = ExtResource("1_xvt6l")
+region = Rect2(180, 70, 48, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ygd0"]
+texture = SubResource("AtlasTexture_1chhn")
+expand_margin_left = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0sa0b"]
+texture = ExtResource("2_p1130")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1130"]
+bg_color = Color(4.6205523e-06, 0.79097027, 0.49341208, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+default_font = ExtResource("4_ddnal")
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 27
+Button/styles/disabled = SubResource("StyleBoxFlat_2xtwl")
+Button/styles/disabled_mirrored = null
+Button/styles/focus = SubResource("StyleBoxFlat_xvt6l")
+Button/styles/hover = SubResource("StyleBoxTexture_v880c")
+Button/styles/normal = SubResource("StyleBoxTexture_e1es3")
+Button/styles/pressed = SubResource("StyleBoxTexture_8ygd0")
+Label/font_sizes/font_size = 32
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_0sa0b")
+PanelVariante1/base_type = &"PanelContainer"
+PanelVariante1/styles/panel = SubResource("StyleBoxFlat_p1130")

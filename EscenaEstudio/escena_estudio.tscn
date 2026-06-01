@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhinbjia520cr"]
+
+[ext_resource type="Script" uid="uid://cvwv4r0r5uqmy" path="res://EscenaEstudio/escena_estudio.gd" id="1_m66y7"]
+[ext_resource type="Texture2D" uid="uid://dpj51wu0v11vg" path="res://assests/free-city-backgrounds-pixel-art/city 2/10.png" id="2_nv5j8"]
+
+[node name="EscenaEstudio" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m66y7")
+
+[node name="Fondo" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -825.0
+offset_right = 1479.0
+offset_bottom = 1296.0
+texture = ExtResource("2_nv5j8")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="LabelTituloCapsula" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ciberseguridad"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="TextoEstudio" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+bbcode_enabled = true
+text = "Textooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
+fit_content = true
+
+[node name="BotonVolver" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Volver al selector"

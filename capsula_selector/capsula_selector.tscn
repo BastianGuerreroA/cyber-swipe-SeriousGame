@@ -1,0 +1,134 @@
+[gd_scene load_steps=6 format=3 uid="uid://ws6ctwd7ok53"]
+
+[ext_resource type="Texture2D" uid="uid://cd867roe3oh4u" path="res://assests/free-city-backgrounds-pixel-art/city 8/7.png" id="1_1dqjf"]
+[ext_resource type="Script" uid="uid://c35stvpbxdgyy" path="res://capsula_selector/capsula_selector.gd" id="1_3qwwx"]
+[ext_resource type="Theme" uid="uid://dnpnaw8u2vfep" path="res://Themes/Capsulas.tres" id="1_ylymo"]
+[ext_resource type="Texture2D" uid="uid://h5rx6aod0xyk" path="res://assests/IconGodotNode/IconGodotNode/color/icon_particle.png" id="2_u0nbv"]
+[ext_resource type="PackedScene" uid="uid://ble7k06xecln5" path="res://Capsula_Item/capsula_item.tscn" id="3_nfn5k"]
+
+[node name="CapsulaSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3qwwx")
+
+[node name="Fondo" type="TextureRect" parent="."]
+modulate = Color(0.57720935, 0.22850424, 0.34832734, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1162.0
+offset_top = -647.0
+offset_right = 1142.0
+offset_bottom = 649.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1dqjf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 49
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_ylymo")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 19
+
+[node name="HContainer_Usuario" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="Usuario" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Usuario"
+
+[node name="Spacer" type="Control" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_u0nbv")
+stretch_mode = 3
+
+[node name="Puntos" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "ptos."
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Hcontainer_Progreso" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 144
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso"]
+layout_mode = 2
+text = "Progreso General"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="TotalCapsulas" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer"]
+layout_mode = 2
+text = "/4"
+
+[node name="Progreso" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer"]
+layout_mode = 2
+text = "Capsulas"
+
+[node name="VBoxContainer_capsulas" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="CapsulaItem" parent="MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer_capsulas" instance=ExtResource("3_nfn5k")]
+layout_mode = 2
+
+[node name="CapsulaItem2" parent="MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer_capsulas" instance=ExtResource("3_nfn5k")]
+layout_mode = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://blgfiuwr188ws"]
+[gd_scene load_steps=14 format=3 uid="uid://blgfiuwr188ws"]
 
 [ext_resource type="Texture2D" uid="uid://dc687mpc3o8or" path="res://assests/free-city-backgrounds-pixel-art/city 1/6.png" id="1_80s3h"]
 [ext_resource type="Script" uid="uid://tvyvqar50dmn" path="res://menu_principal/menu_principal.gd" id="1_cvvk7"]
@@ -7,10 +7,9 @@
 [ext_resource type="Theme" uid="uid://dndsbs88ttxmu" path="res://Themes/MenuPrincipal_Theme.tres" id="1_ujlky"]
 [ext_resource type="Script" uid="uid://bkhu44yd5jfcg" path="res://menu_principal/boton_jugar.gd" id="2_5pxfp"]
 [ext_resource type="Script" uid="uid://hklx1flumayc" path="res://menu_principal/boton_salir.gd" id="2_liwpa"]
-[ext_resource type="PackedScene" uid="uid://odfyj72oue6" path="res://EscenaPrincipal/escena_principal.tscn" id="3_ll0w1"]
 [ext_resource type="Theme" uid="uid://bladguv0bfvp6" path="res://Themes/botonesMenuPrincipal_hover.tres" id="4_h33ay"]
-[ext_resource type="Script" uid="uid://cmb7lfnadwec2" path="res://menu_principal/aprender.gd" id="5_x57wl"]
 [ext_resource type="AudioStream" uid="uid://6ujp38r8q1cr" path="res://assests/Musica/Hover_mouse.mp3" id="8_kbxwo"]
+[ext_resource type="PackedScene" uid="uid://ws6ctwd7ok53" path="res://capsula_selector/capsula_selector.tscn" id="9_ujlky"]
 [ext_resource type="AudioStream" uid="uid://daad7ic2t3gwt" path="res://assests/Musica/MusicMenu.mp3" id="11_ujlky"]
 [ext_resource type="Texture2D" uid="uid://cdlq142rx4c33" path="res://menu_principal/LogoJuego.png" id="13_4tagf"]
 
@@ -83,18 +82,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 47
 
-[node name="Aprender" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Comenzar" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("4_h33ay")
-text = "Aprender"
-script = ExtResource("5_x57wl")
-
-[node name="Jugar" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("4_h33ay")
-text = "Jugar"
+text = "Comenzar"
 script = ExtResource("2_5pxfp")
-escena_principal = ExtResource("3_ll0w1")
+escena_capsulas = ExtResource("9_ujlky")
 
 [node name="Salir" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -108,9 +101,7 @@ stream = ExtResource("8_kbxwo")
 [node name="MusicMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_ujlky")
 autoplay = true
-bus = &"MusicMenu"
 parameters/looping = true
 
-[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Aprender" to="MarginContainer/VBoxContainer/Aprender" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Jugar" to="MarginContainer/VBoxContainer/Jugar" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Comenzar" to="MarginContainer/VBoxContainer/Comenzar" method="_on_mouse_entered"]
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Salir" to="MarginContainer/VBoxContainer/Salir" method="_on_mouse_entered"]

@@ -18,6 +18,14 @@ config/name="CyberSwipe-v2"
 run/main_scene="uid://blgfiuwr188ws"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
+[audio]
+
+buses/default_bus_layout=""
+
+[autoload]
+
+CapsulaManager="*res://capsula_manager.gd"
+
 [display]
 
 window/size/viewport_width=720

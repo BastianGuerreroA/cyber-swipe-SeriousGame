@@ -158,7 +158,6 @@ metadata/_edit_lock_ = true
 
 [node name="FondoGameMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_pe32j")
-bus = &"FondoGame"
 parameters/looping = true
 
 [connection signal="pressed" from="CanvasLayer/MarginContainer/BotonPausa" to="." method="_on_boton_pausa_pressed"]

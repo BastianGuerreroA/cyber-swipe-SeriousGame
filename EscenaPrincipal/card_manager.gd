@@ -75,6 +75,11 @@ var cartas = [
 
 func _ready():
 	randomize()
+	# Cartas Dinamicas (Se deja obsoleto las cartas anteriores, mas tarde las borro :D)
+	var cartas_dinamicas = CapsulaManager.obtener_cartas_de_capsula_activa()
+	if not cartas_dinamicas.is_empty():
+		cartas = cartas_dinamicas
+	# ----------------------------------------------------
 	generar_carta()
 	
 	
