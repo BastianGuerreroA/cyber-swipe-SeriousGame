@@ -1,7 +1,29 @@
-[gd_resource type="Theme" format=3 uid="uid://dndsbs88ttxmu"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dndsbs88ttxmu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qpi7b"]
+bg_color = Color(0.49, 0.168805, 0.15190001, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0, 0, 0, 0.26666668)
+shadow_size = 38
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wm6ke"]
+bg_color = Color(0.029500041, 0.59, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0, 0, 0, 0.26666668)
+shadow_size = 35
 
 [resource]
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
+PanelContainer_GameOver/base_type = &"PanelContainer"
+PanelContainer_GameOver/styles/panel = SubResource("StyleBoxFlat_qpi7b")
+Panel_Game_Winner/base_type = &"PanelContainer"
+Panel_Game_Winner/styles/panel = SubResource("StyleBoxFlat_wm6ke")

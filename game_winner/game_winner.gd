@@ -1,0 +1,21 @@
+extends Control
+
+@export var escena_capsulas: PackedScene
+
+@onready var label_valor_puntaje = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ValorPuntaje
+
+func _ready() -> void:
+	
+	# Mostrar los puntajes
+	var record = CapsulaManager.obtener_record_capsula(CapsulaManager.capsula_activa_id)
+	label_valor_puntaje.text = str(CapsulaManager.puntaje_ronda_actual) + " (Récord: " + str(record) + ")"
+	
+
+# "Reintentar" -> Carga de nuevo la escena del juego
+func _on_reintentar_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://EscenaPrincipal/escena_principal.tscn")
+
+func _on_exit_game_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_packed(escena_capsulas)

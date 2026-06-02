@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://iped3ruqi0lu"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://iped3ruqi0lu"]
 
 [ext_resource type="Texture2D" uid="uid://c0m8wnasryral" path="res://assests/Interfaz/Ornate Retro UI/spritesheets/BlackGreyUISheet.png" id="1_xvt6l"]
 [ext_resource type="Texture2D" uid="uid://3fxq2n7mr1h1" path="res://assests/CyberUI/Paneles/Panel_1_pixel.png" id="2_p1130"]
@@ -76,6 +76,13 @@ texture_margin_top = 20.0
 texture_margin_right = 20.0
 texture_margin_bottom = 20.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tix88"]
+bg_color = Color(0.6561422, 0, 0.097002424, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1130"]
 bg_color = Color(4.6205523e-06, 0.79097027, 0.49341208, 1)
 corner_radius_top_left = 10
@@ -111,5 +118,7 @@ Button/styles/normal = SubResource("StyleBoxTexture_e1es3")
 Button/styles/pressed = SubResource("StyleBoxTexture_8ygd0")
 Label/font_sizes/font_size = 32
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_0sa0b")
-PanelVariante1/base_type = &"PanelContainer"
-PanelVariante1/styles/panel = SubResource("StyleBoxFlat_p1130")
+PanelVarianteRojo/base_type = &"PanelContainer"
+PanelVarianteRojo/styles/panel = SubResource("StyleBoxFlat_tix88")
+PanelVarianteVerde/base_type = &"PanelContainer"
+PanelVarianteVerde/styles/panel = SubResource("StyleBoxFlat_p1130")

@@ -9,9 +9,7 @@ region = Rect2(180, 70, 48, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u2bsp"]
 texture = SubResource("AtlasTexture_kp5qg")
-expand_margin_left = 25.0
-expand_margin_right = 25.0
-expand_margin_bottom = 30.0
+expand_margin_bottom = 20.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4xqjr"]
 atlas = ExtResource("1_kp5qg")
@@ -19,20 +17,15 @@ region = Rect2(116, 70, 48, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2bgfk"]
 texture = SubResource("AtlasTexture_4xqjr")
-expand_margin_left = 25.0
-expand_margin_right = 25.0
-expand_margin_bottom = 30.0
+expand_margin_bottom = 20.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iygum"]
 atlas = ExtResource("1_kp5qg")
-region = Rect2(242, 72, 55, 16)
+region = Rect2(244, 72, 48, 14)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e1es3"]
 texture = SubResource("AtlasTexture_iygum")
-expand_margin_left = 25.0
-expand_margin_right = 25.0
-expand_margin_bottom = 30.0
-region_rect = Rect2(2, 0, 48, 16)
+expand_margin_bottom = 10.0
 
 [resource]
 default_font = ExtResource("2_u2bsp")

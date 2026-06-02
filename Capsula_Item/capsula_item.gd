@@ -9,6 +9,8 @@ extends PanelContainer
 @onready var rich_text_desc = $MarginContainer/VBoxHeader/VBoxContainer/RichTextLabel
 @onready var boton_estudiar = $MarginContainer/VBoxHeader/VBoxContainer/HBoxContainer/VBoxContainer/Button
 @onready var boton_practicar = $MarginContainer/VBoxHeader/VBoxContainer/HBoxContainer/VBoxContainer2/Button2
+@onready var panel_estado = $MarginContainer/VBoxHeader/HBoxContainer/HBoxContainer/PanelContainer
+
 
 var id_capsula: int = -1
 
@@ -33,11 +35,18 @@ func configurar(datos: Dictionary) -> void:
 	label_estado.text = datos["estado"]
 	rich_text_desc.text = datos["contenido_estudio"]
 	
-	# Si la cápsula está bloqueada, desactivamos los botones
 	if datos["estado"] == "Bloqueado":
 		boton_practicar.disabled = true
 		boton_estudiar.disabled = true
-		modulate = Color(0.6, 0.6, 0.6, 1.0) # Apariencia deshabilitada
+		
+		panel_estado.theme_type_variation = &"PanelVarianteRojo"
+		
+	else:
+		boton_practicar.disabled = false
+		boton_estudiar.disabled = false
+		
+		panel_estado.theme_type_variation = &"PanelVarianteVerde"
+
 
 # Alterna la visibilidad del acordeón con animación del chevron
 func _on_chevron_pressed() -> void:

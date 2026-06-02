@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmoos62k5vl0d"]
+[gd_scene load_steps=5 format=3 uid="uid://bqasrlqrmndwy"]
 
-[ext_resource type="Theme" uid="uid://dndsbs88ttxmu" path="res://Themes/MenuPrincipal_Theme.tres" id="1_hp1yt"]
-[ext_resource type="Theme" uid="uid://c1nsvuunjifsk" path="res://Themes/botonesMenuPrincipal.tres" id="2_ikoy3"]
-[ext_resource type="Script" uid="uid://8ekfmiqn4y37" path="res://Game_over/game_over.gd" id="2_opo80"]
+[ext_resource type="Theme" uid="uid://dndsbs88ttxmu" path="res://Themes/MenuPrincipal_Theme.tres" id="1_d5v2h"]
+[ext_resource type="Script" uid="uid://d33yb0o2ude50" path="res://game_winner/game_winner.gd" id="2_u5476"]
+[ext_resource type="Theme" uid="uid://c1nsvuunjifsk" path="res://Themes/botonesMenuPrincipal.tres" id="3_fxcxu"]
+[ext_resource type="PackedScene" uid="uid://ws6ctwd7ok53" path="res://capsula_selector/capsula_selector.tscn" id="3_u5476"]
 
-[node name="Game_Over" type="Control"]
+[node name="Game_Winer" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -12,8 +13,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_hp1yt")
-script = ExtResource("2_opo80")
+theme = ExtResource("1_d5v2h")
+script = ExtResource("2_u5476")
+escena_capsulas = ExtResource("3_u5476")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -23,12 +25,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -43.0
+offset_top = -37.0
 offset_right = 20.0
-offset_bottom = 43.0
+offset_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_type_variation = &"PanelContainer_GameOver"
+theme_type_variation = &"Panel_Game_Winner"
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -39,13 +41,13 @@ theme_override_constants/margin_bottom = 35
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
-theme = ExtResource("2_ikoy3")
+theme = ExtResource("3_fxcxu")
 theme_override_constants/separation = 29
 
 [node name="TituloMenu" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 83
-text = "GAME OVER"
+text = "YOU WIN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -67,24 +69,15 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Reanudar" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-focus_mode = 0
-theme_override_font_sizes/font_size = 50
-text = "Reanudar LSG"
-
 [node name="Reintentar" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 50
 text = "Reintentar"
 
 [node name="ExitGame" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 50
 text = "Salir"
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Reanudar" to="." method="_on_reanudar_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Reintentar" to="." method="_on_reintentar_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ExitGame" to="." method="_on_exit_game_pressed"]

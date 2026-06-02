@@ -7,6 +7,11 @@ signal metricas_actualizadas(p, c, i, d)
 @export var label_contexto: Label
 @export var typing_sound: AudioStreamPlayer2D
 
+# Precargamos los overlays
+const GAME_OVER_SCENE = preload("res://Game_over/Game_over.tscn")
+const GAME_WINNER_SCENE = preload("res://game_winner/game_winner.tscn")
+
+
 @onready var spawn_point = $SpawnPoint
 
 var tween_texto: Tween = null
@@ -72,14 +77,18 @@ var cartas = [
 	}
 ]
 
-
 func _ready():
 	randomize()
+	
+	# Reiniciar el puntaje de la ronda actual a 0 al comenzar la partida
+	CapsulaManager.puntaje_ronda_actual = 0
+	
 	# Cartas Dinamicas (Se deja obsoleto las cartas anteriores, mas tarde las borro :D)
 	var cartas_dinamicas = CapsulaManager.obtener_cartas_de_capsula_activa()
 	if not cartas_dinamicas.is_empty():
-		cartas = cartas_dinamicas
-	# ----------------------------------------------------
+		# Duplicamos con .duplicate() para no vaciar el JSON original en memoria
+		cartas = cartas_dinamicas.duplicate()
+	
 	generar_carta()
 	
 	
@@ -99,7 +108,12 @@ func _process(_delta):
 				typing_sound.play()
 
 func generar_carta():
-	if imagenes.is_empty() or cartas.is_empty(): #No hay imagenes o cartas para cargar
+	# Si ya no quedan cartas en la baraja local, el jugador ha ganado
+	if cartas.is_empty():
+		ganar_juego()
+		return
+		
+	if imagenes.is_empty():
 		return
 	
 	var nueva_carta = carta_escena.instantiate()
@@ -110,6 +124,9 @@ func generar_carta():
 	
 	var indice = obtener_indice_carta()
 	var data = cartas[indice]
+	
+	# Removemos la carta seleccionada para vaciar la lista
+	cartas.remove_at(indice)
 	
 	var textura = imagenes[data["imagen"]] #Guarda la textura seleccionada en el data
 	
@@ -162,6 +179,8 @@ func _on_carta_procesada(direccion: float, data):
 		var contador = get_node_or_null("../CanvasLayer/MarginContainer/ContadorScore")
 		if contador and contador.has_method("sumar_punto"):
 			contador.sumar_punto(1)
+			# Guardamos el puntaje actual en el manager
+			CapsulaManager.puntaje_ronda_actual = contador.puntaje_actual
 	else:
 		print("Respuesta incorrecta")
 	
@@ -169,6 +188,12 @@ func _on_carta_procesada(direccion: float, data):
 	if nodo_iconos and nodo_iconos.has_method("mostrar_indicadores"):
 		nodo_iconos.mostrar_indicadores(null)
 
+	# COMPROBACIÓN DE DERROTA
+	# Si alguna métrica llega a 0, termina el juego en derrota
+	if presupuesto_actual <= 0 or confidencialidad_actual <= 0 or integridad_actual <= 0 or disponibilidad_actual <= 0:
+		perder_juego()
+		return
+	# Si sobrevive, genera la siguiente carta
 	generar_carta()
 	
 func _on_intencion_decision(estado: int, data):
@@ -183,3 +208,37 @@ func _on_intencion_decision(estado: int, data):
 	var nodo_iconos = get_node_or_null("../FondoCarta/TextureRect/Iconos")
 	if nodo_iconos and nodo_iconos.has_method("mostrar_indicadores"):
 		nodo_iconos.mostrar_indicadores(efecto)
+
+func ganar_juego() -> void:
+	CapsulaManager.registrar_fin_de_juego()
+	
+	# Buscamos el CanvasLayer del HUD
+	var canvas = get_node_or_null("../CanvasLayer")
+	if canvas:
+		# Ocultamos el botón de pausa y el menú de pausa si estuviera abierto
+		var boton_pausa = canvas.get_node_or_null("MarginContainer/BotonPausa")
+		if boton_pausa:
+			boton_pausa.visible = false
+			
+		# Instanciamos el overlay de victoria
+		var win_overlay = GAME_WINNER_SCENE.instantiate()
+		canvas.add_child(win_overlay)
+		
+	# Congelamos los procesos del juego de fondo
+	get_tree().paused = true
+	
+
+func perder_juego() -> void:
+	CapsulaManager.registrar_fin_de_juego()
+	
+	var canvas = get_node_or_null("../CanvasLayer")
+	if canvas:
+		var boton_pausa = canvas.get_node_or_null("MarginContainer/BotonPausa")
+		if boton_pausa:
+			boton_pausa.visible = false
+			
+		# Instanciamos el overlay de derrota
+		var lose_overlay = GAME_OVER_SCENE.instantiate()
+		canvas.add_child(lose_overlay)
+		
+	get_tree().paused = true
