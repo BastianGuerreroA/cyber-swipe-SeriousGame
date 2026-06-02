@@ -38,10 +38,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 35
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_top = 20
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -125,7 +122,7 @@ text = "Capsulas"
 
 [node name="VBoxContainer_capsulas" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 7
+theme_override_constants/separation = 10
 
 [node name="CapsulaItem" parent="MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer_capsulas" instance=ExtResource("3_nfn5k")]
 layout_mode = 2

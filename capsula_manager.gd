@@ -3,7 +3,7 @@ extends Node
 # Variables de estado global
 var nombre_usuario: String = "Usuario"
 var puntos_totales: int = 0
-var progreso_general: int = 0
+var progreso_general: int = 1
 var lista_capsulas: Array = []
 # ID de la cápsula que el jugador seleccionó para Estudiar o Practicar
 var capsula_activa_id: int = 1
@@ -43,6 +43,8 @@ func cargar_progreso_jugador() -> void:
 			puntos_totales = progreso.puntos_totales
 			progreso_general = progreso.progreso_general
 			puntajes_maximos = progreso.puntajes_maximos
+			if progreso_general < 1:
+				progreso_general = 1
 			print("Progreso del usuario cargado desde Resource (.tres)")
 
 
@@ -83,18 +85,27 @@ func obtener_record_capsula(id: int) -> int:
 		return puntajes_maximos[id]
 	return 0
 	
-# Compara el puntaje actual con el récord de la cápsula y guarda los datos
-func registrar_fin_de_juego() -> void:
+
+func registrar_fin_de_juego(victoria: bool) -> void:
 	var record_actual = obtener_record_capsula(capsula_activa_id)
 	
+	# 1. Registrar el récord si se superó
 	if puntaje_ronda_actual > record_actual:
 		puntajes_maximos[capsula_activa_id] = puntaje_ronda_actual
 		
-		# Sumamos los récords de todas las cápsulas para actualizar los puntos totales
+		# Recalcular puntos totales
 		var suma = 0
 		for record in puntajes_maximos.values():
 			suma += record
 		puntos_totales = suma
-		
-		# Guardamos en progreso_usuario.tres
-		guardar_progreso()
+	
+	# 2. Desbloquear la siguiente cápsula si el jugador GANÓ la cápsula de su nivel máximo actual
+	if victoria and capsula_activa_id == progreso_general:
+		# Incrementamos en 1 el nivel desbloqueado (máximo número total de cápsulas)
+		progreso_general = clampi(progreso_general + 1, 1, lista_capsulas.size())
+	
+	# 3. Guardar cambios en el recurso .tres
+	guardar_progreso()
+
+
+	

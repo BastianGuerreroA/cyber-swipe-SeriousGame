@@ -210,7 +210,7 @@ func _on_intencion_decision(estado: int, data):
 		nodo_iconos.mostrar_indicadores(efecto)
 
 func ganar_juego() -> void:
-	CapsulaManager.registrar_fin_de_juego()
+	CapsulaManager.registrar_fin_de_juego(true)
 	
 	# Buscamos el CanvasLayer del HUD
 	var canvas = get_node_or_null("../CanvasLayer")
@@ -229,7 +229,7 @@ func ganar_juego() -> void:
 	
 
 func perder_juego() -> void:
-	CapsulaManager.registrar_fin_de_juego()
+	CapsulaManager.registrar_fin_de_juego(false)
 	
 	var canvas = get_node_or_null("../CanvasLayer")
 	if canvas:

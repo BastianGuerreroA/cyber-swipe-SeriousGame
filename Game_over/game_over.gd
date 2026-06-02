@@ -12,7 +12,7 @@ func _ready() -> void:
 
 # "Reanudar LSG" -> Continuar donde quedaste gastando puntos con lsg
 func _on_reanudar_pressed() -> void:
-	get_tree().paused = false
+	#get_tree().paused = false
 	pass
 
 # "Reintentar" -> Cargar el juego de nuevo

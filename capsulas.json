@@ -1,15 +1,15 @@
 {
 	"usuario": {
 		"nombre": "Bastián Guerrero",
-		"puntos_totales": 120,
+		"puntos_totales": 0,
 		"progreso_general": 1
 	},
 	"capsulas": [
 		{
 			"id": 1,
-			"titulo": "Bloqueo de Pantalla",
-			"mini_descripcion": "Protege tu dispositivo con PIN y biometría.",
-			"contenido_estudio": "Un bloqueo de pantalla es la primera línea de defensa...\n\n### Mejores Prácticas:\n1. Usa PIN de 6 dígitos.\n2. Habilita huella dactilar.",
+			"titulo": "Bloqueo de Pantalla y Credenciales",
+			"mini_descripcion": "Protege tus dispositivos y accesos con PIN, biometría y claves fuertes.",
+			"contenido_estudio": "El bloqueo de pantalla y las contraseñas seguras son tu primera línea de defensa.\n\n### Conceptos Clave:\n* **PIN de 6 dígitos**: Mucho más seguro que uno de 4 dígitos (1 millón vs 10 mil combinaciones).\n* **Autenticación Multifactor (MFA)**: Añade una segunda capa de seguridad (ej. un SMS o código de app) además de tu contraseña.\n* **Principio de Privacidad**: Nunca dejes sesiones administrativas abiertas sin supervisión.",
 			"estado": "Disponible",
 			"cartas": [
 				{
@@ -18,7 +18,7 @@
 					"texto_izquierda": "Confiar en él",
 					"texto_derecha": "Pedirle que lo devuelva",
 					"correcto": 1.0,
-					"explicacion": "Nunca dejes tu dispositivo desbloqueado fuera de tu vista.",
+					"explicacion": "Nunca dejes tu dispositivo desbloqueado fuera de tu vista, un tercero podría acceder a datos corporativos privados en segundos.",
 					"efecto_izquierda": {
 						"presupuesto": 0,
 						"confidencialidad": -30,
@@ -31,23 +31,203 @@
 						"integridad": 0,
 						"disponibilidad": 0
 					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Un nuevo practicante sugiere anotar la clave compartida del servidor en un post-it pegado debajo del teclado para no olvidarla.",
+					"texto_izquierda": "Permitir el post-it",
+					"texto_derecha": "Prohibir post-its",
+					"correcto": 1.0,
+					"explicacion": "Anotar contraseñas en lugares físicos expone las credenciales a cualquier persona o visitante que pase por la oficina.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -25,
+						"integridad": 0,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": -5,
+						"confidencialidad": 15,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Al crear tu clave de administrador para el software de facturación, piensas en usar 'Admin2026' para recordarla con facilidad.",
+					"texto_izquierda": "Usar esa clave",
+					"texto_derecha": "Usar gestor de claves",
+					"correcto": 1.0,
+					"explicacion": "Las contraseñas simples y predecibles son vulnerables a ataques de fuerza bruta en cuestión de minutos. Usa claves complejas y gestores de contraseñas.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -20,
+						"integridad": -20,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": -5,
+						"confidencialidad": 15,
+						"integridad": 10,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Recibes un correo sospechoso que te ofrece descargar gratis un gestor de contraseñas premium 'crackeado'.",
+					"texto_izquierda": "Descargarlo gratis",
+					"texto_derecha": "Ignorarlo / Comprar oficial",
+					"correcto": 1.0,
+					"explicacion": "Los instaladores de software pirata suelen contener troyanos diseñados específicamente para robar contraseñas grabadas.",
+					"efecto_izquierda": {
+						"presupuesto": 10,
+						"confidencialidad": -30,
+						"integridad": -25,
+						"disponibilidad": -15
+					},
+					"efecto_derecha": {
+						"presupuesto": -10,
+						"confidencialidad": 15,
+						"integridad": 10,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Te vas a almorzar y dejas la sesión del servidor de contabilidad abierta porque volverás en solo 20 minutos.",
+					"texto_izquierda": "Dejarla abierta",
+					"texto_derecha": "Bloquear PC antes de irte",
+					"correcto": 1.0,
+					"explicacion": "Dejar sesiones abiertas permite el acceso físico no autorizado a datos financieros confidenciales de tu PYME.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -25,
+						"integridad": -15,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 10,
+						"integridad": 5,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Un directivo de tu empresa te pide que desactives el bloqueo automático de 5 minutos en su laptop porque 'le molesta escribir el PIN'.",
+					"texto_izquierda": "Desactivar bloqueo",
+					"texto_derecha": "Mantener bloqueo activo",
+					"correcto": 1.0,
+					"explicacion": "El bloqueo automático protege los datos si el equipo es robado o abandonado temporalmente en una zona común.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -30,
+						"integridad": 0,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 10,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Te recomiendan implementar doble factor de autenticación (MFA) en los correos corporativos, pero requiere capacitar al personal y gastar tiempo.",
+					"texto_izquierda": "No implementar por ahora",
+					"texto_derecha": "Implementar MFA",
+					"correcto": 1.0,
+					"explicacion": "El MFA previene más del 99% de los secuestros de cuentas, incluso si un atacante adivina o roba la contraseña.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -15,
+						"integridad": -15,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": -5,
+						"confidencialidad": 20,
+						"integridad": 20,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Un socio de la PYME te envía su contraseña personal de correo por Microsoft Teams porque necesita que le subas un archivo urgente.",
+					"texto_izquierda": "Usarla y borrar el chat",
+					"texto_derecha": "Pedirle que lo suba él",
+					"correcto": 1.0,
+					"explicacion": "Compartir contraseñas por aplicaciones de chat deja registros en la nube y rompe las políticas básicas de control de accesos.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -15,
+						"integridad": 0,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 10,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "El navegador web de la oficina te ofrece autocompletar y 'Guardar todas las contraseñas' de las cuentas del banco de la empresa.",
+					"texto_izquierda": "Guardar en navegador",
+					"texto_derecha": "No guardar contraseñas",
+					"correcto": 1.0,
+					"explicacion": "Los navegadores no protegen las claves de forma robusta por defecto. Si un malware entra al PC, puede exportar todas las claves guardadas al instante.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -25,
+						"integridad": -20,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 15,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Tu socio propone usar la misma contraseña maestra para el correo personal y el de administración de la PYME para no confundirse.",
+					"texto_izquierda": "Usar la misma clave",
+					"texto_derecha": "Usar claves distintas",
+					"correcto": 1.0,
+					"explicacion": "Si tu correo personal se filtra en internet (lo cual es muy común), los atacantes probarán la misma contraseña en tus correos de trabajo.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -30,
+						"integridad": -15,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 15,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
 				}
 			]
 		},
 		{
 			"id": 2,
 			"titulo": "Phishing y Correos Falsos",
-			"mini_descripcion": "Aprende a identificar correos fraudulentos.",
-			"contenido_estudio": "El Phishing busca robar tus credenciales simulando ser una entidad confiable...",
-			"estado": "Bloqueado",
+			"mini_descripcion": "Aprende a identificar correos fraudulentos, enlaces maliciosos y estafas digitales.",
+			"contenido_estudio": "El Phishing es el vector de ataque más utilizado para comprometer a las PYMEs.\n\n### Señales de Alerta:\n* **Remitentes Sospechosos**: Direcciones que dicen ser de instituciones públicas pero terminan en dominios extraños o genéricos.\n* **Urgencia Desmedida**: Amenazas de embargo, corte de servicios o multas en menos de 24 horas.\n* **Archivos Adjuntos Peligrosos**: Archivos PDF, ZIP o ejecutables (.exe) que no has solicitado.",
+			"estado": "Disponible",
 			"cartas": [
 				{
 					"imagen": 1,
-					"contexto": "Llega un correo de 'Netflix' diciendo que tu cuenta está suspendida y pide tu clave.",
+					"contexto": "Llega un correo de 'Netflix' diciendo que tu cuenta corporativa de entretenimiento está suspendida y pide reingresar tu tarjeta en un link.",
 					"texto_izquierda": "Ignorar correo",
-					"texto_derecha": "Ingresar clave",
+					"texto_derecha": "Ingresar tarjeta",
 					"correcto": -1.0,
-					"explicacion": "Las plataformas oficiales nunca piden claves por correo.",
+					"explicacion": "Las plataformas oficiales nunca piden reingresar tarjetas bancarias a través de links directos en correos electrónicos.",
 					"efecto_izquierda": {
 						"presupuesto": 0,
 						"confidencialidad": 10,
@@ -55,9 +235,816 @@
 						"disponibilidad": 0
 					},
 					"efecto_derecha": {
-						"presupuesto": -10,
+						"presupuesto": -25,
 						"confidencialidad": -40,
 						"integridad": -20,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Llega un correo urgente del 'SII' advirtiendo sobre una multa tributaria. Pide descargar un PDF adjunto para ver el detalle.",
+					"texto_izquierda": "Borrar correo",
+					"texto_derecha": "Descargar PDF",
+					"correcto": -1.0,
+					"explicacion": "El SII de Chile nunca envía archivos adjuntos ni links de descarga directa para multas. Es un ataque clásico de malware.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": 15,
+						"integridad": 10,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": -20,
+						"confidencialidad": -30,
+						"integridad": -35,
+						"disponibilidad": -20
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Recibes un WhatsApp de tu supuesto contador diciendo que cambió de número y pide transferir urgente sus honorarios a una nueva cuenta.",
+					"texto_izquierda": "Transferir rápido",
+					"texto_derecha": "Llamar al número antiguo",
+					"correcto": 1.0,
+					"explicacion": "La suplantación de identidad en WhatsApp es común. Llama siempre por el canal verificado antes de transferir dinero.",
+					"efecto_izquierda": {
+						"presupuesto": -40,
+						"confidencialidad": 0,
+						"integridad": 0,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": 10,
+						"confidencialidad": 10,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Un correo de 'Soporte Técnico de Windows' solicita validar tu cuenta haciendo clic en un botón para evitar que tu PC se bloquee.",
+					"texto_izquierda": "Validar cuenta",
+					"texto_derecha": "Reportar como Spam",
+					"correcto": 1.0,
+					"explicacion": "Microsoft nunca solicita credenciales ni contraseñas a través de enlaces de correo electrónico.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -35,
+						"integridad": -20,
+						"disponibilidad": -10
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 15,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Un proveedor habitual te envía un correo formal pero con una redacción extraña y adjunta una factura en formato '.zip'.",
+					"texto_izquierda": "Descomprimir y abrir",
+					"texto_derecha": "Llamar para confirmar",
+					"correcto": 1.0,
+					"explicacion": "Los atacantes pueden hackear correos de tus proveedores reales. Descomprimir archivos '.zip' puede instalar virus espía.",
+					"efecto_izquierda": {
+						"presupuesto": -15,
+						"confidencialidad": -30,
+						"integridad": -35,
+						"disponibilidad": -25
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 15,
+						"integridad": 15,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Correo de 'Correos de Chile' te pide pagar $1.500 en un enlace para destrabar una supuesta encomienda de insumos retenida.",
+					"texto_izquierda": "Pagar en el enlace",
+					"texto_derecha": "Borrar correo",
+					"correcto": 1.0,
+					"explicacion": "Es una campaña masiva de phishing. Buscan registrar tu tarjeta de crédito clonando la pasarela de pagos.",
+					"efecto_izquierda": {
+						"presupuesto": -30,
+						"confidencialidad": -30,
+						"integridad": 0,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 10,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Tu banco te envía un mail: 'Alerta de Fraude: Detectamos accesos desde el extranjero. Ingrese a su banca en este link para verificar'.",
+					"texto_izquierda": "Hacer clic en el link",
+					"texto_derecha": "Entrar por la web oficial",
+					"correcto": 1.0,
+					"explicacion": "Los bancos nunca envían enlaces para iniciar sesión. Es un clon falso para capturar tus coordenadas bancarias.",
+					"efecto_izquierda": {
+						"presupuesto": -40,
+						"confidencialidad": -40,
+						"integridad": -20,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 15,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Recibes un correo corporativo que parece venir de Recursos Humanos invitando a revisar la planilla de aguinaldos en un link de Drive.",
+					"texto_izquierda": "Abrir el archivo",
+					"texto_derecha": "Preguntar a RRHH primero",
+					"correcto": 1.0,
+					"explicacion": "Los correos internos suplantados son comunes. Validar la veracidad por llamada o en persona evita robos de credenciales.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -25,
+						"integridad": -15,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 15,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Un supuesto cliente nuevo te envía una cotización por correo desde una dirección @gmail.com genérica con un archivo '.exe' adjunto.",
+					"texto_izquierda": "Ejecutar archivo",
+					"texto_derecha": "Borrar y rechazar",
+					"correcto": 1.0,
+					"explicacion": "Las cotizaciones y facturas legítimas jamás son archivos ejecutables '.exe'. Contienen virus troyanos.",
+					"efecto_izquierda": {
+						"presupuesto": -25,
+						"confidencialidad": -30,
+						"integridad": -35,
+						"disponibilidad": -30
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 15,
+						"integridad": 15,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Un correo te felicita diciendo que tu empresa ganó un premio al emprendimiento de Corfo y te solicita las claves API del banco para depositar.",
+					"texto_izquierda": "Entregar datos",
+					"texto_derecha": "Ignorar correo",
+					"correcto": 1.0,
+					"explicacion": "Corfo y los organismos del estado jamás solicitarán claves, coordenadas ni claves API para depositar fondos.",
+					"efecto_izquierda": {
+						"presupuesto": -50,
+						"confidencialidad": -40,
+						"integridad": -20,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 15,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
+				}
+			]
+		},
+		{
+			"id": 3,
+			"titulo": "Respaldos e Incidentes de Ransomware",
+			"mini_descripcion": "Aprende la regla de respaldos 3-2-1 y cómo responder ante el secuestro de datos por virus.",
+			"contenido_estudio": "El Ransomware cifra los datos de tu empresa y exige un pago para liberarlos.\n\n### Estrategia de Respaldo 3-2-1:\n* **3 Copias** de seguridad de tus datos importantes.\n* **2 Medios** de almacenamiento distintos (ej. Disco externo y nube).\n* **1 Copia fuera de línea** (desconectada por completo de la red de la empresa).",
+			"estado": "Bloqueado",
+			"cartas": [
+				{
+					"imagen": 1,
+					"contexto": "El equipo de soporte propone comprar discos duros externos para respaldos semanales fuera de la red local, lo que eleva el gasto del mes.",
+					"texto_izquierda": "Rechazar por costo",
+					"texto_derecha": "Comprar discos",
+					"correcto": 1.0,
+					"explicacion": "Aunque cuesta dinero, un respaldo físico desconectado de la red (offline) es la única salvación si el ransomware encripta los servidores.",
+					"efecto_izquierda": {
+						"presupuesto": 15,
+						"confidencialidad": 0,
+						"integridad": -20,
+						"disponibilidad": -30
+					},
+					"efecto_derecha": {
+						"presupuesto": -15,
+						"confidencialidad": 0,
+						"integridad": 20,
+						"disponibilidad": 25
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Aparece una pantalla roja en el servidor de facturas: 'Archivos secuestrados. Pague 0.5 Bitcoin para recuperarlos'. Tienes respaldos de ayer.",
+					"texto_izquierda": "Pagar rescate",
+					"texto_derecha": "Restaurar del backup",
+					"correcto": 1.0,
+					"explicacion": "Pagar no garantiza que devuelvan los datos y financia el crimen. Restaurar copias limpias es la mejor alternativa técnica.",
+					"efecto_izquierda": {
+						"presupuesto": -45,
+						"confidencialidad": -20,
+						"integridad": -10,
+						"disponibilidad": -20
+					},
+					"efecto_derecha": {
+						"presupuesto": -5,
+						"confidencialidad": 10,
+						"integridad": 20,
+						"disponibilidad": 20
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Te ofrecen configurar un sistema de copias automáticas diarias en la nube a las 2 AM con un costo mensual de suscripción corporativa.",
+					"texto_izquierda": "No implementar",
+					"texto_derecha": "Contratar nube",
+					"correcto": 1.0,
+					"explicacion": "Automatizar respaldos en la nube fuera del horario de oficina asegura la continuidad operativa y evita descuidos del personal.",
+					"efecto_izquierda": {
+						"presupuesto": 10,
+						"confidencialidad": 0,
+						"integridad": -20,
+						"disponibilidad": -25
+					},
+					"efecto_derecha": {
+						"presupuesto": -10,
+						"confidencialidad": 5,
+						"integridad": 20,
+						"disponibilidad": 25
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Un virus infecta una laptop del área de ventas. Comienza a encriptar archivos del usuario.",
+					"texto_izquierda": "Desconectar e apagar PC",
+					"texto_derecha": "Seguir usándola",
+					"correcto": -1.0,
+					"explicacion": "Desconectar de inmediato el PC del cable de red y del Wi-Fi evita que el virus se propague e infecte a los otros computadores de la oficina.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": 10,
+						"integridad": 15,
+						"disponibilidad": 15
+					},
+					"efecto_derecha": {
+						"presupuesto": -20,
+						"confidencialidad": -30,
+						"integridad": -35,
+						"disponibilidad": -35
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Los respaldos automáticos fallan debido a que el servidor de copias de seguridad se quedó sin espacio en el disco duro.",
+					"texto_izquierda": "Comprar espacio extra",
+					"texto_derecha": "Esperar al mes siguiente",
+					"correcto": -1.0,
+					"explicacion": "Quedarse sin respaldos, aunque sea por unos días, es un riesgo crítico. Un incidente en ese lapso causará pérdidas irrecuperables.",
+					"efecto_izquierda": {
+						"presupuesto": -10,
+						"confidencialidad": 0,
+						"integridad": 15,
+						"disponibilidad": 20
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 0,
+						"integridad": -25,
+						"disponibilidad": -30
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Un empleado elimina por error de base de datos la facturación del mes pasado. No hay copia local, pero sí un backup remoto de la semana pasada.",
+					"texto_izquierda": "Reescribir datos a mano",
+					"texto_derecha": "Recuperar backup remoto",
+					"correcto": 1.0,
+					"explicacion": "Recuperar respaldos es rápido y confiable. Reescribir a mano introduce errores humanos y cuesta semanas de trabajo valioso.",
+					"efecto_izquierda": {
+						"presupuesto": -25,
+						"confidencialidad": 0,
+						"integridad": -20,
+						"disponibilidad": -20
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 10,
+						"integridad": 15,
+						"disponibilidad": 20
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Te ofrecen contratar un ciberseguro que cubre pérdidas financieras por ransomware, pero requiere una cuota de prima mensual.",
+					"texto_izquierda": "Contratar seguro",
+					"texto_derecha": "Rechazar seguro",
+					"correcto": -1.0,
+					"explicacion": "Un seguro ayuda a mitigar el impacto financiero en PYMEs ante ataques graves, permitiendo reconstruir la infraestructura.",
+					"efecto_izquierda": {
+						"presupuesto": -12,
+						"confidencialidad": 0,
+						"integridad": 0,
+						"disponibilidad": 25
+					},
+					"efecto_derecha": {
+						"presupuesto": 12,
+						"confidencialidad": 0,
+						"integridad": 0,
+						"disponibilidad": -20
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "El servidor principal donde guardas los datos del negocio está expuesto en una oficina sin aire acondicionado y a temperatura de verano.",
+					"texto_izquierda": "Dejarlo ahí para ahorrar",
+					"texto_derecha": "Moverlo y climatizar",
+					"correcto": 1.0,
+					"explicacion": "El sobrecalentamiento causa quemaduras de disco y caídas de servicio. Climatizar asegura la integridad física del equipo.",
+					"efecto_izquierda": {
+						"presupuesto": 15,
+						"confidencialidad": 0,
+						"integridad": -20,
+						"disponibilidad": -30
+					},
+					"efecto_derecha": {
+						"presupuesto": -10,
+						"confidencialidad": 0,
+						"integridad": 15,
+						"disponibilidad": 25
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "El encargado de TI te pide medio día laboral para realizar pruebas de simulación de restauración de respaldos.",
+					"texto_izquierda": "Denegar, hay que producir",
+					"texto_derecha": "Aprobar pruebas",
+					"correcto": 1.0,
+					"explicacion": "Un respaldo no testeado es un respaldo que podría fallar. Simular restauraciones garantiza que los archivos realmente sirvan.",
+					"efecto_izquierda": {
+						"presupuesto": 10,
+						"confidencialidad": 0,
+						"integridad": -15,
+						"disponibilidad": -25
+					},
+					"efecto_derecha": {
+						"presupuesto": -5,
+						"confidencialidad": 0,
+						"integridad": 20,
+						"disponibilidad": 25
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Un virus ingresa por el PC de recepción. ¿Qué medida tomas para evitar la propagación?",
+					"texto_izquierda": "Formatear solo ese PC",
+					"texto_derecha": "Aislarlo y escanear red",
+					"correcto": 1.0,
+					"explicacion": "Formatear sin investigar deja las puertas abiertas si el virus ya se propagó lateralmente por tu red corporativa.",
+					"efecto_izquierda": {
+						"presupuesto": -10,
+						"confidencialidad": -15,
+						"integridad": -20,
+						"disponibilidad": -20
+					},
+					"efecto_derecha": {
+						"presupuesto": -5,
+						"confidencialidad": 15,
+						"integridad": 20,
+						"disponibilidad": 20
+					}
+				}
+			]
+		},
+		{
+			"id": 4,
+			"titulo": "Redes y Conexiones Seguras",
+			"mini_descripcion": "Aprende a resguardar tu red de internet Wi-Fi y a conectar trabajadores remotos de forma segura.",
+			"contenido_estudio": "El internet de tu oficina es la puerta de entrada a tus sistemas.\n\n### Recomendaciones de Conectividad:\n* **Segmentación de Redes**: Nunca mezcles el Wi-Fi de tus clientes con la red interna donde facturas y guardas datos.\n* **VPN (Virtual Private Network)**: Obligatoria para trabajadores remotos para encriptar los datos de viaje al servidor.\n* **Contraseñas del Router**: Cambiar siempre los credenciales predeterminados del proveedor de internet.",
+			"estado": "Bloqueado",
+			"cartas": [
+				{
+					"imagen": 0,
+					"contexto": "Estás de viaje y debes revisar la cuenta corriente de la PYME de urgencia usando el Wi-Fi público de una cafetería.",
+					"texto_izquierda": "Usar Wi-Fi abierto",
+					"texto_derecha": "Usar datos móviles",
+					"correcto": 1.0,
+					"explicacion": "Las redes Wi-Fi abiertas permiten que intermediarios intercepten contraseñas y datos bancarios fácilmente.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -35,
+						"integridad": -15,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": -5,
+						"confidencialidad": 15,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "El Wi-Fi principal de la empresa está abierto sin contraseña para facilitar que los clientes se conecten al visitarte.",
+					"texto_izquierda": "Dejar Wi-Fi abierto",
+					"texto_derecha": "Crear red de visitas",
+					"correcto": 1.0,
+					"explicacion": "Dejar el Wi-Fi principal abierto permite a cualquiera escanear tu red interna corporativa e infectar equipos.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -30,
+						"integridad": -20,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": -8,
+						"confidencialidad": 20,
+						"integridad": 15,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Los vendedores externos acceden a la contabilidad de la empresa desde casa directamente sin usar sistemas VPN cifrados.",
+					"texto_izquierda": "Obligar uso de VPN",
+					"texto_derecha": "Permitir acceso directo",
+					"correcto": -1.0,
+					"explicacion": "El acceso remoto sin cifrado VPN expone las credenciales de administración en internet a escaneos y hackeos.",
+					"efecto_izquierda": {
+						"presupuesto": -10,
+						"confidencialidad": 25,
+						"integridad": 20,
+						"disponibilidad": 10
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": -30,
+						"integridad": -25,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Te proponen renovar el router antiguo del proveedor por uno corporativo con cortafuegos (Firewall) integrado.",
+					"texto_izquierda": "Mantener router antiguo",
+					"texto_derecha": "Comprar nuevo router",
+					"correcto": 1.0,
+					"explicacion": "Los routers comerciales de hogar carecen de filtros de puertos. Un Firewall bloquea ataques automatizados provenientes de internet.",
+					"efecto_izquierda": {
+						"presupuesto": 15,
+						"confidencialidad": 0,
+						"integridad": -20,
+						"disponibilidad": -20
+					},
+					"efecto_derecha": {
+						"presupuesto": -15,
+						"confidencialidad": 0,
+						"integridad": 25,
+						"disponibilidad": 25
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Un técnico te aconseja mantener el acceso por defecto ('admin/admin') del portal de administración de tu router de red.",
+					"texto_izquierda": "Cambiar clave de router",
+					"texto_derecha": "Dejar clave de fábrica",
+					"correcto": -1.0,
+					"explicacion": "Cualquier atacante conoce las claves por defecto de los modelos de router comunes. Cambiarla evita tomas de control de tu red.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": 20,
+						"integridad": 15,
+						"disponibilidad": 10
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": -35,
+						"integridad": -30,
+						"disponibilidad": -20
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Se detecta en el panel de red un celular conectado desconocido en el Wi-Fi privado de la PYME.",
+					"texto_izquierda": "Bloquear en el router",
+					"texto_derecha": "Ignorar por ahora",
+					"correcto": -1.0,
+					"explicacion": "Cualquier dispositivo desconocido en tu red Wi-Fi privada corporativa representa un peligro potencial de robo de datos o espionaje.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": 15,
+						"integridad": 10,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": -25,
+						"integridad": -15,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Te recomiendan ocultar el nombre (SSID) de tu red Wi-Fi administrativa para que no aparezca en búsquedas de dispositivos cercanos.",
+					"texto_izquierda": "Ocultar nombre SSID",
+					"texto_derecha": "Mantener visible",
+					"correcto": -1.0,
+					"explicacion": "Ocultar la red dificulta que los atacantes comunes sepan a qué punto de acceso conectarse e intentar violar la seguridad.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": 15,
+						"integridad": 0,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": -5,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Un empleado solicita clave para conectar su consola de videojuegos personal a la red Wi-Fi privada de la contabilidad de la empresa.",
+					"texto_izquierda": "Facilitar clave Wi-Fi",
+					"texto_derecha": "Denegar acceso",
+					"correcto": 1.0,
+					"explicacion": "Los dispositivos recreativos personales carecen de parches corporativos y pueden propagar malware a la red de contabilidad.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -20,
+						"integridad": -15,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 10,
+						"integridad": 10,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "El cortafuegos corporativo reporta ataques repetitivos de escaneos de IP de origen desconocido.",
+					"texto_izquierda": "Bloquear rangos de IP",
+					"texto_derecha": "Desactivar alertas",
+					"correcto": -1.0,
+					"explicacion": "Aislar IPs sospechosas mitiga la posibilidad de que los atacantes encuentren vulnerabilidades expuestas.",
+					"efecto_izquierda": {
+						"presupuesto": -5,
+						"confidencialidad": 10,
+						"integridad": 15,
+						"disponibilidad": 20
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": -20,
+						"integridad": -20,
+						"disponibilidad": -20
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Proponen instalar un filtro de contenidos web en los equipos de la oficina para bloquear páginas maliciosas de descargas y apuestas.",
+					"texto_izquierda": "Contratar filtro",
+					"texto_derecha": "No restringir",
+					"correcto": -1.0,
+					"explicacion": "Bloquear páginas inseguras evita que los empleados descarguen adware o ransomware accidentalmente durante el trabajo.",
+					"efecto_izquierda": {
+						"presupuesto": -8,
+						"confidencialidad": 15,
+						"integridad": 15,
+						"disponibilidad": 10
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": -20,
+						"integridad": -20,
+						"disponibilidad": 0
+					}
+				}
+			]
+		},
+		{
+			"id": 5,
+			"titulo": "Ingeniería Social y Dispositivos Físicos",
+			"mini_descripcion": "Descubre las trampas de ingeniería social (Llamadas falsas, USBs tirados y visitas sospechosas).",
+			"contenido_estudio": "Los cibercriminales a menudo atacan a las personas, no a los computadores.\n\n### Formas Comunes de Engaño:\n* **Baiting (Cebo)**: Pendrives abandonados en áreas comunes listos para infectar tu máquina.\n* **Suplantación Telefónica (Vishing)**: Llamadas urgentes pidiendo códigos de verificación SMS.\n* **Tailgating (Colado)**: Personas sin credencial que entran a tus dependencias aprovechando puertas abiertas.",
+			"estado": "Bloqueado",
+			"cartas": [
+				{
+					"imagen": 0,
+					"contexto": "Un empleado de bodega encuentra un pendrive sin logo botado en el estacionamiento y te lo trae para ver qué tiene adentro.",
+					"texto_izquierda": "Conectarlo para revisar",
+					"texto_derecha": "Destruir / Botar",
+					"correcto": 1.0,
+					"explicacion": "La técnica del 'Cebo' consiste en dejar USBs maliciosos tirados. Al conectarlos, el virus se instala en silencio sin aviso.",
+					"efecto_izquierda": {
+						"presupuesto": -20,
+						"confidencialidad": -30,
+						"integridad": -35,
+						"disponibilidad": -25
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 10,
+						"integridad": 15,
+						"disponibilidad": 10
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Llaman al teléfono corporativo aduciendo ser del soporte de Movistar. Piden un código SMS enviado a tu móvil para actualizar tu línea.",
+					"texto_izquierda": "Facilitar código SMS",
+					"texto_derecha": "Cortar y llamar al oficial",
+					"correcto": 1.0,
+					"explicacion": "Los ciberdelincuentes usan llamadas falsas para capturar códigos SMS y robar tus cuentas corporativas de WhatsApp o correo.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -40,
+						"integridad": -15,
+						"disponibilidad": -20
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 15,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Entras a la oficina con tu tarjeta de acceso y un desconocido con cajas en las manos te pide sostener la puerta para entrar sin marcar.",
+					"texto_izquierda": "Sostener puerta",
+					"texto_derecha": "Pedir que pase por recepción",
+					"correcto": 1.0,
+					"explicacion": "El 'Tailgating' burla la seguridad física. Dejar entrar extraños sin validar expone computadores y servidores a robos.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -25,
+						"integridad": -20,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 15,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Llega un supuesto fiscalizador municipal sin credencial visible que exige entrar a la bodega de servidores 'para inspeccionar los cables'.",
+					"texto_izquierda": "Dejarlo pasar solo",
+					"texto_derecha": "Exigir credencial oficial",
+					"correcto": 1.0,
+					"explicacion": "La suplantación de autoridades permite el robo de equipos físicos de respaldo o la instalación de llaves de red físicas.",
+					"efecto_izquierda": {
+						"presupuesto": -10,
+						"confidencialidad": -35,
+						"integridad": -30,
+						"disponibilidad": -25
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 15,
+						"integridad": 10,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Te envían una encuesta ofreciendo regalar una cafetera premium para la oficina a cambio de los nombres de usuario y mails de todo tu personal.",
+					"texto_izquierda": "Completar la encuesta",
+					"texto_derecha": "Rechazar oferta",
+					"correcto": 1.0,
+					"explicacion": "Regalar listas de correos corporativos facilita a los atacantes armar correos de phishing altamente dirigidos.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -25,
+						"integridad": 0,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 10,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Un despachador dice que debe imprimir una guía de envío. Te entrega un USB pidiendo conectarlo a la contabilidad de la empresa para abrir el documento.",
+					"texto_izquierda": "Conectar USB",
+					"texto_derecha": "Negarse y buscar alternativa",
+					"correcto": 1.0,
+					"explicacion": "Los USBs de desconocidos pueden simular ser teclados (Rubber Ducky) que escriben comandos maliciosos en milisegundos e infectan el PC.",
+					"efecto_izquierda": {
+						"presupuesto": -20,
+						"confidencialidad": -30,
+						"integridad": -35,
+						"disponibilidad": -25
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 15,
+						"integridad": 15,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "Te llaman del 'Soporte del Banco Estado' diciendo que tu token físico está desactualizado y necesitan confirmar tus coordenadas clave para renovarlo.",
+					"texto_izquierda": "Confirmar datos",
+					"texto_derecha": "Colgar e ir al banco",
+					"correcto": 1.0,
+					"explicacion": "Ninguna institución financiera solicita claves ni coordenadas por teléfono. Son campañas de estafa telefónica.",
+					"efecto_izquierda": {
+						"presupuesto": -50,
+						"confidencialidad": -40,
+						"integridad": -20,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 20,
+						"integridad": 0,
+						"disponibilidad": 0
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Despiden a un administrador de TI con acceso total. Aún mantiene activas sus credenciales corporativas por descuido de RRHH.",
+					"texto_izquierda": "Desactivar hoy mismo",
+					"texto_derecha": "Desactivar el fin de semana",
+					"correcto": -1.0,
+					"explicacion": "No revocar credenciales de ex-empleados inmediatamente expone a la empresa a saboteos internos o exfiltración de datos privados.",
+					"efecto_izquierda": {
+						"presupuesto": -5,
+						"confidencialidad": 25,
+						"integridad": 20,
+						"disponibilidad": 10
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": -30,
+						"integridad": -35,
+						"disponibilidad": -20
+					}
+				},
+				{
+					"imagen": 0,
+					"contexto": "El personal de limpieza realiza el aseo de la oficina técnica con total libertad, incluyendo el cableado del rack principal sin supervisión.",
+					"texto_izquierda": "Capacitar y restringir área",
+					"texto_derecha": "No hacer nada",
+					"correcto": -1.0,
+					"explicacion": "Restringir el acceso físico al hardware crítico previene caídas accidentales de cables de red y robos de discos.",
+					"efecto_izquierda": {
+						"presupuesto": -5,
+						"confidencialidad": 15,
+						"integridad": 15,
+						"disponibilidad": 20
+					},
+					"efecto_derecha": {
+						"presupuesto": 0,
+						"confidencialidad": 0,
+						"integridad": -15,
+						"disponibilidad": -25
+					}
+				},
+				{
+					"imagen": 1,
+					"contexto": "Tu PYME renueva 5 computadores de oficina. Tu socio propone donar los equipos antiguos tal como están a una escuela vecinal.",
+					"texto_izquierda": "Donarlos de inmediato",
+					"texto_derecha": "Borrado seguro de discos",
+					"correcto": 1.0,
+					"explicacion": "Donar equipos sin realizar borrados seguros de disco permite a terceros recuperar archivos confidenciales e historiales financieros.",
+					"efecto_izquierda": {
+						"presupuesto": 0,
+						"confidencialidad": -35,
+						"integridad": 0,
+						"disponibilidad": 0
+					},
+					"efecto_derecha": {
+						"presupuesto": -5,
+						"confidencialidad": 25,
+						"integridad": 0,
 						"disponibilidad": 0
 					}
 				}

@@ -40,12 +40,15 @@ func configurar(datos: Dictionary) -> void:
 		boton_estudiar.disabled = true
 		
 		panel_estado.theme_type_variation = &"PanelVarianteRojo"
+		modulate = Color(0.64, 0.64, 0.64, 1.0)
+		
 		
 	else:
 		boton_practicar.disabled = false
 		boton_estudiar.disabled = false
 		
 		panel_estado.theme_type_variation = &"PanelVarianteVerde"
+		modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 
 # Alterna la visibilidad del acordeón con animación del chevron

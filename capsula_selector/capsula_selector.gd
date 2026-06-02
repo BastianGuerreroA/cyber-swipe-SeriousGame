@@ -10,18 +10,33 @@ extends Control
 const CAPSULA_ITEM_ESCENA = preload("res://Capsula_Item/capsula_item.tscn")
 
 func _ready() -> void:
-	# 1. Cargar datos del perfil de usuario desde el Singleton
+	# 1. Cargar datos del perfil de usuario
 	label_usuario.text = CapsulaManager.nombre_usuario
 	label_puntos.text = str(CapsulaManager.puntos_totales)
-	label_progreso.text = str(CapsulaManager.progreso_general)
+	
+	# Las completadas serán el nivel máximo desbloqueado menos 1
+	var completadas = clampi(CapsulaManager.progreso_general - 1, 0, CapsulaManager.lista_capsulas.size())
+	label_progreso.text = str(completadas)
 	label_total_capsulas.text = "/" + str(CapsulaManager.lista_capsulas.size())
 	
-	# 2. Limpiar todos los nodos de ejemplo (los placeholders CapsulaItem1, CapsulaItem2 que tienes en el .tscn)
+	# Limpiar placeholders
 	for child in contenedor_capsulas.get_children():
 		child.queue_free()
 		
-	# 3. Generar la lista dinámicamente a partir del JSON cargado en el Singleton
+	# 2. Rellenar la lista evaluando el estado de cada cápsula
 	for datos_capsula in CapsulaManager.lista_capsulas:
+		var id_cap = datos_capsula["id"]
+		
+		# Si su ID es menor al progreso_general, ya fue ganada (Completada)
+		if id_cap < CapsulaManager.progreso_general:
+			datos_capsula["estado"] = "Completada"
+		# Si su ID es igual al progreso_general, es la que le toca jugar (Disponible)
+		elif id_cap == CapsulaManager.progreso_general:
+			datos_capsula["estado"] = "Disponible"
+		# Si es mayor, aún no llega ahí (Bloqueada)
+		else:
+			datos_capsula["estado"] = "Bloqueado"
+			
 		var instancia = CAPSULA_ITEM_ESCENA.instantiate()
 		contenedor_capsulas.add_child(instancia)
 		instancia.configurar(datos_capsula)
