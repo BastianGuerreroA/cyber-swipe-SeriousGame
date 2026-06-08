@@ -1,15 +1,11 @@
 {
-	"usuario": {
-		"nombre": "Bastián Guerrero",
-		"puntos_totales": 0,
-		"progreso_general": 1
-	},
 	"capsulas": [
 		{
 			"id": 1,
 			"titulo": "Bloqueo de Pantalla y Credenciales",
-			"mini_descripcion": "Protege tus dispositivos y accesos con PIN, biometría y claves fuertes.",
-			"contenido_estudio": "El bloqueo de pantalla y las contraseñas seguras son tu primera línea de defensa.\n\n### Conceptos Clave:\n* **PIN de 6 dígitos**: Mucho más seguro que uno de 4 dígitos (1 millón vs 10 mil combinaciones).\n* **Autenticación Multifactor (MFA)**: Añade una segunda capa de seguridad (ej. un SMS o código de app) además de tu contraseña.\n* **Principio de Privacidad**: Nunca dejes sesiones administrativas abiertas sin supervisión.",
+			"subtitulo": "Protege tus dispositivos y accesos con PIN, biometría y claves fuertes.",
+			"mini_descripcion": "Aprende las claves fundamentales para evitar intrusos en tus dispositivos físicos y proteger tus accesos corporativos.",
+			"contenido_estudio": "El bloqueo de pantalla y las contraseñas seguras son tu primera línea de defensa.\n\n[b]Conceptos Clave:[/b]\n* [b]PIN de 6 dígitos[/b]: Mucho más seguro que uno de 4 dígitos (1 millón vs 10 mil combinaciones posibles).\n* [b]Autenticación Multifactor (MFA)[/b]: Añade una segunda capa de seguridad (como un código enviado a tu celular) además de tu contraseña.\n* [b]Principio de Privacidad[/b]: Nunca dejes sesiones administrativas o financieras abiertas si te ausentas de tu puesto de trabajo.",
 			"estado": "Disponible",
 			"cartas": [
 				{
@@ -19,18 +15,8 @@
 					"texto_derecha": "Pedirle que lo devuelva",
 					"correcto": 1.0,
 					"explicacion": "Nunca dejes tu dispositivo desbloqueado fuera de tu vista, un tercero podría acceder a datos corporativos privados en segundos.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -30,
-						"integridad": -10,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 10,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -30, "integridad": -10, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 10, "integridad": 0, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 1,
@@ -39,18 +25,8 @@
 					"texto_derecha": "Prohibir post-its",
 					"correcto": 1.0,
 					"explicacion": "Anotar contraseñas en lugares físicos expone las credenciales a cualquier persona o visitante que pase por la oficina.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -25,
-						"integridad": 0,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": -5,
-						"confidencialidad": 15,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -25, "integridad": 0, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": -5, "confidencialidad": 15, "integridad": 0, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 0,
@@ -59,18 +35,8 @@
 					"texto_derecha": "Usar gestor de claves",
 					"correcto": 1.0,
 					"explicacion": "Las contraseñas simples y predecibles son vulnerables a ataques de fuerza bruta en cuestión de minutos. Usa claves complejas y gestores de contraseñas.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -20,
-						"integridad": -20,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": -5,
-						"confidencialidad": 15,
-						"integridad": 10,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -20, "integridad": -20, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": -5, "confidencialidad": 15, "integridad": 10, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 1,
@@ -79,18 +45,8 @@
 					"texto_derecha": "Ignorarlo / Comprar oficial",
 					"correcto": 1.0,
 					"explicacion": "Los instaladores de software pirata suelen contener troyanos diseñados específicamente para robar contraseñas grabadas.",
-					"efecto_izquierda": {
-						"presupuesto": 10,
-						"confidencialidad": -30,
-						"integridad": -25,
-						"disponibilidad": -15
-					},
-					"efecto_derecha": {
-						"presupuesto": -10,
-						"confidencialidad": 15,
-						"integridad": 10,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 10, "confidencialidad": -30, "integridad": -25, "disponibilidad": -15 },
+					"efecto_derecha": { "presupuesto": -10, "confidencialidad": 15, "integridad": 10, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 0,
@@ -99,18 +55,8 @@
 					"texto_derecha": "Bloquear PC antes de irte",
 					"correcto": 1.0,
 					"explicacion": "Dejar sesiones abiertas permite el acceso físico no autorizado a datos financieros confidenciales de tu PYME.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -25,
-						"integridad": -15,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 10,
-						"integridad": 5,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -25, "integridad": -15, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 10, "integridad": 5, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 1,
@@ -119,18 +65,8 @@
 					"texto_derecha": "Mantener bloqueo activo",
 					"correcto": 1.0,
 					"explicacion": "El bloqueo automático protege los datos si el equipo es robado o abandonado temporalmente en una zona común.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -30,
-						"integridad": 0,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 10,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -30, "integridad": 0, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 10, "integridad": 0, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 0,
@@ -139,18 +75,8 @@
 					"texto_derecha": "Implementar MFA",
 					"correcto": 1.0,
 					"explicacion": "El MFA previene más del 99% de los secuestros de cuentas, incluso si un atacante adivina o roba la contraseña.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -15,
-						"integridad": -15,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": -5,
-						"confidencialidad": 20,
-						"integridad": 20,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -15, "integridad": -15, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": -5, "confidencialidad": 20, "integridad": 20, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 1,
@@ -159,18 +85,8 @@
 					"texto_derecha": "Pedirle que lo suba él",
 					"correcto": 1.0,
 					"explicacion": "Compartir contraseñas por aplicaciones de chat deja registros en la nube y rompe las políticas básicas de control de accesos.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -15,
-						"integridad": 0,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 10,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -15, "integridad": 0, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 10, "integridad": 0, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 0,
@@ -179,18 +95,8 @@
 					"texto_derecha": "No guardar contraseñas",
 					"correcto": 1.0,
 					"explicacion": "Los navegadores no protegen las claves de forma robusta por defecto. Si un malware entra al PC, puede exportar todas las claves guardadas al instante.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -25,
-						"integridad": -20,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 15,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -25, "integridad": -20, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 15, "integridad": 0, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 1,
@@ -199,26 +105,17 @@
 					"texto_derecha": "Usar claves distintas",
 					"correcto": 1.0,
 					"explicacion": "Si tu correo personal se filtra en internet (lo cual es muy común), los atacantes probarán la misma contraseña en tus correos de trabajo.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -30,
-						"integridad": -15,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 15,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -30, "integridad": -15, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 15, "integridad": 0, "disponibilidad": 0 }
 				}
 			]
 		},
 		{
 			"id": 2,
 			"titulo": "Phishing y Correos Falsos",
-			"mini_descripcion": "Aprende a identificar correos fraudulentos, enlaces maliciosos y estafas digitales.",
-			"contenido_estudio": "El Phishing es el vector de ataque más utilizado para comprometer a las PYMEs.\n\n### Señales de Alerta:\n* **Remitentes Sospechosos**: Direcciones que dicen ser de instituciones públicas pero terminan en dominios extraños o genéricos.\n* **Urgencia Desmedida**: Amenazas de embargo, corte de servicios o multas en menos de 24 horas.\n* **Archivos Adjuntos Peligrosos**: Archivos PDF, ZIP o ejecutables (.exe) que no has solicitado.",
+			"subtitulo": "Aprende a identificar correos fraudulentos, enlaces maliciosos y estafas digitales.",
+			"mini_descripcion": "Reconoce las principales trampas de ingeniería social digital que buscan robar la identidad de tu empresa o clonar tus cuentas.",
+			"contenido_estudio": "El Phishing es el vector de ataque más utilizado para comprometer a las PYMEs.\n\n[b]Señales de Alerta:[/b]\n* [b]Remitentes Sospechosos[/b]: Direcciones que dicen ser de instituciones públicas pero terminan en dominios genéricos.\n* [b]Urgencia Desmedida[/b]: Amenazas de multas tributarias, embargos o cobros judiciales en pocas horas.\n* [b]Archivos Adjuntos Peligrosos[/b]: Archivos PDF o ZIP con nombres genéricos que no has solicitado.",
 			"estado": "Disponible",
 			"cartas": [
 				{
@@ -228,18 +125,8 @@
 					"texto_derecha": "Ingresar tarjeta",
 					"correcto": -1.0,
 					"explicacion": "Las plataformas oficiales nunca piden reingresar tarjetas bancarias a través de links directos en correos electrónicos.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": 10,
-						"integridad": 0,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": -25,
-						"confidencialidad": -40,
-						"integridad": -20,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": 10, "integridad": 0, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": -25, "confidencialidad": -40, "integridad": -20, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 0,
@@ -248,18 +135,8 @@
 					"texto_derecha": "Descargar PDF",
 					"correcto": -1.0,
 					"explicacion": "El SII de Chile nunca envía archivos adjuntos ni links de descarga directa para multas. Es un ataque clásico de malware.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": 15,
-						"integridad": 10,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": -20,
-						"confidencialidad": -30,
-						"integridad": -35,
-						"disponibilidad": -20
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": 15, "integridad": 10, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": -20, "confidencialidad": -30, "integridad": -35, "disponibilidad": -20 }
 				},
 				{
 					"imagen": 1,
@@ -268,18 +145,8 @@
 					"texto_derecha": "Llamar al número antiguo",
 					"correcto": 1.0,
 					"explicacion": "La suplantación de identidad en WhatsApp es común. Llama siempre por el canal verificado antes de transferir dinero.",
-					"efecto_izquierda": {
-						"presupuesto": -40,
-						"confidencialidad": 0,
-						"integridad": 0,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": 10,
-						"confidencialidad": 10,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": -40, "confidencialidad": 0, "integridad": 0, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": 10, "confidencialidad": 10, "integridad": 0, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 0,
@@ -288,18 +155,8 @@
 					"texto_derecha": "Reportar como Spam",
 					"correcto": 1.0,
 					"explicacion": "Microsoft nunca solicita credenciales ni contraseñas a través de enlaces de correo electrónico.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -35,
-						"integridad": -20,
-						"disponibilidad": -10
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 15,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -35, "integridad": -20, "disponibilidad": -10 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 15, "integridad": 0, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 1,
@@ -308,18 +165,8 @@
 					"texto_derecha": "Llamar para confirmar",
 					"correcto": 1.0,
 					"explicacion": "Los atacantes pueden hackear correos de tus proveedores reales. Descomprimir archivos '.zip' puede instalar virus espía.",
-					"efecto_izquierda": {
-						"presupuesto": -15,
-						"confidencialidad": -30,
-						"integridad": -35,
-						"disponibilidad": -25
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 15,
-						"integridad": 15,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": -15, "confidencialidad": -30, "integridad": -35, "disponibilidad": -25 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 15, "integridad": 15, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 0,
@@ -328,18 +175,8 @@
 					"texto_derecha": "Borrar correo",
 					"correcto": 1.0,
 					"explicacion": "Es una campaña masiva de phishing. Buscan registrar tu tarjeta de crédito clonando la pasarela de pagos.",
-					"efecto_izquierda": {
-						"presupuesto": -30,
-						"confidencialidad": -30,
-						"integridad": 0,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 10,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": -30, "confidencialidad": -30, "integridad": 0, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 10, "integridad": 0, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 1,
@@ -348,18 +185,8 @@
 					"texto_derecha": "Entrar por la web oficial",
 					"correcto": 1.0,
 					"explicacion": "Los bancos nunca envían enlaces para iniciar sesión. Es un clon falso para capturar tus coordenadas bancarias.",
-					"efecto_izquierda": {
-						"presupuesto": -40,
-						"confidencialidad": -40,
-						"integridad": -20,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 15,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": -40, "confidencialidad": -40, "integridad": -20, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 15, "integridad": 0, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 0,
@@ -368,18 +195,8 @@
 					"texto_derecha": "Preguntar a RRHH primero",
 					"correcto": 1.0,
 					"explicacion": "Los correos internos suplantados son comunes. Validar la veracidad por llamada o en persona evita robos de credenciales.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -25,
-						"integridad": -15,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 15,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -25, "integridad": -15, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 15, "integridad": 0, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 1,
@@ -388,18 +205,8 @@
 					"texto_derecha": "Borrar y rechazar",
 					"correcto": 1.0,
 					"explicacion": "Las cotizaciones y facturas legítimas jamás son archivos ejecutables '.exe'. Contienen virus troyanos.",
-					"efecto_izquierda": {
-						"presupuesto": -25,
-						"confidencialidad": -30,
-						"integridad": -35,
-						"disponibilidad": -30
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 15,
-						"integridad": 15,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": -25, "confidencialidad": -30, "integridad": -35, "disponibilidad": -30 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 15, "integridad": 15, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 0,
@@ -408,27 +215,18 @@
 					"texto_derecha": "Ignorar correo",
 					"correcto": 1.0,
 					"explicacion": "Corfo y los organismos del estado jamás solicitarán claves, coordenadas ni claves API para depositar fondos.",
-					"efecto_izquierda": {
-						"presupuesto": -50,
-						"confidencialidad": -40,
-						"integridad": -20,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 15,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": -50, "confidencialidad": -40, "integridad": -20, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 15, "integridad": 0, "disponibilidad": 0 }
 				}
 			]
 		},
 		{
 			"id": 3,
 			"titulo": "Respaldos e Incidentes de Ransomware",
-			"mini_descripcion": "Aprende la regla de respaldos 3-2-1 y cómo responder ante el secuestro de datos por virus.",
-			"contenido_estudio": "El Ransomware cifra los datos de tu empresa y exige un pago para liberarlos.\n\n### Estrategia de Respaldo 3-2-1:\n* **3 Copias** de seguridad de tus datos importantes.\n* **2 Medios** de almacenamiento distintos (ej. Disco externo y nube).\n* **1 Copia fuera de línea** (desconectada por completo de la red de la empresa).",
-			"estado": "Bloqueado",
+			"subtitulo": "Aprende la regla de respaldos 3-2-1 y cómo responder ante el secuestro de datos por virus.",
+			"mini_descripcion": "Entiende cómo salvaguardar la información crítica de tu PYME y qué hacer ante una encriptación hostil.",
+			"contenido_estudio": "El Ransomware cifra los datos de tu empresa y exige un pago para liberarlos.\n\n[b]Estrategia de Respaldo 3-2-1:[/b]\n* [b]3 Copias[/b] de seguridad de tus datos importantes.\n* [b]2 Medios[/b] de almacenamiento distintos (ej. Disco externo y nube).\n* [b]1 Copia fuera de línea[/b] (desconectada por completo de la red de la empresa).",
+			"estado": "Disponible",
 			"cartas": [
 				{
 					"imagen": 1,
@@ -437,18 +235,8 @@
 					"texto_derecha": "Comprar discos",
 					"correcto": 1.0,
 					"explicacion": "Aunque cuesta dinero, un respaldo físico desconectado de la red (offline) es la única salvación si el ransomware encripta los servidores.",
-					"efecto_izquierda": {
-						"presupuesto": 15,
-						"confidencialidad": 0,
-						"integridad": -20,
-						"disponibilidad": -30
-					},
-					"efecto_derecha": {
-						"presupuesto": -15,
-						"confidencialidad": 0,
-						"integridad": 20,
-						"disponibilidad": 25
-					}
+					"efecto_izquierda": { "presupuesto": 15, "confidencialidad": 0, "integridad": -20, "disponibilidad": -30 },
+					"efecto_derecha": { "presupuesto": -15, "confidencialidad": 0, "integridad": 20, "disponibilidad": 25 }
 				},
 				{
 					"imagen": 0,
@@ -457,18 +245,8 @@
 					"texto_derecha": "Restaurar del backup",
 					"correcto": 1.0,
 					"explicacion": "Pagar no garantiza que devuelvan los datos y financia el crimen. Restaurar copias limpias es la mejor alternativa técnica.",
-					"efecto_izquierda": {
-						"presupuesto": -45,
-						"confidencialidad": -20,
-						"integridad": -10,
-						"disponibilidad": -20
-					},
-					"efecto_derecha": {
-						"presupuesto": -5,
-						"confidencialidad": 10,
-						"integridad": 20,
-						"disponibilidad": 20
-					}
+					"efecto_izquierda": { "presupuesto": -45, "confidencialidad": -20, "integridad": -10, "disponibilidad": -20 },
+					"efecto_derecha": { "presupuesto": -5, "confidencialidad": 10, "integridad": 20, "disponibilidad": 20 }
 				},
 				{
 					"imagen": 1,
@@ -477,18 +255,8 @@
 					"texto_derecha": "Contratar nube",
 					"correcto": 1.0,
 					"explicacion": "Automatizar respaldos en la nube fuera del horario de oficina asegura la continuidad operativa y evita descuidos del personal.",
-					"efecto_izquierda": {
-						"presupuesto": 10,
-						"confidencialidad": 0,
-						"integridad": -20,
-						"disponibilidad": -25
-					},
-					"efecto_derecha": {
-						"presupuesto": -10,
-						"confidencialidad": 5,
-						"integridad": 20,
-						"disponibilidad": 25
-					}
+					"efecto_izquierda": { "presupuesto": 10, "confidencialidad": 0, "integridad": -20, "disponibilidad": -25 },
+					"efecto_derecha": { "presupuesto": -10, "confidencialidad": 5, "integridad": 20, "disponibilidad": 25 }
 				},
 				{
 					"imagen": 0,
@@ -497,18 +265,8 @@
 					"texto_derecha": "Seguir usándola",
 					"correcto": -1.0,
 					"explicacion": "Desconectar de inmediato el PC del cable de red y del Wi-Fi evita que el virus se propague e infecte a los otros computadores de la oficina.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": 10,
-						"integridad": 15,
-						"disponibilidad": 15
-					},
-					"efecto_derecha": {
-						"presupuesto": -20,
-						"confidencialidad": -30,
-						"integridad": -35,
-						"disponibilidad": -35
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": 10, "integridad": 15, "disponibilidad": 15 },
+					"efecto_derecha": { "presupuesto": -20, "confidencialidad": -30, "integridad": -35, "disponibilidad": -35 }
 				},
 				{
 					"imagen": 1,
@@ -517,18 +275,8 @@
 					"texto_derecha": "Esperar al mes siguiente",
 					"correcto": -1.0,
 					"explicacion": "Quedarse sin respaldos, aunque sea por unos días, es un riesgo crítico. Un incidente en ese lapso causará pérdidas irrecuperables.",
-					"efecto_izquierda": {
-						"presupuesto": -10,
-						"confidencialidad": 0,
-						"integridad": 15,
-						"disponibilidad": 20
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 0,
-						"integridad": -25,
-						"disponibilidad": -30
-					}
+					"efecto_izquierda": { "presupuesto": -10, "confidencialidad": 0, "integridad": 15, "disponibilidad": 20 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 0, "integridad": -25, "disponibilidad": -30 }
 				},
 				{
 					"imagen": 0,
@@ -537,18 +285,8 @@
 					"texto_derecha": "Recuperar backup remoto",
 					"correcto": 1.0,
 					"explicacion": "Recuperar respaldos es rápido y confiable. Reescribir a mano introduce errores humanos y cuesta semanas de trabajo valioso.",
-					"efecto_izquierda": {
-						"presupuesto": -25,
-						"confidencialidad": 0,
-						"integridad": -20,
-						"disponibilidad": -20
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 10,
-						"integridad": 15,
-						"disponibilidad": 20
-					}
+					"efecto_izquierda": { "presupuesto": -25, "confidencialidad": 0, "integridad": -20, "disponibilidad": -20 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 10, "integridad": 15, "disponibilidad": 20 }
 				},
 				{
 					"imagen": 1,
@@ -557,18 +295,8 @@
 					"texto_derecha": "Rechazar seguro",
 					"correcto": -1.0,
 					"explicacion": "Un seguro ayuda a mitigar el impacto financiero en PYMEs ante ataques graves, permitiendo reconstruir la infraestructura.",
-					"efecto_izquierda": {
-						"presupuesto": -12,
-						"confidencialidad": 0,
-						"integridad": 0,
-						"disponibilidad": 25
-					},
-					"efecto_derecha": {
-						"presupuesto": 12,
-						"confidencialidad": 0,
-						"integridad": 0,
-						"disponibilidad": -20
-					}
+					"efecto_izquierda": { "presupuesto": -12, "confidencialidad": 0, "integridad": 0, "disponibilidad": 25 },
+					"efecto_derecha": { "presupuesto": 12, "confidencialidad": 0, "integridad": 0, "disponibilidad": -20 }
 				},
 				{
 					"imagen": 0,
@@ -577,18 +305,8 @@
 					"texto_derecha": "Moverlo y climatizar",
 					"correcto": 1.0,
 					"explicacion": "El sobrecalentamiento causa quemaduras de disco y caídas de servicio. Climatizar asegura la integridad física del equipo.",
-					"efecto_izquierda": {
-						"presupuesto": 15,
-						"confidencialidad": 0,
-						"integridad": -20,
-						"disponibilidad": -30
-					},
-					"efecto_derecha": {
-						"presupuesto": -10,
-						"confidencialidad": 0,
-						"integridad": 15,
-						"disponibilidad": 25
-					}
+					"efecto_izquierda": { "presupuesto": 15, "confidencialidad": 0, "integridad": -20, "disponibilidad": -30 },
+					"efecto_derecha": { "presupuesto": -10, "confidencialidad": 0, "integridad": 15, "disponibilidad": 25 }
 				},
 				{
 					"imagen": 1,
@@ -597,18 +315,8 @@
 					"texto_derecha": "Aprobar pruebas",
 					"correcto": 1.0,
 					"explicacion": "Un respaldo no testeado es un respaldo que podría fallar. Simular restauraciones garantiza que los archivos realmente sirvan.",
-					"efecto_izquierda": {
-						"presupuesto": 10,
-						"confidencialidad": 0,
-						"integridad": -15,
-						"disponibilidad": -25
-					},
-					"efecto_derecha": {
-						"presupuesto": -5,
-						"confidencialidad": 0,
-						"integridad": 20,
-						"disponibilidad": 25
-					}
+					"efecto_izquierda": { "presupuesto": 10, "confidencialidad": 0, "integridad": -15, "disponibilidad": -25 },
+					"efecto_derecha": { "presupuesto": -5, "confidencialidad": 0, "integridad": 20, "disponibilidad": 25 }
 				},
 				{
 					"imagen": 0,
@@ -617,27 +325,18 @@
 					"texto_derecha": "Aislarlo y escanear red",
 					"correcto": 1.0,
 					"explicacion": "Formatear sin investigar deja las puertas abiertas si el virus ya se propagó lateralmente por tu red corporativa.",
-					"efecto_izquierda": {
-						"presupuesto": -10,
-						"confidencialidad": -15,
-						"integridad": -20,
-						"disponibilidad": -20
-					},
-					"efecto_derecha": {
-						"presupuesto": -5,
-						"confidencialidad": 15,
-						"integridad": 20,
-						"disponibilidad": 20
-					}
+					"efecto_izquierda": { "presupuesto": -10, "confidencialidad": -15, "integridad": -20, "disponibilidad": -20 },
+					"efecto_derecha": { "presupuesto": -5, "confidencialidad": 15, "integridad": 20, "disponibilidad": 20 }
 				}
 			]
 		},
 		{
 			"id": 4,
 			"titulo": "Redes y Conexiones Seguras",
-			"mini_descripcion": "Aprende a resguardar tu red de internet Wi-Fi y a conectar trabajadores remotos de forma segura.",
-			"contenido_estudio": "El internet de tu oficina es la puerta de entrada a tus sistemas.\n\n### Recomendaciones de Conectividad:\n* **Segmentación de Redes**: Nunca mezcles el Wi-Fi de tus clientes con la red interna donde facturas y guardas datos.\n* **VPN (Virtual Private Network)**: Obligatoria para trabajadores remotos para encriptar los datos de viaje al servidor.\n* **Contraseñas del Router**: Cambiar siempre los credenciales predeterminados del proveedor de internet.",
-			"estado": "Bloqueado",
+			"subtitulo": "Aprende a resguardar tu red de internet Wi-Fi y a conectar trabajadores remotos de forma segura.",
+			"mini_descripcion": "Descubre las mejores prácticas para blindar el router de tu oficina e implementar conexiones cifradas para teletrabajo.",
+			"contenido_estudio": "El internet de tu oficina es la puerta de entrada a tus sistemas.\n\n[b]Recomendaciones de Conectividad:[/b]\n* [b]Segmentación de Redes[/b]: Nunca mezcles el Wi-Fi de tus clientes con la red interna donde facturas y guardas datos.\n* [b]VPN (Virtual Private Network)[/b]: Obligatoria para trabajadores remotos para encriptar los datos de viaje al servidor.\n* [b]Contraseñas del Router[/b]: Cambiar siempre los credenciales predeterminados del proveedor de internet.",
+			"estado": "Disponible",
 			"cartas": [
 				{
 					"imagen": 0,
@@ -646,18 +345,8 @@
 					"texto_derecha": "Usar datos móviles",
 					"correcto": 1.0,
 					"explicacion": "Las redes Wi-Fi abiertas permiten que intermediarios intercepten contraseñas y datos bancarios fácilmente.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -35,
-						"integridad": -15,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": -5,
-						"confidencialidad": 15,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -35, "integridad": -15, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": -5, "confidencialidad": 15, "integridad": 0, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 1,
@@ -666,18 +355,8 @@
 					"texto_derecha": "Crear red de visitas",
 					"correcto": 1.0,
 					"explicacion": "Dejar el Wi-Fi principal abierto permite a cualquiera escanear tu red interna corporativa e infectar equipos.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -30,
-						"integridad": -20,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": -8,
-						"confidencialidad": 20,
-						"integridad": 15,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -30, "integridad": -20, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": -8, "confidencialidad": 20, "integridad": 15, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 0,
@@ -686,18 +365,8 @@
 					"texto_derecha": "Permitir acceso directo",
 					"correcto": -1.0,
 					"explicacion": "El acceso remoto sin cifrado VPN expone las credenciales de administración en internet a escaneos y hackeos.",
-					"efecto_izquierda": {
-						"presupuesto": -10,
-						"confidencialidad": 25,
-						"integridad": 20,
-						"disponibilidad": 10
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": -30,
-						"integridad": -25,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": -10, "confidencialidad": 25, "integridad": 20, "disponibilidad": 10 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": -30, "integridad": -25, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 1,
@@ -706,18 +375,8 @@
 					"texto_derecha": "Comprar nuevo router",
 					"correcto": 1.0,
 					"explicacion": "Los routers comerciales de hogar carecen de filtros de puertos. Un Firewall bloquea ataques automatizados provenientes de internet.",
-					"efecto_izquierda": {
-						"presupuesto": 15,
-						"confidencialidad": 0,
-						"integridad": -20,
-						"disponibilidad": -20
-					},
-					"efecto_derecha": {
-						"presupuesto": -15,
-						"confidencialidad": 0,
-						"integridad": 25,
-						"disponibilidad": 25
-					}
+					"efecto_izquierda": { "presupuesto": 15, "confidencialidad": 0, "integridad": -20, "disponibilidad": -20 },
+					"efecto_derecha": { "presupuesto": -15, "confidencialidad": 0, "integridad": 25, "disponibilidad": 25 }
 				},
 				{
 					"imagen": 0,
@@ -726,18 +385,8 @@
 					"texto_derecha": "Dejar clave de fábrica",
 					"correcto": -1.0,
 					"explicacion": "Cualquier atacante conoce las claves por defecto de los modelos de router comunes. Cambiarla evita tomas de control de tu red.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": 20,
-						"integridad": 15,
-						"disponibilidad": 10
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": -35,
-						"integridad": -30,
-						"disponibilidad": -20
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": 20, "integridad": 15, "disponibilidad": 10 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": -35, "integridad": -30, "disponibilidad": -20 }
 				},
 				{
 					"imagen": 1,
@@ -746,18 +395,8 @@
 					"texto_derecha": "Ignorar por ahora",
 					"correcto": -1.0,
 					"explicacion": "Cualquier dispositivo desconocido en tu red Wi-Fi privada corporativa representa un peligro potencial de robo de datos o espionaje.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": 15,
-						"integridad": 10,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": -25,
-						"integridad": -15,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": 15, "integridad": 10, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": -25, "integridad": -15, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 0,
@@ -766,18 +405,8 @@
 					"texto_derecha": "Mantener visible",
 					"correcto": -1.0,
 					"explicacion": "Ocultar la red dificulta que los atacantes comunes sepan a qué punto de acceso conectarse e intentar violar la seguridad.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": 15,
-						"integridad": 0,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": -5,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": 15, "integridad": 0, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": -5, "integridad": 0, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 1,
@@ -786,18 +415,8 @@
 					"texto_derecha": "Denegar acceso",
 					"correcto": 1.0,
 					"explicacion": "Los dispositivos recreativos personales carecen de parches corporativos y pueden propagar malware a la red de contabilidad.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -20,
-						"integridad": -15,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 10,
-						"integridad": 10,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -20, "integridad": -15, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 10, "integridad": 10, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 0,
@@ -806,18 +425,8 @@
 					"texto_derecha": "Desactivar alertas",
 					"correcto": -1.0,
 					"explicacion": "Aislar IPs sospechosas mitiga la posibilidad de que los atacantes encuentren vulnerabilidades expuestas.",
-					"efecto_izquierda": {
-						"presupuesto": -5,
-						"confidencialidad": 10,
-						"integridad": 15,
-						"disponibilidad": 20
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": -20,
-						"integridad": -20,
-						"disponibilidad": -20
-					}
+					"efecto_izquierda": { "presupuesto": -5, "confidencialidad": 10, "integridad": 15, "disponibilidad": 20 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": -20, "integridad": -20, "disponibilidad": -20 }
 				},
 				{
 					"imagen": 1,
@@ -826,27 +435,18 @@
 					"texto_derecha": "No restringir",
 					"correcto": -1.0,
 					"explicacion": "Bloquear páginas inseguras evita que los empleados descarguen adware o ransomware accidentalmente durante el trabajo.",
-					"efecto_izquierda": {
-						"presupuesto": -8,
-						"confidencialidad": 15,
-						"integridad": 15,
-						"disponibilidad": 10
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": -20,
-						"integridad": -20,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": -8, "confidencialidad": 15, "integridad": 15, "disponibilidad": 10 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": -20, "integridad": -20, "disponibilidad": 0 }
 				}
 			]
 		},
 		{
 			"id": 5,
 			"titulo": "Ingeniería Social y Dispositivos Físicos",
-			"mini_descripcion": "Descubre las trampas de ingeniería social (Llamadas falsas, USBs tirados y visitas sospechosas).",
-			"contenido_estudio": "Los cibercriminales a menudo atacan a las personas, no a los computadores.\n\n### Formas Comunes de Engaño:\n* **Baiting (Cebo)**: Pendrives abandonados en áreas comunes listos para infectar tu máquina.\n* **Suplantación Telefónica (Vishing)**: Llamadas urgentes pidiendo códigos de verificación SMS.\n* **Tailgating (Colado)**: Personas sin credencial que entran a tus dependencias aprovechando puertas abiertas.",
-			"estado": "Bloqueado",
+			"subtitulo": "Descubre las trampas de ingeniería social (Llamadas falsas, USBs tirados y visitas sospechosas).",
+			"mini_descripcion": "Aprende a proteger las dependencias físicas de tu empresa y el factor humano contra técnicas de manipulación y engaño.",
+			"contenido_estudio": "Los cibercriminales a menudo atacan a las personas, no a los computadores.\n\n[b]Formas Comunes de Engaño:[/b]\n* [b]Baiting (Cebo)[/b]: Pendrives abandonados en áreas comunes listos para infectar tu máquina.\n* [b]Suplantación Telefónica (Vishing)[/b]: Llamadas urgentes pidiendo códigos de verificación SMS.\n* [b]Tailgating (Colado)[/b]: Personas sin credencial que entran a tus dependencias aprovechando puertas abiertas.",
+			"estado": "Disponible",
 			"cartas": [
 				{
 					"imagen": 0,
@@ -855,18 +455,8 @@
 					"texto_derecha": "Destruir / Botar",
 					"correcto": 1.0,
 					"explicacion": "La técnica del 'Cebo' consiste en dejar USBs maliciosos tirados. Al conectarlos, el virus se instala en silencio sin aviso.",
-					"efecto_izquierda": {
-						"presupuesto": -20,
-						"confidencialidad": -30,
-						"integridad": -35,
-						"disponibilidad": -25
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 10,
-						"integridad": 15,
-						"disponibilidad": 10
-					}
+					"efecto_izquierda": { "presupuesto": -20, "confidencialidad": -30, "integridad": -35, "disponibilidad": -25 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 10, "integridad": 15, "disponibilidad": 10 }
 				},
 				{
 					"imagen": 1,
@@ -875,18 +465,8 @@
 					"texto_derecha": "Cortar y llamar al oficial",
 					"correcto": 1.0,
 					"explicacion": "Los ciberdelincuentes usan llamadas falsas para capturar códigos SMS y robar tus cuentas corporativas de WhatsApp o correo.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -40,
-						"integridad": -15,
-						"disponibilidad": -20
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 15,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -40, "integridad": -15, "disponibilidad": -20 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 15, "integridad": 0, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 0,
@@ -895,18 +475,8 @@
 					"texto_derecha": "Pedir que pase por recepción",
 					"correcto": 1.0,
 					"explicacion": "El 'Tailgating' burla la seguridad física. Dejar entrar extraños sin validar expone computadores y servidores a robos.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -25,
-						"integridad": -20,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 15,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -25, "integridad": -20, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 15, "integridad": 0, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 1,
@@ -915,18 +485,8 @@
 					"texto_derecha": "Exigir credencial oficial",
 					"correcto": 1.0,
 					"explicacion": "La suplantación de autoridades permite el robo de equipos físicos de respaldo o la instalación de llaves de red físicas.",
-					"efecto_izquierda": {
-						"presupuesto": -10,
-						"confidencialidad": -35,
-						"integridad": -30,
-						"disponibilidad": -25
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 15,
-						"integridad": 10,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": -10, "confidencialidad": -35, "integridad": -30, "disponibilidad": -25 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 15, "integridad": 10, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 0,
@@ -935,18 +495,8 @@
 					"texto_derecha": "Rechazar oferta",
 					"correcto": 1.0,
 					"explicacion": "Regalar listas de correos corporativos facilita a los atacantes armar correos de phishing altamente dirigidos.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -25,
-						"integridad": 0,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 10,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -25, "integridad": 0, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 10, "integridad": 0, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 1,
@@ -955,18 +505,8 @@
 					"texto_derecha": "Negarse y buscar alternativa",
 					"correcto": 1.0,
 					"explicacion": "Los USBs de desconocidos pueden simular ser teclados (Rubber Ducky) que escriben comandos maliciosos en milisegundos e infectan el PC.",
-					"efecto_izquierda": {
-						"presupuesto": -20,
-						"confidencialidad": -30,
-						"integridad": -35,
-						"disponibilidad": -25
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 15,
-						"integridad": 15,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": -20, "confidencialidad": -30, "integridad": -35, "disponibilidad": -25 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 15, "integridad": 15, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 0,
@@ -975,18 +515,8 @@
 					"texto_derecha": "Colgar e ir al banco",
 					"correcto": 1.0,
 					"explicacion": "Ninguna institución financiera solicita claves ni coordenadas por teléfono. Son campañas de estafa telefónica.",
-					"efecto_izquierda": {
-						"presupuesto": -50,
-						"confidencialidad": -40,
-						"integridad": -20,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 20,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": -50, "confidencialidad": -40, "integridad": -20, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 20, "integridad": 0, "disponibilidad": 0 }
 				},
 				{
 					"imagen": 1,
@@ -995,18 +525,8 @@
 					"texto_derecha": "Desactivar el fin de semana",
 					"correcto": -1.0,
 					"explicacion": "No revocar credenciales de ex-empleados inmediatamente expone a la empresa a saboteos internos o exfiltración de datos privados.",
-					"efecto_izquierda": {
-						"presupuesto": -5,
-						"confidencialidad": 25,
-						"integridad": 20,
-						"disponibilidad": 10
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": -30,
-						"integridad": -35,
-						"disponibilidad": -20
-					}
+					"efecto_izquierda": { "presupuesto": -5, "confidencialidad": 25, "integridad": 20, "disponibilidad": 10 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": -30, "integridad": -35, "disponibilidad": -20 }
 				},
 				{
 					"imagen": 0,
@@ -1015,18 +535,8 @@
 					"texto_derecha": "No hacer nada",
 					"correcto": -1.0,
 					"explicacion": "Restringir el acceso físico al hardware crítico previene caídas accidentales de cables de red y robos de discos.",
-					"efecto_izquierda": {
-						"presupuesto": -5,
-						"confidencialidad": 15,
-						"integridad": 15,
-						"disponibilidad": 20
-					},
-					"efecto_derecha": {
-						"presupuesto": 0,
-						"confidencialidad": 0,
-						"integridad": -15,
-						"disponibilidad": -25
-					}
+					"efecto_izquierda": { "presupuesto": -5, "confidencialidad": 15, "integridad": 15, "disponibilidad": 20 },
+					"efecto_derecha": { "presupuesto": 0, "confidencialidad": 0, "integridad": -15, "disponibilidad": -25 }
 				},
 				{
 					"imagen": 1,
@@ -1035,18 +545,8 @@
 					"texto_derecha": "Borrado seguro de discos",
 					"correcto": 1.0,
 					"explicacion": "Donar equipos sin realizar borrados seguros de disco permite a terceros recuperar archivos confidenciales e historiales financieros.",
-					"efecto_izquierda": {
-						"presupuesto": 0,
-						"confidencialidad": -35,
-						"integridad": 0,
-						"disponibilidad": 0
-					},
-					"efecto_derecha": {
-						"presupuesto": -5,
-						"confidencialidad": 25,
-						"integridad": 0,
-						"disponibilidad": 0
-					}
+					"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -35, "integridad": 0, "disponibilidad": 0 },
+					"efecto_derecha": { "presupuesto": -5, "confidencialidad": 25, "integridad": 0, "disponibilidad": 0 }
 				}
 			]
 		}

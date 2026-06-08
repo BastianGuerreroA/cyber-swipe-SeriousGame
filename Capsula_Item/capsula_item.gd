@@ -2,11 +2,11 @@ extends PanelContainer
 
 # Referencias a los nodos hijos según tu estructura .tscn
 @onready var label_titulo = $MarginContainer/VBoxHeader/HBoxContainer/VBoxContainer/LabelTitulo
-@onready var label_mini_desc = $MarginContainer/VBoxHeader/HBoxContainer/VBoxContainer/LabelMiniDescripcion
+@onready var label_Subtitulo = $MarginContainer/VBoxHeader/HBoxContainer/VBoxContainer/Subtitulo
 @onready var label_estado = $MarginContainer/VBoxHeader/HBoxContainer/HBoxContainer/PanelContainer/MarginContainer/Estado
 @onready var boton_chevron = $MarginContainer/VBoxHeader/HBoxContainer/HBoxContainer/TextureButton
 @onready var contenedor_desplegable = $MarginContainer/VBoxHeader/VBoxContainer
-@onready var rich_text_desc = $MarginContainer/VBoxHeader/VBoxContainer/RichTextLabel
+@onready var rich_text_mini_desc = $MarginContainer/VBoxHeader/VBoxContainer/MiniDescripcion
 @onready var boton_estudiar = $MarginContainer/VBoxHeader/VBoxContainer/HBoxContainer/VBoxContainer/Button
 @onready var boton_practicar = $MarginContainer/VBoxHeader/VBoxContainer/HBoxContainer/VBoxContainer2/Button2
 @onready var panel_estado = $MarginContainer/VBoxHeader/HBoxContainer/HBoxContainer/PanelContainer
@@ -31,9 +31,10 @@ func _ready() -> void:
 func configurar(datos: Dictionary) -> void:
 	id_capsula = datos["id"]
 	label_titulo.text = datos["titulo"]
-	label_mini_desc.text = datos["mini_descripcion"]
 	label_estado.text = datos["estado"]
-	rich_text_desc.text = datos["contenido_estudio"]
+	
+	label_Subtitulo.text = datos["subtitulo"]
+	rich_text_mini_desc.text = datos["mini_descripcion"]
 	
 	if datos["estado"] == "Bloqueado":
 		boton_practicar.disabled = true
