@@ -1,10 +1,41 @@
-[gd_scene load_steps=6 format=3 uid="uid://ws6ctwd7ok53"]
+[gd_scene load_steps=9 format=3 uid="uid://ws6ctwd7ok53"]
 
 [ext_resource type="Texture2D" uid="uid://cd867roe3oh4u" path="res://assests/free-city-backgrounds-pixel-art/city 8/7.png" id="1_1dqjf"]
 [ext_resource type="Script" uid="uid://c35stvpbxdgyy" path="res://capsula_selector/capsula_selector.gd" id="1_3qwwx"]
 [ext_resource type="Theme" uid="uid://dnpnaw8u2vfep" path="res://Themes/Capsulas.tres" id="1_ylymo"]
 [ext_resource type="Texture2D" uid="uid://h5rx6aod0xyk" path="res://assests/IconGodotNode/IconGodotNode/color/icon_particle.png" id="2_u0nbv"]
 [ext_resource type="PackedScene" uid="uid://ble7k06xecln5" path="res://Capsula_Item/capsula_item.tscn" id="3_nfn5k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud"]
+bg_color = Color(0.05882353, 0.08627451, 0.1607843, 0.9490196)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0.9607843, 0.83137256, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+corner_detail = 1
+shadow_color = Color(0, 0.9607843, 0.83137256, 0.25098038)
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_bg"]
+bg_color = Color(0.02745098, 0.04313725, 0.07843137, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_fill"]
+bg_color = Color(0, 0.9607843, 0.83137256, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
 
 [node name="CapsulaSelector" type="Control"]
 layout_mode = 3
@@ -50,9 +81,14 @@ theme_override_constants/separation = 20
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxMain"]
 layout_mode = 2
 theme = ExtResource("1_ylymo")
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxMain/PanelContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer"]
 layout_mode = 2
@@ -64,6 +100,7 @@ theme_override_constants/separation = 11
 
 [node name="Usuario" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.9607843, 0.83137256, 1)
 theme_override_font_sizes/font_size = 30
 text = "Usuario"
 
@@ -114,6 +151,15 @@ text = "/4"
 [node name="Progreso" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer"]
 layout_mode = 2
 text = "Capsulas"
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_progress_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_progress_fill")
+max_value = 5.0
+value = 1.0
+show_percentage = false
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxMain"]
 layout_mode = 2

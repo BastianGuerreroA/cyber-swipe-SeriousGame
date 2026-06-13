@@ -5,6 +5,7 @@ extends Control
 @onready var label_progreso = $MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer/Label
 @onready var label_total_capsulas = $MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer/TotalCapsulas
 @onready var contenedor_capsulas = $MarginContainer/VBoxMain/ScrollContainer/VBoxContainer_capsulas
+@onready var progress_bar = $MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/ProgressBar
 
 # Precargamos la escena del item de la cápsula para instanciarla
 const CAPSULA_ITEM_ESCENA = preload("res://Capsula_Item/capsula_item.tscn")
@@ -18,6 +19,10 @@ func _ready() -> void:
 	var completadas = clampi(CapsulaManager.progreso_general - 1, 0, CapsulaManager.lista_capsulas.size())
 	label_progreso.text = str(completadas)
 	label_total_capsulas.text = "/" + str(CapsulaManager.lista_capsulas.size())
+	
+	# Actualizar la barra de progreso
+	progress_bar.max_value = CapsulaManager.lista_capsulas.size()
+	progress_bar.value = completadas
 	
 	# Limpiar placeholders
 	for child in contenedor_capsulas.get_children():
