@@ -6,6 +6,7 @@ signal metricas_actualizadas(p, c, i, d)
 @export var imagenes: Array[Texture2D] = [] # Arreglo de texturas cargado desde el inspector
 @export var label_contexto: Label
 @export var typing_sound: AudioStreamPlayer2D
+@export var feedback_menu: Control = null
 
 # Precargamos los overlays
 const GAME_OVER_SCENE = preload("res://Game_over/Game_over.tscn")
@@ -80,6 +81,9 @@ var cartas = [
 func _ready():
 	randomize()
 	
+	# Configurar el CardManager para procesarse siempre (incluso en pausa)
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	# Reiniciar el puntaje de la ronda actual a 0 al comenzar la partida
 	CapsulaManager.puntaje_ronda_actual = 0
 	
@@ -88,6 +92,19 @@ func _ready():
 	if not cartas_dinamicas.is_empty():
 		# Duplicamos con .duplicate() para no vaciar el JSON original en memoria
 		cartas = cartas_dinamicas.duplicate()
+	
+	# Fallback dinámico si no está enlazado en el inspector
+	if not feedback_menu:
+		feedback_menu = get_node_or_null("../CanvasLayer/MarginContainer/FeedbackMenu")
+	
+	# Conectar el botón de continuar del menú de retroalimentación
+	if feedback_menu:
+		var boton_continuar = feedback_menu.get_node_or_null("PanelContainer/MarginContainer/VBoxContainer/Continuar")
+		if boton_continuar:
+			# Desconectar si ya estaba conectado (evita conexiones duplicadas)
+			if boton_continuar.pressed.is_connected(_on_feedback_continuar_pressed):
+				boton_continuar.pressed.disconnect(_on_feedback_continuar_pressed)
+			boton_continuar.pressed.connect(_on_feedback_continuar_pressed)
 	
 	generar_carta()
 	
@@ -117,6 +134,8 @@ func generar_carta():
 		return
 	
 	var nueva_carta = carta_escena.instantiate()
+	# Forzar que la carta sea pausada cuando get_tree().paused es true
+	nueva_carta.process_mode = Node.PROCESS_MODE_PAUSABLE
 	add_child(nueva_carta)
 	
 	# Posición controlada por el spawn
@@ -173,6 +192,7 @@ func _on_carta_procesada(direccion: float, data):
 	# 3. Avisar a los iconos para que cambien las imágenes
 	metricas_actualizadas.emit(presupuesto_actual, confidencialidad_actual, integridad_actual, disponibilidad_actual)
 
+	var correcta = true
 	# 4. Lógica original del Puntaje de Score
 	if direccion == data["correcto"]:
 		print("Respuesta correcta")
@@ -183,17 +203,55 @@ func _on_carta_procesada(direccion: float, data):
 			CapsulaManager.puntaje_ronda_actual = contador.puntaje_actual
 	else:
 		print("Respuesta incorrecta")
+		correcta = false
 	
 	var nodo_iconos = get_node_or_null("../FondoCarta/TextureRect/Iconos")
 	if nodo_iconos and nodo_iconos.has_method("mostrar_indicadores"):
 		nodo_iconos.mostrar_indicadores(null)
 
-	# COMPROBACIÓN DE DERROTA
-	# Si alguna métrica llega a 0, termina el juego en derrota
-	if presupuesto_actual <= 0 or confidencialidad_actual <= 0 or integridad_actual <= 0 or disponibilidad_actual <= 0:
-		perder_juego()
+	# Fallback dinámico si no está enlazado
+	if not feedback_menu:
+		feedback_menu = get_node_or_null("../CanvasLayer/MarginContainer/FeedbackMenu")
+		if feedback_menu:
+			var boton_continuar = feedback_menu.get_node_or_null("PanelContainer/MarginContainer/VBoxContainer/Continuar")
+			if boton_continuar and not boton_continuar.pressed.is_connected(_on_feedback_continuar_pressed):
+				boton_continuar.pressed.connect(_on_feedback_continuar_pressed)
+
+	# Si es incorrecta y tenemos el menú de retroalimentación, pausamos el juego
+	if not correcta and feedback_menu:
+		var rich_explicacion = feedback_menu.get_node_or_null("PanelContainer/MarginContainer/VBoxContainer/Explicacion")
+		if rich_explicacion:
+			rich_explicacion.text = data.get("explicacion", "No hay explicación disponible.")
+		
+		# Ocultar botones HUD de fondo mientras se muestra la pausa
+		var boton_pausa = get_node_or_null("../CanvasLayer/MarginContainer/BotonPausa")
+		if boton_pausa:
+			boton_pausa.visible = false
+			
+		feedback_menu.visible = true
+		get_tree().paused = true
+	else:
+		# COMPROBACIÓN DE DERROTA DIRECTA
+		if chequear_derrota():
+			return
+		# Si sobrevive, genera la siguiente carta
+		generar_carta()
+
+func _on_feedback_continuar_pressed() -> void:
+	if feedback_menu:
+		feedback_menu.visible = false
+		
+	# Restaurar visibilidad del botón de pausa
+	var boton_pausa = get_node_or_null("../CanvasLayer/MarginContainer/BotonPausa")
+	if boton_pausa:
+		boton_pausa.visible = true
+		
+	get_tree().paused = false
+	
+	# COMPROBACIÓN DE DERROTA (tras cerrar la retroalimentación)
+	if chequear_derrota():
 		return
-	# Si sobrevive, genera la siguiente carta
+		
 	generar_carta()
 	
 func _on_intencion_decision(estado: int, data):
@@ -242,3 +300,22 @@ func perder_juego() -> void:
 		canvas.add_child(lose_overlay)
 		
 	get_tree().paused = true
+
+func chequear_derrota() -> bool:
+	if presupuesto_actual <= 0:
+		CapsulaManager.metrica_fallida = "presupuesto"
+		perder_juego()
+		return true
+	elif confidencialidad_actual <= 0:
+		CapsulaManager.metrica_fallida = "confidencialidad"
+		perder_juego()
+		return true
+	elif integridad_actual <= 0:
+		CapsulaManager.metrica_fallida = "integridad"
+		perder_juego()
+		return true
+	elif disponibilidad_actual <= 0:
+		CapsulaManager.metrica_fallida = "disponibilidad"
+		perder_juego()
+		return true
+	return false

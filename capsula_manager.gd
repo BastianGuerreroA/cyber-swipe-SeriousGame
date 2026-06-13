@@ -10,6 +10,26 @@ var capsula_activa_id: int = 1
 var puntaje_ronda_actual: int = 0
 var puntajes_maximos: Dictionary = {} # Guarda { id_capsula: record_puntaje }
 
+# Variable global para registrar la métrica que causó la derrota en la última ronda
+var metrica_fallida: String = ""
+
+# Diccionario centralizado de consejos pedagógicos por derrota
+const CONSEJOS_DERROTA = {
+	"presupuesto": "El presupuesto se agotó. Recuerda que la ciberseguridad no es solo un gasto, sino una inversión necesaria para mitigar incidentes costosos.",
+	"confidencialidad": "Fallo de Confidencialidad. Protege tus accesos utilizando contraseñas seguras, gestores y activando doble factor (MFA).",
+	"integridad": "Fallo de Integridad. La información crítica se alteró o borró. Mantén respaldos constantes para garantizar que tus datos sean confiables.",
+	"disponibilidad": "Fallo de Disponibilidad. Los sistemas quedaron inoperativos (ej. Ransomware). Implementa respaldos offline (fuera de red) y climatiza tus racks."
+}
+
+# Diccionario centralizado de consejos/resumen pedagógico por victoria
+const CONSEJOS_VICTORIA = {
+	1: "¡Excelente! Has aprendido a proteger tus dispositivos físicos con PIN y contraseñas robustas.",
+	2: "¡Genial! Sabes cómo identificar correos de phishing y evitar la descarga de archivos fraudulentos.",
+	3: "¡Muy bien! Tienes clara la regla de respaldos 3-2-1 para protegerte contra ataques de ransomware.",
+	4: "¡Perfecto! Has comprendido la importancia de segmentar tus redes Wi-Fi y usar conexiones VPN seguras.",
+	5: "¡Fantástico! Sabes reconocer trampas de ingeniería social física como el Baiting o el Vishing."
+}
+
 # Definimos la ruta del recurso del jugador en la carpeta de usuario del dispositivo
 const RUTA_GUARDADO_TRES = "user://progreso_usuario.tres"
 const RUTA_CONTENIDO_JSON = "res://capsulas.json"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://odfyj72oue6"]
+[gd_scene load_steps=19 format=3 uid="uid://odfyj72oue6"]
 
 [ext_resource type="Texture2D" uid="uid://cd867roe3oh4u" path="res://assests/free-city-backgrounds-pixel-art/city 8/7.png" id="1_o6xc7"]
 [ext_resource type="Script" uid="uid://daceevk44bc1f" path="res://EscenaPrincipal/escena_principal.gd" id="1_q275c"]
@@ -13,6 +13,7 @@
 [ext_resource type="LabelSettings" uid="uid://cerof01pfs3b1" path="res://EscenaPrincipal/letrasLabel.tres" id="7_xs3pw"]
 [ext_resource type="Texture2D" uid="uid://b7cmh0ip45am7" path="res://assests/Gemini/hacker.png" id="8_potmh"]
 [ext_resource type="Theme" uid="uid://8pah7aw402av" path="res://contador_score/contador_score.tres" id="11_lhtw7"]
+[ext_resource type="Theme" uid="uid://dnpnaw8u2vfep" path="res://Themes/Capsulas.tres" id="12_ylymo"]
 [ext_resource type="AudioStream" uid="uid://c6bkhto670vdx" path="res://assests/Musica/2016_ Clement Panchout_ Life is full of Joy.mp3" id="13_pe32j"]
 [ext_resource type="PackedScene" uid="uid://cskrj3olvgnwh" path="res://LoginLSG/login_lsg.tscn" id="13_xs3pw"]
 [ext_resource type="PackedScene" uid="uid://b3hui25oykrd4" path="res://contador_score/contador_score.tscn" id="14_id1wn"]
@@ -142,6 +143,58 @@ text = "PAUSA"
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+
+[node name="FeedbackMenu" type="Control" parent="CanvasLayer/MarginContainer"]
+process_mode = 3
+visible = false
+layout_mode = 2
+theme = ExtResource("12_ylymo")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer/FeedbackMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -250.0
+offset_right = 280.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/FeedbackMenu/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/FeedbackMenu/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Titulo" type="Label" parent="CanvasLayer/MarginContainer/FeedbackMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.21960784, 0.21960784, 1)
+theme_override_font_sizes/font_size = 32
+text = "⚠️ INCIDENTE DETECTADO"
+horizontal_alignment = 1
+
+[node name="Explicacion" type="RichTextLabel" parent="CanvasLayer/MarginContainer/FeedbackMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "Explicación..."
+fit_content = true
+
+[node name="Continuar" type="Button" parent="CanvasLayer/MarginContainer/FeedbackMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Continuar"
 
 [node name="CardManager" type="Node2D" parent="." node_paths=PackedStringArray("label_contexto", "typing_sound")]
 script = ExtResource("6_tg03s")
