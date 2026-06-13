@@ -10,7 +10,7 @@ extends PanelContainer
 @onready var boton_estudiar = $MarginContainer/VBoxHeader/VBoxContainer/HBoxContainer/VBoxContainer/Button
 @onready var boton_practicar = $MarginContainer/VBoxHeader/VBoxContainer/HBoxContainer/VBoxContainer2/Button2
 @onready var panel_estado = $MarginContainer/VBoxHeader/HBoxContainer/HBoxContainer/PanelContainer
-
+@onready var icon_rect = $MarginContainer/VBoxHeader/HBoxContainer/Icono
 
 var id_capsula: int = -1
 
@@ -36,6 +36,16 @@ func configurar(datos: Dictionary) -> void:
 	label_Subtitulo.text = datos["subtitulo"]
 	rich_text_mini_desc.text = datos["mini_descripcion"]
 	
+	# Carga de icono dinámico
+	var ruta_icono = "res://assests/IconosCapsulas/capsula_" + str(id_capsula) + ".png"
+	if FileAccess.file_exists(ruta_icono):
+		icon_rect.texture = load(ruta_icono)
+	else:
+		# Fallback a MedallaPixelArt si no existe el icono específico
+		var ruta_defecto = "res://assests/IconosPixelArt/MedallaPixelArt.png"
+		if FileAccess.file_exists(ruta_defecto):
+			icon_rect.texture = load(ruta_defecto)
+	
 	if datos["estado"] == "Bloqueado":
 		boton_practicar.disabled = true
 		boton_estudiar.disabled = true
@@ -43,14 +53,19 @@ func configurar(datos: Dictionary) -> void:
 		panel_estado.theme_type_variation = &"PanelVarianteRojo"
 		modulate = Color(0.64, 0.64, 0.64, 1.0)
 		
+	elif datos["estado"] == "Disponible":
+		boton_practicar.disabled = false
+		boton_estudiar.disabled = false
 		
-	else:
+		panel_estado.theme_type_variation = &"PanelVarianteAzul"
+		modulate = Color(1.0, 1.0, 1.0, 1.0)
+		
+	else: # "Completada"
 		boton_practicar.disabled = false
 		boton_estudiar.disabled = false
 		
 		panel_estado.theme_type_variation = &"PanelVarianteVerde"
 		modulate = Color(1.0, 1.0, 1.0, 1.0)
-
 
 # Alterna la visibilidad del acordeón con animación del chevron
 func _on_chevron_pressed() -> void:
@@ -63,12 +78,9 @@ func _on_chevron_pressed() -> void:
 	tween.tween_property(boton_chevron, "rotation_degrees", angulo_destino, 0.25).set_trans(Tween.TRANS_SINE)
 
 func _on_estudiar_pressed() -> void:
-	# Establecemos la cápsula activa
 	CapsulaManager.capsula_activa_id = id_capsula
-	# Cambiamos a la escena de estudio (la crearemos en el paso 6)
 	get_tree().change_scene_to_file("res://EscenaEstudio/escena_estudio.tscn")
 
 func _on_practicar_pressed() -> void:
 	CapsulaManager.capsula_activa_id = id_capsula
-	# Cambiamos a tu escena principal de juego (Swipe de cartas)
 	get_tree().change_scene_to_file("res://EscenaPrincipal/escena_principal.tscn")

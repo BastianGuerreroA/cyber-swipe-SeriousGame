@@ -1,10 +1,10 @@
 extends Control
 
-@onready var label_usuario = $MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/Usuario
-@onready var label_puntos = $MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/HBoxContainer/Puntos
-@onready var label_progreso = $MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer/Label
-@onready var label_total_capsulas = $MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer/TotalCapsulas
-@onready var contenedor_capsulas = $MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer_capsulas
+@onready var label_usuario = $MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/Usuario
+@onready var label_puntos = $MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/HBoxContainer/Puntos
+@onready var label_progreso = $MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer/Label
+@onready var label_total_capsulas = $MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer/TotalCapsulas
+@onready var contenedor_capsulas = $MarginContainer/VBoxMain/ScrollContainer/VBoxContainer_capsulas
 
 # Precargamos la escena del item de la cápsula para instanciarla
 const CAPSULA_ITEM_ESCENA = preload("res://Capsula_Item/capsula_item.tscn")

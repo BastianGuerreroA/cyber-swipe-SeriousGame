@@ -38,94 +38,96 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+[node name="VBoxMain" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
+theme_override_constants/separation = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_constants/separation = 49
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxMain"]
 layout_mode = 2
 theme = ExtResource("1_ylymo")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxMain/PanelContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 19
 
-[node name="HContainer_Usuario" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HContainer_Usuario" type="HBoxContainer" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 11
 
-[node name="Usuario" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
+[node name="Usuario" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Usuario"
 
-[node name="Spacer" type="Control" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_u0nbv")
 stretch_mode = 3
 
-[node name="Puntos" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/HBoxContainer"]
+[node name="Puntos" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "0"
 
-[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "ptos."
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Hcontainer_Progreso" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Hcontainer_Progreso" type="HBoxContainer" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 144
 
-[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso"]
 layout_mode = 2
 text = "Progreso General"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer"]
 layout_mode = 2
 text = "0"
 
-[node name="TotalCapsulas" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer"]
+[node name="TotalCapsulas" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer"]
 layout_mode = 2
 text = "/4"
 
-[node name="Progreso" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer"]
+[node name="Progreso" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer"]
 layout_mode = 2
 text = "Capsulas"
 
-[node name="VBoxContainer_capsulas" type="VBoxContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxMain"]
 layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer_capsulas" type="VBoxContainer" parent="MarginContainer/VBoxMain/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="CapsulaItem" parent="MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer_capsulas" instance=ExtResource("3_nfn5k")]
+[node name="CapsulaItem" parent="MarginContainer/VBoxMain/ScrollContainer/VBoxContainer_capsulas" instance=ExtResource("3_nfn5k")]
 layout_mode = 2
 
-[node name="CapsulaItem2" parent="MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer_capsulas" instance=ExtResource("3_nfn5k")]
+[node name="CapsulaItem2" parent="MarginContainer/VBoxMain/ScrollContainer/VBoxContainer_capsulas" instance=ExtResource("3_nfn5k")]
 layout_mode = 2

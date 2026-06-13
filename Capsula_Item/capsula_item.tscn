@@ -27,6 +27,14 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 10
 
+[node name="Icono" type="TextureRect" parent="MarginContainer/VBoxHeader/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxHeader/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
