@@ -4,7 +4,7 @@ extends Control
 @onready var label_titulo = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxScrollContent/TitlePanel/MarginContainer/VBoxContainer/LabelTitulo
 @onready var label_subtitulo = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxScrollContent/TitlePanel/MarginContainer/VBoxContainer/LabelSubtitulo
 @onready var rich_text_contenido = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxScrollContent/ContentPanel/MarginContainer/VBoxContainer/TextoEstudio
-@onready var boton_volver = $PanelContainer/MarginContainer/VBoxContainer/BotonVolver
+@onready var boton_volver = $PanelContainer/MarginContainer/VBoxContainer/HeaderContainer/HBoxContainer/BotonVolver
 @onready var icon_rect = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxScrollContent/IconPanel/MarginContainer/IconRect
 
 func _ready() -> void:

@@ -6,11 +6,15 @@ extends Control
 @onready var label_total_capsulas = $MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer/TotalCapsulas
 @onready var contenedor_capsulas = $MarginContainer/VBoxMain/ScrollContainer/VBoxContainer_capsulas
 @onready var progress_bar = $MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/ProgressBar
+@onready var boton_volver = $MarginContainer/VBoxMain/BotonVolver
 
 # Precargamos la escena del item de la cápsula para instanciarla
 const CAPSULA_ITEM_ESCENA = preload("res://Capsula_Item/capsula_item.tscn")
 
 func _ready() -> void:
+	# Conectar el botón de volver
+	boton_volver.pressed.connect(_on_volver_pressed)
+	
 	# 1. Cargar datos del perfil de usuario
 	label_usuario.text = CapsulaManager.nombre_usuario
 	label_puntos.text = str(CapsulaManager.puntos_totales)
@@ -45,3 +49,6 @@ func _ready() -> void:
 		var instancia = CAPSULA_ITEM_ESCENA.instantiate()
 		contenedor_capsulas.add_child(instancia)
 		instancia.configurar(datos_capsula)
+
+func _on_volver_pressed() -> void:
+	get_tree().change_scene_to_file("res://menu_principal/menu_principal.tscn")

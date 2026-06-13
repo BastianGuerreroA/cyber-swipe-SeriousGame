@@ -1,8 +1,54 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhinbjia520cr"]
+[gd_scene load_steps=9 format=3 uid="uid://bhinbjia520cr"]
 
 [ext_resource type="Script" uid="uid://cvwv4r0r5uqmy" path="res://EscenaEstudio/escena_estudio.gd" id="1_m66y7"]
 [ext_resource type="Texture2D" uid="uid://dpj51wu0v11vg" path="res://assests/free-city-backgrounds-pixel-art/city 2/10.png" id="2_nv5j8"]
 [ext_resource type="Theme" uid="uid://dnpnaw8u2vfep" path="res://Themes/Capsulas.tres" id="3_ylymo"]
+[ext_resource type="AudioStream" uid="uid://di28ytsuqqau2" path="res://assests/Musica/2014 07_ Clement Panchout_ Partycles OST_ Cheerful Title Screen.wav" id="4_partycles"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
+bg_color = Color(0.05882353, 0.08627451, 0.1607843, 0.9490196)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.9607843, 0.83137256, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+shadow_color = Color(0, 0.9607843, 0.83137256, 0.2)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pressed"]
+bg_color = Color(0.03921569, 0.05882353, 0.10980392, 0.9490196)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.74509805, 0.64705884, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+shadow_color = Color(0, 0.9607843, 0.83137256, 0.09803922)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.09019608, 0.12156863, 0.21960784, 0.9490196)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3019608, 1, 0.9019608, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+shadow_color = Color(0, 0.9607843, 0.83137256, 0.4)
+shadow_size = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icon"]
 bg_color = Color(0, 0.9607843, 0.83137256, 0.14901961)
@@ -23,6 +69,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m66y7")
+
+[node name="MusicaFondo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_partycles")
+volume_db = -10.254
+autoplay = true
+bus = &"Musica de fondo"
 
 [node name="Fondo" type="TextureRect" parent="."]
 layout_mode = 0
@@ -65,17 +117,28 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 0.8156863, 1)
 theme_override_font_sizes/font_size = 28
-text = "📖 ETAPA 1: ESTUDIAR"
+text = "📖 ETAPA 1: LECTURA"
 
 [node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HeaderContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LabelLectura" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HeaderContainer/HBoxContainer"]
+[node name="BotonVolver" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HeaderContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 38)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.7019608, 0.7019608, 0.7019608, 1)
-theme_override_font_sizes/font_size = 18
-text = "Lectura"
+size_flags_vertical = 4
+theme = ExtResource("3_ylymo")
+theme_override_colors/font_color = Color(0, 0.9607843, 0.83137256, 1)
+theme_override_colors/font_focus_color = Color(0, 0.9607843, 0.83137256, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.745098, 0.647059, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btn_normal")
+text = "Volver"
 
 [node name="HSeparatorHeader" type="ColorRect" parent="PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 3)
@@ -175,7 +238,7 @@ theme_override_constants/separation = 2
 [node name="LabelContentTitle" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxScrollContent/ContentPanel/MarginContainer/VBoxContainer/HBoxContentHeader/VBoxContentTitle"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
-text = "CONTENIDO EDUCATIVO"
+text = "CONTENIDO"
 
 [node name="LabelContentSubtitle" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxScrollContent/ContentPanel/MarginContainer/VBoxContainer/HBoxContentHeader/VBoxContentTitle"]
 layout_mode = 2
@@ -197,9 +260,3 @@ theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
 text = "Contenido de estudio..."
 fit_content = true
-
-[node name="BotonVolver" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Volver al selector"
