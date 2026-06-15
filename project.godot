@@ -25,6 +25,8 @@ buses/default_bus_layout=""
 [autoload]
 
 CapsulaManager="*res://capsula_manager.gd"
+LsgAuth="*res://LSG_API/ApiAuth.gd"
+LsgCore="*res://LSG_API/ApiCore.gd"
 
 [display]
 
@@ -38,6 +40,8 @@ window/handheld/orientation=1
 
 folder_colors={
 "res://Game_over/": "red",
+"res://LSG_API/": "pink",
+"res://LoginLSG/": "pink",
 "res://Pause_Menu/": "yellow",
 "res://assests/": "yellow",
 "res://game_winner/": "green"

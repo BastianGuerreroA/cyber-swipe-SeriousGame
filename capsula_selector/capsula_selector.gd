@@ -16,7 +16,10 @@ func _ready() -> void:
 	boton_volver.pressed.connect(_on_volver_pressed)
 	
 	# 1. Cargar datos del perfil de usuario
-	label_usuario.text = CapsulaManager.nombre_usuario
+	if LsgAuth.logged_in:
+		label_usuario.text = LsgAuth.player_name
+	else:
+		label_usuario.text = CapsulaManager.nombre_usuario
 	label_puntos.text = str(CapsulaManager.puntos_totales)
 	
 	# Las completadas serán el nivel máximo desbloqueado menos 1

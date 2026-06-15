@@ -101,5 +101,37 @@ theme_override_fonts/font = ExtResource("4_5nube")
 theme_override_font_sizes/font_size = 17
 text = "INICIAR SESIÓN"
 
+[node name="LabelBienvenida" type="Label" parent="PanelLogin/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_5nube")
+text = "Bienvenido, "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BotonCerrarSesion" type="Button" parent="PanelLogin/VBoxContainer"]
+visible = false
+self_modulate = Color(1, 0.2, 0.2, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_5nube")
+theme_override_font_sizes/font_size = 17
+text = "CERRAR SESIÓN"
+
+[node name="LabelError" type="Label" parent="PanelLogin/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.2, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_5nube")
+theme_override_font_sizes/font_size = 12
+text = "Error"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [connection signal="pressed" from="BotonLSG" to="." method="_on_boton_lsg_pressed"]
 [connection signal="pressed" from="PanelLogin/BotonCerrar" to="." method="_on_boton_cerrar_pressed"]
+[connection signal="pressed" from="PanelLogin/VBoxContainer/Button" to="." method="_on_iniciar_sesion_pressed"]
+[connection signal="pressed" from="PanelLogin/VBoxContainer/BotonCerrarSesion" to="." method="_on_boton_cerrar_sesion_pressed"]
+
