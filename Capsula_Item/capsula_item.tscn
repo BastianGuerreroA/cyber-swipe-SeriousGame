@@ -53,26 +53,37 @@ theme_override_font_sizes/font_size = 15
 text = "Protege tu dispositivo con Pin y biometria Protege tu dispositivo con Pin y biometria."
 autowrap_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxHeader/HBoxContainer"]
+[node name="VBoxDerecha" type="VBoxContainer" parent="MarginContainer/VBoxHeader/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Record" type="Label" parent="MarginContainer/VBoxHeader/HBoxContainer/VBoxDerecha"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.470588, 0.470588, 0.470588, 1)
+theme_override_font_sizes/font_size = 14
+text = "Récord: 0 pts"
+horizontal_alignment = 2
+
+[node name="HBoxStatus" type="HBoxContainer" parent="MarginContainer/VBoxHeader/HBoxContainer/VBoxDerecha"]
 layout_mode = 2
 theme_override_constants/separation = 14
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxHeader/HBoxContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxHeader/HBoxContainer/VBoxDerecha/HBoxStatus"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_type_variation = &"PanelVarianteVerde"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxHeader/HBoxContainer/HBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxHeader/HBoxContainer/VBoxDerecha/HBoxStatus/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
-[node name="Estado" type="Label" parent="MarginContainer/VBoxHeader/HBoxContainer/HBoxContainer/PanelContainer/MarginContainer"]
+[node name="Estado" type="Label" parent="MarginContainer/VBoxHeader/HBoxContainer/VBoxDerecha/HBoxStatus/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 17
 text = "Disponible"
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxHeader/HBoxContainer/HBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxHeader/HBoxContainer/VBoxDerecha/HBoxStatus"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

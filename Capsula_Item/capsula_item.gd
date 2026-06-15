@@ -3,14 +3,15 @@ extends PanelContainer
 # Referencias a los nodos hijos según tu estructura .tscn
 @onready var label_titulo = $MarginContainer/VBoxHeader/HBoxContainer/VBoxContainer/LabelTitulo
 @onready var label_Subtitulo = $MarginContainer/VBoxHeader/HBoxContainer/VBoxContainer/Subtitulo
-@onready var label_estado = $MarginContainer/VBoxHeader/HBoxContainer/HBoxContainer/PanelContainer/MarginContainer/Estado
-@onready var boton_chevron = $MarginContainer/VBoxHeader/HBoxContainer/HBoxContainer/TextureButton
+@onready var label_estado = $MarginContainer/VBoxHeader/HBoxContainer/VBoxDerecha/HBoxStatus/PanelContainer/MarginContainer/Estado
+@onready var boton_chevron = $MarginContainer/VBoxHeader/HBoxContainer/VBoxDerecha/HBoxStatus/TextureButton
 @onready var contenedor_desplegable = $MarginContainer/VBoxHeader/VBoxContainer
 @onready var rich_text_mini_desc = $MarginContainer/VBoxHeader/VBoxContainer/MiniDescripcion
 @onready var boton_estudiar = $MarginContainer/VBoxHeader/VBoxContainer/HBoxContainer/VBoxContainer/Button
 @onready var boton_practicar = $MarginContainer/VBoxHeader/VBoxContainer/HBoxContainer/VBoxContainer2/Button2
-@onready var panel_estado = $MarginContainer/VBoxHeader/HBoxContainer/HBoxContainer/PanelContainer
+@onready var panel_estado = $MarginContainer/VBoxHeader/HBoxContainer/VBoxDerecha/HBoxStatus/PanelContainer
 @onready var icon_rect = $MarginContainer/VBoxHeader/HBoxContainer/Icono
+@onready var label_record = $MarginContainer/VBoxHeader/HBoxContainer/VBoxDerecha/Record
 
 var id_capsula: int = -1
 
@@ -49,6 +50,7 @@ func configurar(datos: Dictionary) -> void:
 	if datos["estado"] == "Bloqueado":
 		boton_practicar.disabled = true
 		boton_estudiar.disabled = true
+		label_record.visible = false
 		
 		panel_estado.theme_type_variation = &"PanelVarianteRojo"
 		modulate = Color(0.64, 0.64, 0.64, 1.0)
@@ -56,6 +58,9 @@ func configurar(datos: Dictionary) -> void:
 	elif datos["estado"] == "Disponible":
 		boton_practicar.disabled = false
 		boton_estudiar.disabled = false
+		label_record.visible = true
+		var record_val = CapsulaManager.obtener_record_capsula(id_capsula)
+		label_record.text = "Récord: " + str(record_val) + " pts"
 		
 		panel_estado.theme_type_variation = &"PanelVarianteAzul"
 		modulate = Color(1.0, 1.0, 1.0, 1.0)
@@ -63,6 +68,9 @@ func configurar(datos: Dictionary) -> void:
 	else: # "Completada"
 		boton_practicar.disabled = false
 		boton_estudiar.disabled = false
+		label_record.visible = true
+		var record_val = CapsulaManager.obtener_record_capsula(id_capsula)
+		label_record.text = "Récord: " + str(record_val) + " pts"
 		
 		panel_estado.theme_type_variation = &"PanelVarianteVerde"
 		modulate = Color(1.0, 1.0, 1.0, 1.0)
