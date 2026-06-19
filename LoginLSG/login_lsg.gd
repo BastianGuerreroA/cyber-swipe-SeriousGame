@@ -3,15 +3,16 @@ extends Control
 @onready var panel = $PanelLogin
 @onready var boton_lsg = $BotonLSG
 
+# Referencias a contenedores principales
+@onready var formulario_login = $PanelLogin/MarginContainer/VBoxContainer/FormularioLogin
+@onready var info_sesion = $PanelLogin/MarginContainer/VBoxContainer/InfoSesion
+
 # Referencias a componentes del formulario
-@onready var etiq_usuario = $PanelLogin/VBoxContainer/EtiqUsuario
-@onready var input_usuario = $PanelLogin/VBoxContainer/InputUsuario
-@onready var etiq_clave = $PanelLogin/VBoxContainer/EtiqClave
-@onready var input_clave = $PanelLogin/VBoxContainer/InputClave
-@onready var boton_iniciar = $PanelLogin/VBoxContainer/Button
-@onready var label_bienvenida = $PanelLogin/VBoxContainer/LabelBienvenida
-@onready var boton_cerrar_sesion = $PanelLogin/VBoxContainer/BotonCerrarSesion
-@onready var label_error = $PanelLogin/VBoxContainer/LabelError
+@onready var input_usuario = $PanelLogin/MarginContainer/VBoxContainer/FormularioLogin/InputUsuario
+@onready var input_clave = $PanelLogin/MarginContainer/VBoxContainer/FormularioLogin/InputClave
+@onready var boton_iniciar = $PanelLogin/MarginContainer/VBoxContainer/FormularioLogin/Button
+@onready var label_bienvenida = $PanelLogin/MarginContainer/VBoxContainer/InfoSesion/LabelBienvenida
+@onready var label_error = $PanelLogin/MarginContainer/VBoxContainer/LabelError
 
 func _ready() -> void:
 	panel.visible = false
@@ -66,32 +67,18 @@ func _on_boton_cerrar_sesion_pressed() -> void:
 # Cambiar elementos de la interfaz dependiendo de si el usuario está logueado
 func _actualizar_interfaz_sesion() -> void:
 	if LsgAuth.logged_in:
-		# Mostrar bienvenida y botón cerrar
 		label_bienvenida.text = "Bienvenido,\n" + LsgAuth.player_name
-		label_bienvenida.visible = true
-		boton_cerrar_sesion.visible = true
-		
-		# Ocultar campos de input
-		etiq_usuario.visible = false
-		input_usuario.visible = false
-		etiq_clave.visible = false
-		input_clave.visible = false
-		boton_iniciar.visible = false
+		formulario_login.visible = false
+		info_sesion.visible = true
 		label_error.visible = false
 	else:
-		# Mostrar campos de input
-		etiq_usuario.visible = true
-		input_usuario.visible = true
-		etiq_clave.visible = true
-		input_clave.visible = true
-		boton_iniciar.visible = true
+		formulario_login.visible = true
+		info_sesion.visible = false
+		label_error.visible = false
+		
+		# Asegurar que el botón esté habilitado y con su texto original
 		boton_iniciar.disabled = false
 		boton_iniciar.text = "INICIAR SESIÓN"
-		
-		# Ocultar bienvenida y botón cerrar
-		label_bienvenida.visible = false
-		boton_cerrar_sesion.visible = false
-		label_error.visible = false
 
 # Callbacks de señales globales
 func _on_lsg_login_success(_username: String) -> void:
