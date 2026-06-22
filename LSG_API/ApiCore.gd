@@ -4,6 +4,7 @@ signal session_started(session_id: int)
 signal session_ended
 signal redeem_completed(success: bool, response_data: Dictionary)
 signal balance_loaded(balances: Array)
+signal attributes_loaded(attributes: Array)
 
 const BASE_URL = "https://lsg.diinf.usach.cl/lsg-core-api"
 const GAME_ID = 54 # ID de CyberSwipe asignado por la API
@@ -200,3 +201,37 @@ func redeem_mechanic(mechanic_id: int, dimension_id: int, amount: int) -> void:
 	else:
 		print("LSG-Core: Error de canje en el servidor (Código ", response_code, ")")
 		redeem_completed.emit(false, response_data)
+
+# Consultar puntos y atributos multidimensionales del jugador
+func get_attributes_points() -> void:
+	if not LsgAuth.logged_in:
+		return
+		
+	var url = BASE_URL + "/players/" + str(LsgAuth.player_id) + "/attributes/points"
+	var headers = PackedStringArray(["Authorization: Bearer " + LsgAuth.access_token])
+	
+	var http = HTTPRequest.new()
+	add_child(http)
+	
+	var error = http.request(url, headers, HTTPClient.METHOD_GET, "")
+	if error != OK:
+		remove_child(http)
+		http.queue_free()
+		return
+		
+	var response = await http.request_completed
+	remove_child(http)
+	http.queue_free()
+	
+	var response_code = response[1]
+	var body = response[3]
+	
+	if response_code == 200:
+		var json = JSON.new()
+		if json.parse(body.get_string_from_utf8()) == OK:
+			var attributes = json.data as Array
+			attributes_loaded.emit(attributes)
+		else:
+			print("LSG-Core: Error parseando atributos/puntos.")
+	else:
+		print("LSG-Core: Error al cargar atributos/puntos (Código ", response_code, ").")

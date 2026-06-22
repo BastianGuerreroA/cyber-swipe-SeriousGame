@@ -18,6 +18,25 @@ func _ready() -> void:
 	# 1. Cargar datos del perfil de usuario
 	if LsgAuth.logged_in:
 		label_usuario.text = LsgAuth.player_name
+		
+		# Instanciamos el botón del perfil multidimensional en el nodo raíz (self) para evitar problemas de clics
+		var perfil_escena = load("res://Escena_Perfil_Multidimensional/escena_perfil_multidimensional.tscn")
+		var perfil_instancia = perfil_escena.instantiate()
+		perfil_instancia.name = "PerfilLSG"
+		add_child(perfil_instancia)
+		
+		# Creamos un placeholder de tamaño 50x50 en el HBoxContainer para apartar el espacio del avatar
+		var placeholder = Control.new()
+		placeholder.custom_minimum_size = Vector2(50, 50)
+		placeholder.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		
+		var hcontainer = label_usuario.get_parent()
+		hcontainer.add_child(placeholder)
+		hcontainer.move_child(placeholder, 0)
+		
+		# Esperamos a que se calcule el layout en el siguiente frame y copiamos la posición global
+		await get_tree().process_frame
+		perfil_instancia.global_position = placeholder.global_position
 	else:
 		label_usuario.text = CapsulaManager.nombre_usuario
 	label_puntos.text = str(CapsulaManager.puntos_totales)
