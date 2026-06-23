@@ -16,6 +16,9 @@ var player_roles: Array = []
 
 const BASE_URL = "https://lsg.diinf.usach.cl/lsg-auth"
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 # Función para realizar login
 func login(email: String, password: String) -> void:
 	var url = BASE_URL + "/login"
@@ -26,6 +29,7 @@ func login(email: String, password: String) -> void:
 	
 	# Instanciamos el nodo HTTP de forma dinámica
 	var http = HTTPRequest.new()
+	http.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(http)
 	
 	var error = http.request(url, headers, HTTPClient.METHOD_POST, request_data)
@@ -78,6 +82,7 @@ func fetch_whoami() -> void:
 	var headers = PackedStringArray(["Authorization: Bearer " + access_token])
 	
 	var http = HTTPRequest.new()
+	http.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(http)
 	
 	var error = http.request(url, headers, HTTPClient.METHOD_GET, "")

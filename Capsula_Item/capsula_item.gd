@@ -91,4 +91,12 @@ func _on_estudiar_pressed() -> void:
 
 func _on_practicar_pressed() -> void:
 	CapsulaManager.capsula_activa_id = id_capsula
-	get_tree().change_scene_to_file("res://EscenaPrincipal/escena_principal.tscn")
+	
+	if LsgAuth.logged_in:
+		# Instanciamos la tienda pre-partida y la agregamos sobre el selector de cápsulas
+		var tienda_escena = load("res://StoreLSG/tienda_lsg.tscn")
+		var tienda_instancia = tienda_escena.instantiate()
+		get_tree().current_scene.add_child(tienda_instancia)
+		print("LSG-Core: Mostrando Tienda de Ventajas pre-partida.")
+	else:
+		get_tree().change_scene_to_file("res://EscenaPrincipal/escena_principal.tscn")

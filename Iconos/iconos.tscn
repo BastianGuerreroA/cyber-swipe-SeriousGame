@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cb432op86dqwa"]
+[gd_scene load_steps=24 format=3 uid="uid://cb432op86dqwa"]
 
 [ext_resource type="Script" uid="uid://hdx8s6blculo" path="res://Iconos/Script_iconos.gd" id="1_j6ltj"]
 [ext_resource type="Texture2D" uid="uid://biod0svu3nocd" path="res://assests/IconosEstadosMetricas/Presupuesto/Presupuesto_2.png" id="1_taawk"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dmmvqog8gcr02" path="res://assests/IconosEstadosMetricas/Confidencialidad/Confidencialidad_3.png" id="20_1q6we"]
 [ext_resource type="Texture2D" uid="uid://bct0txvfpw8qx" path="res://assests/IconosEstadosMetricas/Confidencialidad/Confidencialidad_4.png" id="21_naw03"]
 [ext_resource type="Texture2D" uid="uid://qaa6psbxs8lf" path="res://assests/IconosEstadosMetricas/Indicador_azul.png" id="22_o00g7"]
+[ext_resource type="FontFile" uid="uid://0jlmj72sqjkq" path="res://assests/Fuente/acknowtt.ttf" id="23_font"]
 
 [node name="IconosMetricas" type="Control"]
 layout_mode = 3
@@ -45,7 +46,22 @@ theme_override_constants/separation = 1691
 [node name="VBoxContainer_p" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="Circulo_Preupuesto" type="TextureRect" parent="HBoxContainer/VBoxContainer_p"]
+[node name="HBox_p" type="HBoxContainer" parent="HBoxContainer/VBoxContainer_p"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Label_p" type="Label" parent="HBoxContainer/VBoxContainer_p/HBox_p"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("23_font")
+theme_override_font_sizes/font_size = 450
+text = "+10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Circulo_Preupuesto" type="TextureRect" parent="HBoxContainer/VBoxContainer_p/HBox_p"]
 visible = false
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
@@ -60,7 +76,22 @@ texture = ExtResource("1_taawk")
 [node name="VBoxContainer_I" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="Circulo_Integridad" type="TextureRect" parent="HBoxContainer/VBoxContainer_I"]
+[node name="HBox_I" type="HBoxContainer" parent="HBoxContainer/VBoxContainer_I"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Label_I" type="Label" parent="HBoxContainer/VBoxContainer_I/HBox_I"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("23_font")
+theme_override_font_sizes/font_size = 450
+text = "+10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Circulo_Integridad" type="TextureRect" parent="HBoxContainer/VBoxContainer_I/HBox_I"]
 visible = false
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
@@ -75,7 +106,22 @@ texture = ExtResource("2_j6ltj")
 [node name="VBoxContainer_D" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="Circulo_Disponibilidad" type="TextureRect" parent="HBoxContainer/VBoxContainer_D"]
+[node name="HBox_D" type="HBoxContainer" parent="HBoxContainer/VBoxContainer_D"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Label_D" type="Label" parent="HBoxContainer/VBoxContainer_D/HBox_D"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("23_font")
+theme_override_font_sizes/font_size = 450
+text = "+10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Circulo_Disponibilidad" type="TextureRect" parent="HBoxContainer/VBoxContainer_D/HBox_D"]
 visible = false
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
@@ -90,7 +136,22 @@ texture = ExtResource("3_lwk15")
 [node name="VBoxContainer_C" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="Circulo_Confidencialidad" type="TextureRect" parent="HBoxContainer/VBoxContainer_C"]
+[node name="HBox_C" type="HBoxContainer" parent="HBoxContainer/VBoxContainer_C"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Label_C" type="Label" parent="HBoxContainer/VBoxContainer_C/HBox_C"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("23_font")
+theme_override_font_sizes/font_size = 450
+text = "+10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Circulo_Confidencialidad" type="TextureRect" parent="HBoxContainer/VBoxContainer_C/HBox_C"]
 visible = false
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2

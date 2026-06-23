@@ -4,7 +4,7 @@ extends Control
 @onready var contenedor_dimensiones = $PanelPerfil/MarginContainer/VBoxContainer/ContenedorDimensiones
 @onready var boton_cerrar = $PanelPerfil/MarginContainer/VBoxContainer/BotonCerrar
 
-const FUENTE_PIXEL = preload("res://assests/Pixelbasel_Font_1_00/Pixelbasel.ttf")
+const FUENTE_PIXEL = preload("res://assests/Fuente/acknowtt.ttf")
 
 func _ready() -> void:
 	panel_perfil.visible = false

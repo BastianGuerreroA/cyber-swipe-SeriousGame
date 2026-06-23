@@ -106,7 +106,18 @@ func _ready():
 				boton_continuar.pressed.disconnect(_on_feedback_continuar_pressed)
 			boton_continuar.pressed.connect(_on_feedback_continuar_pressed)
 	
+	if LsgCore.active_mechanics.get("consultoria", false):
+		presupuesto_actual = 60
+		confidencialidad_actual = 60
+		integridad_actual = 60
+		disponibilidad_actual = 60
+		print("LSG-Core: Aplicada Consultoria Preventiva. Recursos iniciales en 60.")
+		
+	# Emitir los valores iniciales para sincronizar la UI
+	metricas_actualizadas.emit(presupuesto_actual, confidencialidad_actual, integridad_actual, disponibilidad_actual)
+	
 	generar_carta()
+
 	
 	
 func _process(_delta):
@@ -178,22 +189,45 @@ func mostrar_contexto(texto: String):
 		duracion
 	)
 
+func obtener_efectos_modificados(efecto: Dictionary, es_correcta: bool) -> Dictionary:
+	var modificado = efecto.duplicate()
+	
+	# Subsidio de Seguridad (ID 47, Dimensión Social 1):
+	# Reduce en un 20% las pérdidas en Presupuesto en decisiones correctas.
+	if LsgCore.active_mechanics.get("subsidio", false) and es_correcta:
+		if modificado.get("presupuesto", 0) < 0:
+			modificado["presupuesto"] = int(round(modificado["presupuesto"] * 0.8))
+			
+	# Ciberseguro Activo (ID 48, Dimensión Físico 2):
+	# Mitiga a la mitad (50%) todos los daños a la Integridad y Disponibilidad.
+	if LsgCore.active_mechanics.get("ciberseguro", false):
+		if modificado.get("integridad", 0) < 0:
+			modificado["integridad"] = int(round(modificado["integridad"] * 0.5))
+		if modificado.get("disponibilidad", 0) < 0:
+			modificado["disponibilidad"] = int(round(modificado["disponibilidad"] * 0.5))
+			
+	return modificado
+
 func _on_carta_procesada(direccion: float, data):
 	
 	# 1. Determinar qué efecto usar según hacia dónde deslizó (-1.0 es Izquierda)
-	var efecto = data["efecto_izquierda"] if direccion == -1.0 else data["efecto_derecha"]
+	var efecto_base = data["efecto_izquierda"] if direccion == -1.0 else data["efecto_derecha"]
+	var es_correcta = (direccion == data["correcto"])
 	
-	# 2. Aplicar las sumas/restas y evitar que baje de 0 o pase de 100 con 'clamp'
+	# 2. Aplicar modificadores de mecánicas LSG
+	var efecto = obtener_efectos_modificados(efecto_base, es_correcta)
+	
+	# 3. Aplicar las sumas/restas y evitar que baje de 0 o pase de 100 con 'clamp'
 	presupuesto_actual = clamp(presupuesto_actual + efecto["presupuesto"], 0, 100)
 	confidencialidad_actual = clamp(confidencialidad_actual + efecto["confidencialidad"], 0, 100)
 	integridad_actual = clamp(integridad_actual + efecto["integridad"], 0, 100)
 	disponibilidad_actual = clamp(disponibilidad_actual + efecto["disponibilidad"], 0, 100)
 	
-	# 3. Avisar a los iconos para que cambien las imágenes
+	# 4. Avisar a los iconos para que cambien las imágenes
 	metricas_actualizadas.emit(presupuesto_actual, confidencialidad_actual, integridad_actual, disponibilidad_actual)
 
 	var correcta = true
-	# 4. Lógica original del Puntaje de Score
+	# 5. Lógica original del Puntaje de Score
 	if direccion == data["correcto"]:
 		print("Respuesta correcta")
 		var contador = get_node_or_null("../CanvasLayer/MarginContainer/ContadorScore")
@@ -257,15 +291,15 @@ func _on_feedback_continuar_pressed() -> void:
 func _on_intencion_decision(estado: int, data):
 	var efecto = null
 	
-	if estado == -1: # Deslizando a la Izquierda
-		efecto = data["efecto_izquierda"]
-	elif estado == 1: # Deslizando a la Derecha
-		efecto = data["efecto_derecha"]
-	# Si estado es 0, efecto queda en null (apagará los círculos)
+	if estado != 0:
+		var efecto_base = data["efecto_izquierda"] if estado == -1 else data["efecto_derecha"]
+		var es_correcta = (estado == int(data["correcto"]))
+		efecto = obtener_efectos_modificados(efecto_base, es_correcta)
 	
 	var nodo_iconos = get_node_or_null("../FondoCarta/TextureRect/Iconos")
 	if nodo_iconos and nodo_iconos.has_method("mostrar_indicadores"):
 		nodo_iconos.mostrar_indicadores(efecto)
+
 
 func ganar_juego() -> void:
 	CapsulaManager.registrar_fin_de_juego(true)
@@ -319,3 +353,25 @@ func chequear_derrota() -> bool:
 		perder_juego()
 		return true
 	return false
+
+# Restaura la métrica fallida a 50, limpia el estado de fallo y reanuda el flujo del juego
+func revivir_jugador() -> void:
+	var fallida = CapsulaManager.metrica_fallida
+	print("LSG-Core: Reviviendo jugador. Restaurando metrica fallida '", fallida, "' a 50.")
+	match fallida:
+		"presupuesto":
+			presupuesto_actual = 50
+		"confidencialidad":
+			confidencialidad_actual = 50
+		"integridad":
+			integridad_actual = 50
+		"disponibilidad":
+			disponibilidad_actual = 50
+			
+	CapsulaManager.metrica_fallida = ""
+	
+	# Actualizar UI de métricas e iconos
+	metricas_actualizadas.emit(presupuesto_actual, confidencialidad_actual, integridad_actual, disponibilidad_actual)
+	
+	# Continuar partida
+	generar_carta()

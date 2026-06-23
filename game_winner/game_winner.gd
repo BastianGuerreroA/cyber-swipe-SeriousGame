@@ -24,8 +24,10 @@ func _ready() -> void:
 # "Reintentar" -> Carga de nuevo la escena del juego
 func _on_reintentar_pressed() -> void:
 	get_tree().paused = false
+	LsgCore.reset_active_mechanics()
 	get_tree().change_scene_to_file("res://EscenaPrincipal/escena_principal.tscn")
 
 func _on_exit_game_pressed() -> void:
 	get_tree().paused = false
+	LsgCore.reset_active_mechanics()
 	get_tree().change_scene_to_packed(escena_capsulas)

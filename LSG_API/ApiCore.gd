@@ -11,7 +11,26 @@ const GAME_ID = 54 # ID de CyberSwipe asignado por la API
 
 var active_session_id: int = -1
 
+var active_mechanics: Dictionary = {
+	"salvavidas": false,
+	"consultoria": false,
+	"analisis": false,
+	"subsidio": false,
+	"ciberseguro": false
+}
+
+func reset_active_mechanics() -> void:
+	active_mechanics = {
+		"salvavidas": false,
+		"consultoria": false,
+		"analisis": false,
+		"subsidio": false,
+		"ciberseguro": false
+	}
+	print("LSG-Core: Ventajas de la ronda reiniciadas.")
+
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	# Evitamos el cierre inmediato de la aplicación para poder reportar el fin de sesión
 	get_tree().set_auto_accept_quit(false)
 	
@@ -57,6 +76,7 @@ func start_session() -> void:
 	}
 	
 	var http = HTTPRequest.new()
+	http.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(http)
 	
 	var error = http.request(url, headers, HTTPClient.METHOD_POST, JSON.stringify(payload))
@@ -97,6 +117,7 @@ func end_session() -> void:
 	])
 	
 	var http = HTTPRequest.new()
+	http.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(http)
 	
 	var error = http.request(url, headers, HTTPClient.METHOD_PATCH, "{}")
@@ -129,6 +150,7 @@ func get_points_balance() -> void:
 	var headers = PackedStringArray(["Authorization: Bearer " + LsgAuth.access_token])
 	
 	var http = HTTPRequest.new()
+	http.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(http)
 	
 	var error = http.request(url, headers, HTTPClient.METHOD_GET, "")
@@ -174,6 +196,7 @@ func redeem_mechanic(mechanic_id: int, dimension_id: int, amount: int) -> void:
 	}
 	
 	var http = HTTPRequest.new()
+	http.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(http)
 	
 	var error = http.request(url, headers, HTTPClient.METHOD_POST, JSON.stringify(payload))
@@ -199,7 +222,7 @@ func redeem_mechanic(mechanic_id: int, dimension_id: int, amount: int) -> void:
 		print("LSG-Core: Canje exitoso.")
 		redeem_completed.emit(true, response_data)
 	else:
-		print("LSG-Core: Error de canje en el servidor (Código ", response_code, ")")
+		print("LSG-Core: Error de canje en el servidor (Codigo ", response_code, "): ", response_data)
 		redeem_completed.emit(false, response_data)
 
 # Consultar puntos y atributos multidimensionales del jugador
@@ -211,6 +234,7 @@ func get_attributes_points() -> void:
 	var headers = PackedStringArray(["Authorization: Bearer " + LsgAuth.access_token])
 	
 	var http = HTTPRequest.new()
+	http.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(http)
 	
 	var error = http.request(url, headers, HTTPClient.METHOD_GET, "")
