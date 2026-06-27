@@ -7,25 +7,27 @@ extends PanelContainer
 
 const FUENTE_PIXEL = preload("res://assests/Fuente/acknowtt.ttf")
 
-# 1-a-1 Mappings: Cada ventaja tiene una única dimensión conceptual
-const MECANICAS_DATA = [
+# 1-a-1 Mappings: Cada ventaja tiene una única dimensión de atributo base conceptual
+var MECANICAS_DATA = [
 	{
 		"id": 45,
 		"nombre": "Consultoria Preventiva",
 		"descripcion": "Comienza la partida con +10 puntos extra en todos los recursos (60 en lugar de 50).",
 		"costo": 25,
-		"dimension_id": 4, # Mental
+		"dimension_id": 4, # Mental (Valor por defecto)
 		"dimension_nombre": "Mental",
-		"key": "consultoria"
+		"key": "consultoria",
+		"attribute_id": 4
 	},
 	{
 		"id": 46,
 		"nombre": "Analisis de Impacto",
 		"descripcion": "Revela predictivamente el valor exacto de los cambios de recursos al arrastrar la carta.",
 		"costo": 40,
-		"dimension_id": 2, # Lingüística (5), temporalmente se deja en fisico (2) debido a que el lenguistico esta mal configurado en LSG.
-		"dimension_nombre": "Linguistico",
-		"key": "analisis"
+		"dimension_id": 3, #Afectivo
+		"dimension_nombre": "Afectivo",
+		"key": "analisis",
+		"attribute_id": 3
 	},
 	{
 		"id": 47,
@@ -34,7 +36,8 @@ const MECANICAS_DATA = [
 		"costo": 30,
 		"dimension_id": 1, # Social
 		"dimension_nombre": "Social",
-		"key": "subsidio"
+		"key": "subsidio",
+		"attribute_id": 1
 	},
 	{
 		"id": 48,
@@ -43,11 +46,12 @@ const MECANICAS_DATA = [
 		"costo": 35,
 		"dimension_id": 2, # Físico
 		"dimension_nombre": "Fisico",
-		"key": "ciberseguro"
+		"key": "ciberseguro",
+		"attribute_id": 2
 	}
 ]
 
-var real_balances: Dictionary = {}      # Saldos reales en base a attributes/points
+var real_balances: Dictionary = {}      # Saldos reales indexados por id_point_dimension
 var virtual_balances: Dictionary = {}   # Saldos virtuales simulando las compras locales
 var selected_mechanics: Dictionary = {}  # Estado local de selección: { "key": bool }
 
@@ -56,25 +60,42 @@ func _ready() -> void:
 	for item in MECANICAS_DATA:
 		selected_mechanics[item["key"]] = false
 		
-	# Conectamos las señales del núcleo de LSG
-	LsgCore.attributes_loaded.connect(_on_attributes_loaded)
+	# Conectamos las señales del núcleo de LSG para balance por dimensión (real-time operacional)
+	LsgCore.balance_loaded.connect(_on_balance_loaded)
 	
 	# Solicitamos los balances al servidor
 	if LsgAuth.logged_in:
-		LsgCore.get_attributes_points()
+		LsgCore.get_points_balance()
 
-# Callback al recibir los balances de LSG
-func _on_attributes_loaded(attributes: Array) -> void:
+# Callback al recibir los balances por dimensión desde la API
+func _on_balance_loaded(balances: Array) -> void:
 	real_balances.clear()
-	# Inicializamos por defecto todas las dimensiones en 0
-	for item in MECANICAS_DATA:
-		real_balances[item["dimension_id"]] = 0
+	
+	# Mapeo temporal para encontrar qué dimension_id le corresponde a cada attribute_id base
+	var attribute_to_dimension: Dictionary = {}
+	var dimension_to_balance: Dictionary = {}
+	
+	for item in balances:
+		var attr_id = item.get("id_attributes")
+		var subattr_id = item.get("id_subattributes")
+		var dim_id = int(item.get("id_point_dimension", -1))
+		var balance_val = int(item.get("balance", 0))
 		
-	# Llenamos con los saldos reales de la respuesta de la API
-	for item in attributes:
-		var attr_id = int(item.get("id_attributes", -1))
-		var balance = int(item.get("balance_ledger", 0))
-		real_balances[attr_id] = balance
+		# Si es una dimensión base (id_attributes no es nulo e id_subattributes es nulo)
+		if attr_id != null and (subattr_id == null or typeof(subattr_id) == TYPE_NIL):
+			var attr_id_int = int(attr_id)
+			attribute_to_dimension[attr_id_int] = dim_id
+			dimension_to_balance[dim_id] = balance_val
+			
+	# Actualizamos dinámicamente las dimensiones reales de cada ventaja
+	for item in MECANICAS_DATA:
+		var attr_id = item["attribute_id"]
+		if attribute_to_dimension.has(attr_id):
+			item["dimension_id"] = attribute_to_dimension[attr_id]
+			
+		var current_dim_id = item["dimension_id"]
+		# Si no vino en la respuesta, significa que tiene 0 movimientos y por ende balance 0
+		real_balances[current_dim_id] = dimension_to_balance.get(current_dim_id, 0)
 		
 	virtual_balances = real_balances.duplicate()
 	_actualizar_tienda_ui()
@@ -205,6 +226,7 @@ func _on_boton_jugar_pressed() -> void:
 			var exito = await _realizar_canje_en_servidor(item["id"], item["dimension_id"], item["costo"])
 			if exito:
 				LsgCore.active_mechanics[key] = true
+				LsgLogger.log_redemption(item["nombre"], item["costo"], item["dimension_id"])
 				print("LSG-Core: Canje exitoso en servidor para ventaja: ", key)
 			else:
 				transacciones_exitosas = false

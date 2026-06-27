@@ -72,15 +72,15 @@ curl -X GET 'https://lsg.diinf.usach.cl/lsg-core-api/health/full' \
 {
   "status": "ok",
   "checks": {
-    "database": {"status": "ok"},
-    "views": [
-      {"name": "v_points_balance", "status": "ok"},
-      {"name": "v_ic2_latest", "status": "ok"}
-    ],
-    "feature_tables": [
-      {"name": "ic2_result", "status": "ok"},
-      {"name": "offline_points_queue", "status": "ok"}
-    ]
+	"database": {"status": "ok"},
+	"views": [
+	  {"name": "v_points_balance", "status": "ok"},
+	  {"name": "v_ic2_latest", "status": "ok"}
+	],
+	"feature_tables": [
+	  {"name": "ic2_result", "status": "ok"},
+	  {"name": "offline_points_queue", "status": "ok"}
+	]
   }
 }
 ```
@@ -126,14 +126,14 @@ curl -X GET 'https://lsg.diinf.usach.cl/lsg-core-api/players?page=1&page_size=20
 ```json
 {
   "items": [
-    {
-      "id_players": 46,
-      "name": "Alejandro Aldea",
-      "email": "alejandro.aldea@usach.cl",
-      "age": 28,
-      "created_at": "2026-04-01T10:00:00",
-      "roles": ["researcher"]
-    }
+	{
+	  "id_players": 46,
+	  "name": "Alejandro Aldea",
+	  "email": "alejandro.aldea@usach.cl",
+	  "age": 28,
+	  "created_at": "2026-04-01T10:00:00",
+	  "roles": ["researcher"]
+	}
   ],
   "page": 1,
   "page_size": 20,
@@ -187,10 +187,10 @@ curl -X GET 'https://lsg.diinf.usach.cl/lsg-core-api/players/46/games' \
 ```json
 [
   {
-    "id_videogame": 14,
-    "videogame_name": "Cities: Skylines",
-    "points_spent": 95,
-    "seconds_with_lsg": 7200
+	"id_videogame": 14,
+	"videogame_name": "Cities: Skylines",
+	"points_spent": 95,
+	"seconds_with_lsg": 7200
   }
 ]
 ```
@@ -392,12 +392,12 @@ curl -X GET 'https://lsg.diinf.usach.cl/lsg-core-api/videogames/8/mechanics' \
 ```json
 [
   {
-    "id_modifiable_mechanic_videogame": 2,
-    "id_videogame": 8,
-    "options": {"max_level": 5, "cost_per_level": 100},
-    "mechanic_name": "Faster Peasants",
-    "mechanic_description": "Aumenta velocidad de los campesinos",
-    "mechanic_type": "nerf"
+	"id_modifiable_mechanic_videogame": 2,
+	"id_videogame": 8,
+	"options": {"max_level": 5, "cost_per_level": 100},
+	"mechanic_name": "Faster Peasants",
+	"mechanic_description": "Aumenta velocidad de los campesinos",
+	"mechanic_type": "nerf"
   }
 ]
 ```
@@ -750,18 +750,18 @@ curl -X POST 'https://lsg.diinf.usach.cl/lsg-core-api/ic2/compute' \
   "version_tag": "v1.0",
   "window": {"start": "2026-05-01", "end": "2026-05-07"},
   "indices": {
-    "Icf": 0.7234,
-    "Isfg": 0.6891,
-    "Ipma": 0.7912,
-    "Itd": 0.8103,
-    "IC_fis": 0.7055,
-    "IC_ment": 0.8006,
-    "IC_LSG": 0.7521,
-    "IAR": 0.6812
+	"Icf": 0.7234,
+	"Isfg": 0.6891,
+	"Ipma": 0.7912,
+	"Itd": 0.8103,
+	"IC_fis": 0.7055,
+	"IC_ment": 0.8006,
+	"IC_LSG": 0.7521,
+	"IAR": 0.6812
   },
   "rules_triggered": ["R1", "R2", "R3"],
   "admissibility": {
-    "Icf": true, "Isfg": true, "Ipma": true, "Itd": true
+	"Icf": true, "Isfg": true, "Ipma": true, "Itd": true
   },
   "id_ic2_result": 5
 }
@@ -837,19 +837,19 @@ curl -X POST 'https://lsg.diinf.usach.cl/lsg-core-api/offline/sync' \
   -H 'Authorization: Bearer <token>' \
   -H 'Content-Type: application/json' \
   -d '{
-    "player_id": 46,
-    "game_id": 14,
-    "events": [
-      {
-        "client_ref": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-        "client_generated_at": "2026-05-06T22:15:00+00:00",
-        "point_dimension_id": 1,
-        "direction": "CREDIT",
-        "amount": 45,
-        "source_type": "OFFLINE_GAME",
-        "payload": {"trigger": "quest_completed", "quest_id": "boss_cave"}
-      }
-    ]
+	"player_id": 46,
+	"game_id": 14,
+	"events": [
+	  {
+		"client_ref": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"client_generated_at": "2026-05-06T22:15:00+00:00",
+		"point_dimension_id": 1,
+		"direction": "CREDIT",
+		"amount": 45,
+		"source_type": "OFFLINE_GAME",
+		"payload": {"trigger": "quest_completed", "quest_id": "boss_cave"}
+	  }
+	]
   }'
 ```
 

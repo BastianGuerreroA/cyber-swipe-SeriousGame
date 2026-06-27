@@ -44,6 +44,9 @@ func _notification(what: int) -> void:
 
 func _clean_up_and_exit() -> void:
 	print("LSG-Core: Detectado intento de cierre del juego.")
+	if LsgLogger.is_active:
+		print("LSG-Core: Enviando reporte de telemetria acumulado antes de salir...")
+		await LsgLogger.submit_session_log()
 	if active_session_id != -1:
 		print("LSG-Core: Cerrando sesión activa en servidor antes de salir...")
 		await end_session()
@@ -52,9 +55,13 @@ func _clean_up_and_exit() -> void:
 # Inicia la sesión global del juego cuando el usuario se loguea
 func _on_user_login_success(_username: String) -> void:
 	start_session()
+	LsgLogger.start_session()
 
 # Cierra la sesión global del juego si el usuario cierra su sesión voluntariamente
 func _on_user_logged_out() -> void:
+	if LsgLogger.is_active:
+		print("LSG-Core: Enviando reporte de telemetria acumulado al cerrar sesion...")
+		await LsgLogger.submit_session_log()
 	if active_session_id != -1:
 		end_session()
 

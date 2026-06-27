@@ -50,6 +50,7 @@ func _on_redeem_completed(success: bool, response_data: Dictionary) -> void:
 	
 	if success:
 		print("LSG-Core: Salvavidas comprado con éxito. Reanudando partida...")
+		LsgLogger.log_redemption("Salvavidas", 50, 3)
 		
 		# Buscar el CardManager
 		var card_manager = get_node_or_null("/root/EscenaPrincipal/CardManager")

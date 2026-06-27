@@ -27,6 +27,7 @@ buses/default_bus_layout=""
 CapsulaManager="*res://capsula_manager.gd"
 LsgAuth="*res://LSG_API/ApiAuth.gd"
 LsgCore="*res://LSG_API/ApiCore.gd"
+LsgLogger="*res://LSG_API/LsgLogger.gd"
 
 [display]
 

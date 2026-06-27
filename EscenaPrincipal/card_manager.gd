@@ -303,6 +303,7 @@ func _on_intencion_decision(estado: int, data):
 
 func ganar_juego() -> void:
 	CapsulaManager.registrar_fin_de_juego(true)
+	LsgLogger.log_game_result(CapsulaManager.capsula_activa_id, "win", CapsulaManager.puntaje_ronda_actual)
 	
 	# Buscamos el CanvasLayer del HUD
 	var canvas = get_node_or_null("../CanvasLayer")
@@ -322,6 +323,7 @@ func ganar_juego() -> void:
 
 func perder_juego() -> void:
 	CapsulaManager.registrar_fin_de_juego(false)
+	LsgLogger.log_game_result(CapsulaManager.capsula_activa_id, "lose", CapsulaManager.puntaje_ronda_actual)
 	
 	var canvas = get_node_or_null("../CanvasLayer")
 	if canvas:
