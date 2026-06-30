@@ -8,6 +8,16 @@ var total_points_spent: int = 0
 var redemptions_count: int = 0
 var is_active: bool = false
 
+# Mapeo dinámico y estático de id_point_dimension a dimension_code
+var dimension_code_map: Dictionary = {
+	1: "SOCIAL_BASE",
+	2: "FISICO_BASE",
+	3: "AFECTIVO_BASE",
+	4: "MENTAL_BASE",
+	6: "CONDICION_FISICA",
+	11: "REG_EMOCIONAL"
+}
+
 # Inicializar y configurar el modo del proceso
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -23,6 +33,12 @@ func start_session() -> void:
 	
 	log_event("session_start", {})
 	print("LSG-Logger: Sesion de telemetria iniciada localmente a las ", session_start_time)
+
+# Resolver el código de la dimensión
+func get_dimension_code(dimension_id: int) -> String:
+	if dimension_code_map.has(dimension_id):
+		return dimension_code_map[dimension_id]
+	return "DIMENSION_" + str(dimension_id)
 
 # Registrar un evento genérico en el timeline
 func log_event(type: String, data: Dictionary) -> void:
@@ -45,10 +61,31 @@ func log_redemption(mechanic_name: String, cost: int, dimension_id: int) -> void
 	total_points_spent += cost
 	redemptions_count += 1
 	
+	var dim_code = get_dimension_code(dimension_id)
+	
 	log_event("mechanic_redeemed", {
 		"mechanic": mechanic_name,
 		"cost": cost,
-		"dimension_id": dimension_id
+		"dimension_id": dimension_id,
+		"dimension_code": dim_code
+	})
+
+# Helper para registrar la ganancia de puntos
+func log_points_earned(amount: int, reason: String, dimension_id: int, dimension_code: String = "") -> void:
+	if not is_active:
+		return
+		
+	total_points_earned += amount
+	
+	var dim_code = dimension_code
+	if dim_code.is_empty():
+		dim_code = get_dimension_code(dimension_id)
+		
+	log_event("points_earned", {
+		"amount": amount,
+		"reason": reason,
+		"dimension_id": dimension_id,
+		"dimension_code": dim_code
 	})
 
 # Helper para registrar el fin de una partida (victoria o derrota)

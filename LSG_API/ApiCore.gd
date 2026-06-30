@@ -5,6 +5,7 @@ signal session_ended
 signal redeem_completed(success: bool, response_data: Dictionary)
 signal balance_loaded(balances: Array)
 signal attributes_loaded(attributes: Array)
+signal adjust_completed(success: bool, response_data: Dictionary)
 
 const BASE_URL = "https://lsg.diinf.usach.cl/lsg-core-api"
 const GAME_ID = 54 # ID de CyberSwipe asignado por la API
@@ -36,7 +37,6 @@ func _ready() -> void:
 	
 	# Escuchamos los eventos de login para iniciar sesión automáticamente
 	LsgAuth.login_success.connect(_on_user_login_success)
-	LsgAuth.logging_out.connect(_on_user_logged_out)
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
@@ -56,14 +56,6 @@ func _clean_up_and_exit() -> void:
 func _on_user_login_success(_username: String) -> void:
 	start_session()
 	LsgLogger.start_session()
-
-# Cierra la sesión global del juego si el usuario cierra su sesión voluntariamente
-func _on_user_logged_out() -> void:
-	if LsgLogger.is_active:
-		print("LSG-Core: Enviando reporte de telemetria acumulado al cerrar sesion...")
-		await LsgLogger.submit_session_log()
-	if active_session_id != -1:
-		end_session()
 
 # Petición para INICIAR la sesión global
 func start_session() -> void:
@@ -177,6 +169,13 @@ func get_points_balance() -> void:
 		var json = JSON.new()
 		if json.parse(body.get_string_from_utf8()) == OK:
 			var balances = json.data as Array
+			# Poblar dinámicamente el mapeo de códigos de dimensión en el logger
+			for item in balances:
+				if item is Dictionary:
+					var dim_id = int(item.get("id_point_dimension", -1))
+					var dim_code = item.get("dimension_code", "")
+					if dim_id != -1 and not dim_code.is_empty():
+						LsgLogger.dimension_code_map[dim_id] = dim_code
 			balance_loaded.emit(balances)
 		else:
 			print("LSG-Core: Error parseando balances.")
@@ -266,3 +265,56 @@ func get_attributes_points() -> void:
 			print("LSG-Core: Error parseando atributos/puntos.")
 	else:
 		print("LSG-Core: Error al cargar atributos/puntos (Código ", response_code, ").")
+
+# Cargar puntos mediante API
+func adjust_points(attribute_id: int, direction: String, amount: int, reason: String) -> void:
+	if not LsgAuth.logged_in:
+		adjust_completed.emit(false, {"error": "Usuario no autenticado"})
+		return
+		
+	var url = BASE_URL + "/players/" + str(LsgAuth.player_id) + "/points/adjust"
+	var headers = PackedStringArray([
+		"Authorization: Bearer " + LsgAuth.access_token,
+		"Content-Type: application/json"
+	])
+	
+	var payload = {
+		"attribute_id": attribute_id,
+		"direction": direction,
+		"amount": amount,
+		"reason": reason,
+		"videogame_id": GAME_ID
+	}
+	
+	var http = HTTPRequest.new()
+	http.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(http)
+	
+	var error = http.request(url, headers, HTTPClient.METHOD_POST, JSON.stringify(payload))
+	if error != OK:
+		adjust_completed.emit(false, {"error": "Error de red al iniciar ajuste de puntos"})
+		remove_child(http)
+		http.queue_free()
+		return
+		
+	var response = await http.request_completed
+	remove_child(http)
+	http.queue_free()
+	
+	var response_code = response[1]
+	var body = response[3]
+	
+	var json = JSON.new()
+	var response_data = {}
+	if json.parse(body.get_string_from_utf8()) == OK:
+		response_data = json.data
+		
+	if response_code == 200 or response_code == 201:
+		print("LSG-Core: Ajuste de puntos exitoso.")
+		var dim_id = int(response_data.get("id_point_dimension", 0))
+		var dim_code = response_data.get("dimension_code", "")
+		LsgLogger.log_points_earned(amount, reason, dim_id, dim_code)
+		adjust_completed.emit(true, response_data)
+	else:
+		print("LSG-Core: Error de ajuste de puntos en el servidor (Codigo ", response_code, "): ", response_data)
+		adjust_completed.emit(false, response_data)

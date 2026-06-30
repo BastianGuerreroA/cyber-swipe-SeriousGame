@@ -128,8 +128,16 @@ func fetch_whoami() -> void:
 
 # Cerrar sesión del usuario localmente
 func logout() -> void:
-	# Emitimos la señal antes de limpiar el token para que ApiCore pueda cerrar la sesión activa
+	# Emitimos la señal antes de limpiar el token para que cualquier componente visual se entere
 	logging_out.emit()
+	
+	if LsgLogger.is_active:
+		print("LSG-Auth: Enviando reporte de telemetria acumulado al cerrar sesion...")
+		await LsgLogger.submit_session_log()
+		
+	if LsgCore.active_session_id != -1:
+		print("LSG-Auth: Cerrando sesion activa en el servidor...")
+		await LsgCore.end_session()
 	
 	access_token = ""
 	logged_in = false

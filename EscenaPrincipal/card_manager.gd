@@ -302,8 +302,21 @@ func _on_intencion_decision(estado: int, data):
 
 
 func ganar_juego() -> void:
+	# 1. Verificar si la cápsula ya fue completada anteriormente (antes de registrar el nuevo progreso)
+	var ya_completada = CapsulaManager.capsula_activa_id < CapsulaManager.progreso_general
+	
 	CapsulaManager.registrar_fin_de_juego(true)
 	LsgLogger.log_game_result(CapsulaManager.capsula_activa_id, "win", CapsulaManager.puntaje_ronda_actual)
+	
+	# Acreditación de puntos reales en LSG (Dimensión Mental, attribute_id = 4)
+	# Solo si la cápsula NO fue completada anteriormente
+	if not ya_completada:
+		# Fórmula de incentivo: 15 puntos base por completar + 2 puntos por cada respuesta correcta.
+		var puntos_a_cargar = 15 + (CapsulaManager.puntaje_ronda_actual * 2)
+		print("LSG-Core: Intentando acreditar ", puntos_a_cargar, " puntos en Mental por completar capsula.")
+		LsgCore.adjust_points(4, "CREDIT", puntos_a_cargar, "capsule_completed")
+	else:
+		print("LSG-Core: Capsula ya completada anteriormente. No se acreditan puntos de recompensa.")
 	
 	# Buscamos el CanvasLayer del HUD
 	var canvas = get_node_or_null("../CanvasLayer")
