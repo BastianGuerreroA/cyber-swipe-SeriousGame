@@ -255,7 +255,27 @@ func _on_carta_procesada(direccion: float, data):
 	if not correcta and feedback_menu:
 		var rich_explicacion = feedback_menu.get_node_or_null("PanelContainer/MarginContainer/VBoxContainer/Explicacion")
 		if rich_explicacion:
-			rich_explicacion.text = data.get("explicacion", "No hay explicación disponible.")
+			var txt = "[b]¿Qué falló en tu decisión?[/b]\n"
+			txt += data.get("explicacion", "No hay explicación disponible.") + "\n\n"
+			
+			# Detectar métricas afectadas negativamente
+			var metricas_afectadas = []
+			for m in ["presupuesto", "confidencialidad", "integridad", "disponibilidad"]:
+				if efecto.get(m, 0) < 0:
+					metricas_afectadas.append(m)
+			
+			if not metricas_afectadas.is_empty():
+				txt += "[b][color=#ff5555]Recursos Afectados Negativamente:[/color][/b]\n"
+				var metricas_nombres_es = {
+					"presupuesto": "Presupuesto",
+					"confidencialidad": "Confidencialidad",
+					"integridad": "Integridad",
+					"disponibilidad": "Disponibilidad"
+				}
+				for m in metricas_afectadas:
+					txt += "• " + metricas_nombres_es[m] + "\n"
+			
+			rich_explicacion.text = txt
 		
 		# Ocultar botones HUD de fondo mientras se muestra la pausa
 		var boton_pausa = get_node_or_null("../CanvasLayer/MarginContainer/BotonPausa")
