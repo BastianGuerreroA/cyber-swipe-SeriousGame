@@ -35,43 +35,13 @@ confidencialidad = Array[Texture2D]([ExtResource("17_hfvkt"), ExtResource("18_ld
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = -160.99998
-offset_top = -24.999998
-offset_right = 10643.0
+offset_left = -144.475
+offset_top = -25.0
+offset_right = 8117.525
 offset_bottom = 1303.0
 scale = Vector2(0.035, 0.035)
 size_flags_horizontal = 4
-theme_override_constants/separation = 1691
-
-[node name="VBoxContainer_p" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="HBox_p" type="HBoxContainer" parent="HBoxContainer/VBoxContainer_p"]
-layout_mode = 2
-theme_override_constants/separation = 40
-alignment = 1
-
-[node name="Label_p" type="Label" parent="HBoxContainer/VBoxContainer_p/HBox_p"]
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_fonts/font = ExtResource("23_font")
-theme_override_font_sizes/font_size = 450
-text = "+10"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Circulo_Preupuesto" type="TextureRect" parent="HBoxContainer/VBoxContainer_p/HBox_p"]
-visible = false
-custom_minimum_size = Vector2(300, 300)
-layout_mode = 2
-texture = ExtResource("22_o00g7")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Presupuesto" type="TextureRect" parent="HBoxContainer/VBoxContainer_p"]
-layout_mode = 2
-texture = ExtResource("1_taawk")
+theme_override_constants/separation = 2595
 
 [node name="VBoxContainer_I" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
