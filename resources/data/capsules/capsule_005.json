@@ -1,0 +1,210 @@
+{
+    "id": 5,
+    "titulo": "Ingeniería Social y Dispositivos Físicos",
+    "subtitulo": "Descubre las trampas de ingeniería social (Llamadas falsas, USBs tirados y visitas sospechosas).",
+    "mini_descripcion": "Aprende a proteger las dependencias físicas de tu empresa y el factor humano contra técnicas de manipulación y engaño.",
+    "contenido_estudio": "Los cibercriminales a menudo atacan a las personas, no a los computadores.\n\n[b]Formas Comunes de Engaño:[/b]\n* [b]Baiting (Cebo)[/b]: Pendrives abandonados en áreas comunes listos para infectar tu máquina.\n* [b]Suplantación Telefónica (Vishing)[/b]: Llamadas urgentes pidiendo códigos de verificación SMS.\n* [b]Tailgating (Colado)[/b]: Personas sin credencial que entran a tus dependencias aprovechando puertas abiertas.",
+    "estado": "Disponible",
+    "cartas": [
+        {
+            "imagen": 0,
+            "contexto": "Un empleado de bodega encuentra un pendrive sin logo botado en el estacionamiento y te lo trae para ver qué tiene adentro.",
+            "texto_izquierda": "Conectarlo para revisar",
+            "texto_derecha": "Destruir / Botar",
+            "correcto": 1.0,
+            "explicacion": "La técnica del 'Cebo' consiste en dejar USBs maliciosos tirados. Al conectarlos, el virus se instala en silencio sin aviso.",
+            "efecto_izquierda": {
+                "presupuesto": -20,
+                "confidencialidad": -30,
+                "integridad": -35,
+                "disponibilidad": -25
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": 10,
+                "integridad": 15,
+                "disponibilidad": 10
+            }
+        },
+        {
+            "imagen": 1,
+            "contexto": "Llaman al teléfono corporativo aduciendo ser del soporte de Movistar. Piden un código SMS enviado a tu móvil para actualizar tu línea.",
+            "texto_izquierda": "Facilitar código SMS",
+            "texto_derecha": "Cortar y llamar al oficial",
+            "correcto": 1.0,
+            "explicacion": "Los ciberdelincuentes usan llamadas falsas para capturar códigos SMS y robar tus cuentas corporativas de WhatsApp o correo.",
+            "efecto_izquierda": {
+                "presupuesto": 0,
+                "confidencialidad": -40,
+                "integridad": -15,
+                "disponibilidad": -20
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": 15,
+                "integridad": 0,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 0,
+            "contexto": "Entras a la oficina con tu tarjeta de acceso y un desconocido con cajas en las manos te pide sostener la puerta para entrar sin marcar.",
+            "texto_izquierda": "Sostener puerta",
+            "texto_derecha": "Pedir que pase por recepción",
+            "correcto": 1.0,
+            "explicacion": "El 'Tailgating' burla la seguridad física. Dejar entrar extraños sin validar expone computadores y servidores a robos.",
+            "efecto_izquierda": {
+                "presupuesto": 0,
+                "confidencialidad": -25,
+                "integridad": -20,
+                "disponibilidad": 0
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": 15,
+                "integridad": 0,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 1,
+            "contexto": "Llega un supuesto fiscalizador municipal sin credencial visible que exige entrar a la bodega de servidores 'para inspeccionar los cables'.",
+            "texto_izquierda": "Dejarlo pasar solo",
+            "texto_derecha": "Exigir credencial oficial",
+            "correcto": 1.0,
+            "explicacion": "La suplantación de autoridades permite el robo de equipos físicos de respaldo o la instalación de llaves de red físicas.",
+            "efecto_izquierda": {
+                "presupuesto": -10,
+                "confidencialidad": -35,
+                "integridad": -30,
+                "disponibilidad": -25
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": 15,
+                "integridad": 10,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 0,
+            "contexto": "Te envían una encuesta ofreciendo regalar una cafetera premium para la oficina a cambio de los nombres de usuario y mails de todo tu personal.",
+            "texto_izquierda": "Completar la encuesta",
+            "texto_derecha": "Rechazar oferta",
+            "correcto": 1.0,
+            "explicacion": "Regalar listas de correos corporativos facilita a los atacantes armar correos de phishing altamente dirigidos.",
+            "efecto_izquierda": {
+                "presupuesto": 0,
+                "confidencialidad": -25,
+                "integridad": 0,
+                "disponibilidad": 0
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": 10,
+                "integridad": 0,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 1,
+            "contexto": "Un despachador dice que debe imprimir una guía de envío. Te entrega un USB pidiendo conectarlo a la contabilidad de la empresa para abrir el documento.",
+            "texto_izquierda": "Conectar USB",
+            "texto_derecha": "Negarse y buscar alternativa",
+            "correcto": 1.0,
+            "explicacion": "Los USBs de desconocidos pueden simular ser teclados (Rubber Ducky) que escriben comandos maliciosos en milisegundos e infectan el PC.",
+            "efecto_izquierda": {
+                "presupuesto": -20,
+                "confidencialidad": -30,
+                "integridad": -35,
+                "disponibilidad": -25
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": 15,
+                "integridad": 15,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 0,
+            "contexto": "Te llaman del 'Soporte del Banco Estado' diciendo que tu token físico está desactualizado y necesitan confirmar tus coordenadas clave para renovarlo.",
+            "texto_izquierda": "Confirmar datos",
+            "texto_derecha": "Colgar e ir al banco",
+            "correcto": 1.0,
+            "explicacion": "Ninguna institución financiera solicita claves ni coordenadas por teléfono. Son campañas de estafa telefónica.",
+            "efecto_izquierda": {
+                "presupuesto": -50,
+                "confidencialidad": -40,
+                "integridad": -20,
+                "disponibilidad": 0
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": 20,
+                "integridad": 0,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 1,
+            "contexto": "Despiden a un administrador de TI con acceso total. Aún mantiene activas sus credenciales corporativas por descuido de RRHH.",
+            "texto_izquierda": "Desactivar hoy mismo",
+            "texto_derecha": "Desactivar el fin de semana",
+            "correcto": -1.0,
+            "explicacion": "No revocar credenciales de ex-empleados inmediatamente expone a la empresa a saboteos internos o exfiltración de datos privados.",
+            "efecto_izquierda": {
+                "presupuesto": -5,
+                "confidencialidad": 25,
+                "integridad": 20,
+                "disponibilidad": 10
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": -30,
+                "integridad": -35,
+                "disponibilidad": -20
+            }
+        },
+        {
+            "imagen": 0,
+            "contexto": "El personal de limpieza realiza el aseo de la oficina técnica con total libertad, incluyendo el cableado del rack principal sin supervisión.",
+            "texto_izquierda": "Capacitar y restringir área",
+            "texto_derecha": "No hacer nada",
+            "correcto": -1.0,
+            "explicacion": "Restringir el acceso físico al hardware crítico previene caídas accidentales de cables de red y robos de discos.",
+            "efecto_izquierda": {
+                "presupuesto": -5,
+                "confidencialidad": 15,
+                "integridad": 15,
+                "disponibilidad": 20
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": 0,
+                "integridad": -15,
+                "disponibilidad": -25
+            }
+        },
+        {
+            "imagen": 1,
+            "contexto": "Tu PYME renueva 5 computadores de oficina. Tu socio propone donar los equipos antiguos tal como están a una escuela vecinal.",
+            "texto_izquierda": "Donarlos de inmediato",
+            "texto_derecha": "Borrado seguro de discos",
+            "correcto": 1.0,
+            "explicacion": "Donar equipos sin realizar borrados seguros de disco permite a terceros recuperar archivos confidenciales e historiales financieros.",
+            "efecto_izquierda": {
+                "presupuesto": 0,
+                "confidencialidad": -35,
+                "integridad": 0,
+                "disponibilidad": 0
+            },
+            "efecto_derecha": {
+                "presupuesto": -5,
+                "confidencialidad": 25,
+                "integridad": 0,
+                "disponibilidad": 0
+            }
+        }
+    ]
+}

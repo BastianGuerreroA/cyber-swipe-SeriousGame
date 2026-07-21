@@ -1,0 +1,210 @@
+{
+	"id": 1,
+	"titulo": "Bloqueo de Pantalla y Credenciales",
+	"subtitulo": "Protege tus dispositivos y accesos con PIN, biometría y claves fuertes.",
+	"mini_descripcion": "Aprende las claves fundamentales para evitar intrusos en tus dispositivos físicos y proteger tus accesos corporativos.",
+	"contenido_estudio": "El bloqueo de pantalla y las contraseñas seguras son tu primera línea de defensa.\n\n[b]Conceptos Clave:[/b]\n* [b]PIN de 6 dígitos[/b]: Mucho más seguro que uno de 4 dígitos (1 millón vs 10 mil combinaciones posibles).\n* [b]Autenticación Multifactor (MFA)[/b]: Añade una segunda capa de seguridad (como un código enviado a tu celular) además de tu contraseña.\n* [b]Principio de Privacidad[/b]: Nunca dejes sesiones administrativas o financieras abiertas si te ausentas de tu puesto de trabajo.",
+	"estado": "Disponible",
+	"cartas": [
+		{
+			"imagen": 0,
+			"contexto": "Un compañero de trabajo te pide tu teléfono desbloqueado para hacer una llamada rápida pero sale de la oficina con él.",
+			"texto_izquierda": "Confiar en él",
+			"texto_derecha": "Pedirle que lo devuelva",
+			"correcto": 1.0,
+			"explicacion": "Nunca dejes tu dispositivo desbloqueado fuera de tu vista, un tercero podría acceder a datos corporativos privados en segundos.",
+			"efecto_izquierda": {
+				"presupuesto": 0,
+				"confidencialidad": -30,
+				"integridad": -10,
+				"disponibilidad": 0
+			},
+			"efecto_derecha": {
+				"presupuesto": 0,
+				"confidencialidad": 10,
+				"integridad": 0,
+				"disponibilidad": 0
+			}
+		},
+		{
+			"imagen": 1,
+			"contexto": "Un nuevo practicante sugiere anotar la clave compartida del servidor en un post-it pegado debajo del teclado para no olvidarla.",
+			"texto_izquierda": "Permitir el post-it",
+			"texto_derecha": "Prohibir post-its",
+			"correcto": 1.0,
+			"explicacion": "Anotar contraseñas en lugares físicos expone las credenciales a cualquier persona o visitante que pase por la oficina.",
+			"efecto_izquierda": {
+				"presupuesto": 0,
+				"confidencialidad": -25,
+				"integridad": 0,
+				"disponibilidad": 0
+			},
+			"efecto_derecha": {
+				"presupuesto": -5,
+				"confidencialidad": 15,
+				"integridad": 0,
+				"disponibilidad": 0
+			}
+		},
+		{
+			"imagen": 0,
+			"contexto": "Al crear tu clave de administrador para el software de facturación, piensas en usar 'Admin2026' para recordarla con facilidad.",
+			"texto_izquierda": "Usar esa clave",
+			"texto_derecha": "Usar gestor de claves",
+			"correcto": 1.0,
+			"explicacion": "Las contraseñas simples y predecibles son vulnerables a ataques de fuerza bruta en cuestión de minutos. Usa claves complejas y gestores de contraseñas.",
+			"efecto_izquierda": {
+				"presupuesto": 0,
+				"confidencialidad": -20,
+				"integridad": -20,
+				"disponibilidad": 0
+			},
+			"efecto_derecha": {
+				"presupuesto": -5,
+				"confidencialidad": 15,
+				"integridad": 10,
+				"disponibilidad": 0
+			}
+		},
+		{
+			"imagen": 1,
+			"contexto": "Recibes un correo sospechoso que te ofrece descargar gratis un gestor de contraseñas premium 'crackeado'.",
+			"texto_izquierda": "Descargarlo gratis",
+			"texto_derecha": "Ignorarlo / Comprar oficial",
+			"correcto": 1.0,
+			"explicacion": "Los instaladores de software pirata suelen contener troyanos diseñados específicamente para robar contraseñas grabadas.",
+			"efecto_izquierda": {
+				"presupuesto": 10,
+				"confidencialidad": -30,
+				"integridad": -25,
+				"disponibilidad": -15
+			},
+			"efecto_derecha": {
+				"presupuesto": -10,
+				"confidencialidad": 15,
+				"integridad": 10,
+				"disponibilidad": 0
+			}
+		},
+		{
+			"imagen": 0,
+			"contexto": "Te vas a almorzar y dejas la sesión del servidor de contabilidad abierta porque volverás en solo 20 minutos.",
+			"texto_izquierda": "Dejarla abierta",
+			"texto_derecha": "Bloquear PC antes de irte",
+			"correcto": 1.0,
+			"explicacion": "Dejar sesiones abiertas permite el acceso físico no autorizado a datos financieros confidenciales de tu PYME.",
+			"efecto_izquierda": {
+				"presupuesto": 0,
+				"confidencialidad": -25,
+				"integridad": -15,
+				"disponibilidad": 0
+			},
+			"efecto_derecha": {
+				"presupuesto": 0,
+				"confidencialidad": 10,
+				"integridad": 5,
+				"disponibilidad": 0
+			}
+		},
+		{
+			"imagen": 1,
+			"contexto": "Un directivo de tu empresa te pide que desactives el bloqueo automático de 5 minutos en su laptop porque 'le molesta escribir el PIN'.",
+			"texto_izquierda": "Desactivar bloqueo",
+			"texto_derecha": "Mantener bloqueo activo",
+			"correcto": 1.0,
+			"explicacion": "El bloqueo automático protege los datos si el equipo es robado o abandonado temporalmente en una zona común.",
+			"efecto_izquierda": {
+				"presupuesto": 0,
+				"confidencialidad": -30,
+				"integridad": 0,
+				"disponibilidad": 0
+			},
+			"efecto_derecha": {
+				"presupuesto": 0,
+				"confidencialidad": 10,
+				"integridad": 0,
+				"disponibilidad": 0
+			}
+		},
+		{
+			"imagen": 0,
+			"contexto": "Te recomiendan implementar doble factor de autenticación (MFA) en los correos corporativos, pero requiere capacitar al personal y gastar tiempo.",
+			"texto_izquierda": "No implementar por ahora",
+			"texto_derecha": "Implementar MFA",
+			"correcto": 1.0,
+			"explicacion": "El MFA previene más del 99% de los secuestros de cuentas, incluso si un atacante adivina o roba la contraseña.",
+			"efecto_izquierda": {
+				"presupuesto": 0,
+				"confidencialidad": -15,
+				"integridad": -15,
+				"disponibilidad": 0
+			},
+			"efecto_derecha": {
+				"presupuesto": -5,
+				"confidencialidad": 20,
+				"integridad": 20,
+				"disponibilidad": 0
+			}
+		},
+		{
+			"imagen": 1,
+			"contexto": "Un socio de la PYME te envía su contraseña personal de correo por Microsoft Teams porque necesita que le subas un archivo urgente.",
+			"texto_izquierda": "Usarla y borrar el chat",
+			"texto_derecha": "Pedirle que lo suba él",
+			"correcto": 1.0,
+			"explicacion": "Compartir contraseñas por aplicaciones de chat deja registros en la nube y rompe las políticas básicas de control de accesos.",
+			"efecto_izquierda": {
+				"presupuesto": 0,
+				"confidencialidad": -15,
+				"integridad": 0,
+				"disponibilidad": 0
+			},
+			"efecto_derecha": {
+				"presupuesto": 0,
+				"confidencialidad": 10,
+				"integridad": 0,
+				"disponibilidad": 0
+			}
+		},
+		{
+			"imagen": 0,
+			"contexto": "El navegador web de la oficina te ofrece autocompletar y 'Guardar todas las contraseñas' de las cuentas del banco de la empresa.",
+			"texto_izquierda": "Guardar en navegador",
+			"texto_derecha": "No guardar contraseñas",
+			"correcto": 1.0,
+			"explicacion": "Los navegadores no protegen las claves de forma robusta por defecto. Si un malware entra al PC, puede exportar todas las claves guardadas al instante.",
+			"efecto_izquierda": {
+				"presupuesto": 0,
+				"confidencialidad": -25,
+				"integridad": -20,
+				"disponibilidad": 0
+			},
+			"efecto_derecha": {
+				"presupuesto": 0,
+				"confidencialidad": 15,
+				"integridad": 0,
+				"disponibilidad": 0
+			}
+		},
+		{
+			"imagen": 1,
+			"contexto": "Tu socio propone usar la misma contraseña maestra para el correo personal y el de administración de la PYME para no confundirse.",
+			"texto_izquierda": "Usar la misma clave",
+			"texto_derecha": "Usar claves distintas",
+			"correcto": 1.0,
+			"explicacion": "Si tu correo personal se filtra en internet (lo cual es muy común), los atacantes probarán la misma contraseña en tus correos de trabajo.",
+			"efecto_izquierda": {
+				"presupuesto": 0,
+				"confidencialidad": -30,
+				"integridad": -15,
+				"disponibilidad": 0
+			},
+			"efecto_derecha": {
+				"presupuesto": 0,
+				"confidencialidad": 15,
+				"integridad": 0,
+				"disponibilidad": 0
+			}
+		}
+	]
+}

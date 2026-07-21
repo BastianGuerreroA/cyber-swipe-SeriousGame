@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ws6ctwd7ok53"]
+[gd_scene load_steps=14 format=3 uid="uid://ws6ctwd7ok53"]
 
 [ext_resource type="Texture2D" uid="uid://cd867roe3oh4u" path="res://assets/free-city-backgrounds-pixel-art/city 8/7.png" id="1_1dqjf"]
 [ext_resource type="Script" uid="uid://c35stvpbxdgyy" path="res://src/ui/capsula_selector/capsula_selector.gd" id="1_3qwwx"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ble7k06xecln5" path="res://src/gameplay/capsula_item/capsula_item.tscn" id="3_nfn5k"]
 [ext_resource type="Texture2D" uid="uid://bfunvlk0h5dda" path="res://assets/IconosPixelArt/Estrella_Puntaje.png" id="4_ylymo"]
 [ext_resource type="AudioStream" uid="uid://hyle428upvsc" path="res://assets/Musica/Clement Panchout_ Forest Of A Thousand Masks.wav" id="5_forest"]
+[ext_resource type="Texture2D" path="res://assets/IconosPixelArt/pencil_icon.png" id="6_pencil"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud"]
 bg_color = Color(0.05882353, 0.08627451, 0.1607843, 0.9490196)
@@ -154,6 +155,22 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.9607843, 0.83137256, 1)
 theme_override_font_sizes/font_size = 30
 text = "Usuario"
+
+[node name="EditUsuario" type="LineEdit" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
+visible = false
+custom_minimum_size = Vector2(180, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Ingresa tu nombre..."
+max_length = 15
+
+[node name="BotonEditar" type="Button" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+theme = ExtResource("1_ylymo")
+icon = ExtResource("6_pencil")
+flat = true
+expand_icon = true
 
 [node name="Spacer" type="Control" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
 layout_mode = 2

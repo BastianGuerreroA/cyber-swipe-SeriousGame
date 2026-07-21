@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://odfyj72oue6"]
+[gd_scene load_steps=22 format=3 uid="uid://odfyj72oue6"]
 
 [ext_resource type="Texture2D" uid="uid://cd867roe3oh4u" path="res://assets/free-city-backgrounds-pixel-art/city 8/7.png" id="1_o6xc7"]
 [ext_resource type="Script" uid="uid://daceevk44bc1f" path="res://src/gameplay/main_stage/escena_principal.gd" id="1_q275c"]
@@ -15,7 +15,6 @@
 [ext_resource type="Theme" uid="uid://8pah7aw402av" path="res://src/gameplay/score_counter/contador_score.tres" id="11_lhtw7"]
 [ext_resource type="Theme" uid="uid://dnpnaw8u2vfep" path="res://resources/themes/Capsulas.tres" id="12_ylymo"]
 [ext_resource type="AudioStream" uid="uid://c6bkhto670vdx" path="res://assets/Musica/2016_ Clement Panchout_ Life is full of Joy.mp3" id="13_pe32j"]
-[ext_resource type="PackedScene" uid="uid://cskrj3olvgnwh" path="res://src/ui/login/login_lsg.tscn" id="13_xs3pw"]
 [ext_resource type="PackedScene" uid="uid://b3hui25oykrd4" path="res://src/gameplay/score_counter/contador_score.tscn" id="14_id1wn"]
 [ext_resource type="PackedScene" uid="uid://di5rfu0k72qav" path="res://src/ui/pause_menu/pause_menu.tscn" id="15_mnli5"]
 [ext_resource type="FontFile" uid="uid://0jlmj72sqjkq" path="res://assets/Fuente/acknowtt.ttf" id="16_font"]
@@ -196,11 +195,6 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 theme = ExtResource("11_lhtw7")
 text = "PAUSA"
-
-[node name="LoginPanel" parent="CanvasLayer/MarginContainer" instance=ExtResource("13_xs3pw")]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
 
 [node name="FeedbackMenu" type="Control" parent="CanvasLayer/MarginContainer"]
 process_mode = 3

@@ -7,6 +7,8 @@ extends Control
 @onready var contenedor_capsulas = $MarginContainer/VBoxMain/ScrollContainer/VBoxContainer_capsulas
 @onready var progress_bar = $MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/ProgressBar
 @onready var boton_volver = $MarginContainer/VBoxMain/BotonVolver
+@onready var boton_editar = $MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/BotonEditar
+@onready var edit_usuario = $MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/EditUsuario
 
 # Precargamos la escena del item de la cápsula para instanciarla
 const CAPSULA_ITEM_ESCENA = preload("res://src/gameplay/capsula_item/capsula_item.tscn")
@@ -37,8 +39,13 @@ func _ready() -> void:
 		# Esperamos a que se calcule el layout en el siguiente frame y copiamos la posición global
 		await get_tree().process_frame
 		perfil_instancia.global_position = placeholder.global_position
+		boton_editar.visible = false
 	else:
 		label_usuario.text = CapsulaManager.nombre_usuario
+		boton_editar.visible = true
+		boton_editar.pressed.connect(_on_editar_pressed)
+		edit_usuario.visible = false
+		edit_usuario.text_submitted.connect(_on_nombre_submitted)
 	label_puntos.text = str(CapsulaManager.puntos_totales)
 	
 	# Las completadas serán el nivel máximo desbloqueado menos 1
@@ -74,3 +81,27 @@ func _ready() -> void:
 
 func _on_volver_pressed() -> void:
 	get_tree().change_scene_to_file("res://src/ui/main_menu/menu_principal.tscn")
+
+func _on_editar_pressed() -> void:
+	if not edit_usuario.visible:
+		edit_usuario.text = label_usuario.text
+		label_usuario.visible = false
+		edit_usuario.visible = true
+		edit_usuario.grab_focus()
+		boton_editar.icon = load("res://assets/IconosPixelArt/Down.png")
+	else:
+		_confirmar_cambio_nombre()
+
+func _on_nombre_submitted(_new_text: String) -> void:
+	_confirmar_cambio_nombre()
+
+func _confirmar_cambio_nombre() -> void:
+	var nuevo_nombre = edit_usuario.text.strip_edges()
+	if nuevo_nombre != "":
+		CapsulaManager.nombre_usuario = nuevo_nombre
+		CapsulaManager.guardar_progreso()
+		label_usuario.text = nuevo_nombre
+	
+	label_usuario.visible = true
+	edit_usuario.visible = false
+	boton_editar.icon = load("res://assets/IconosPixelArt/pencil_icon.png")

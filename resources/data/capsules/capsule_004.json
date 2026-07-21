@@ -1,0 +1,210 @@
+{
+    "id": 4,
+    "titulo": "Redes y Conexiones Seguras",
+    "subtitulo": "Aprende a resguardar tu red de internet Wi-Fi y a conectar trabajadores remotos de forma segura.",
+    "mini_descripcion": "Descubre las mejores prácticas para blindar el router de tu oficina e implementar conexiones cifradas para teletrabajo.",
+    "contenido_estudio": "El internet de tu oficina es la puerta de entrada a tus sistemas.\n\n[b]Recomendaciones de Conectividad:[/b]\n* [b]Segmentación de Redes[/b]: Nunca mezcles el Wi-Fi de tus clientes con la red interna donde facturas y guardas datos.\n* [b]VPN (Virtual Private Network)[/b]: Obligatoria para trabajadores remotos para encriptar los datos de viaje al servidor.\n* [b]Contraseñas del Router[/b]: Cambiar siempre los credenciales predeterminados del proveedor de internet.",
+    "estado": "Disponible",
+    "cartas": [
+        {
+            "imagen": 0,
+            "contexto": "Estás de viaje y debes revisar la cuenta corriente de la PYME de urgencia usando el Wi-Fi público de una cafetería.",
+            "texto_izquierda": "Usar Wi-Fi abierto",
+            "texto_derecha": "Usar datos móviles",
+            "correcto": 1.0,
+            "explicacion": "Las redes Wi-Fi abiertas permiten que intermediarios intercepten contraseñas y datos bancarios fácilmente.",
+            "efecto_izquierda": {
+                "presupuesto": 0,
+                "confidencialidad": -35,
+                "integridad": -15,
+                "disponibilidad": 0
+            },
+            "efecto_derecha": {
+                "presupuesto": -5,
+                "confidencialidad": 15,
+                "integridad": 0,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 1,
+            "contexto": "El Wi-Fi principal de la empresa está abierto sin contraseña para facilitar que los clientes se conecten al visitarte.",
+            "texto_izquierda": "Dejar Wi-Fi abierto",
+            "texto_derecha": "Crear red de visitas",
+            "correcto": 1.0,
+            "explicacion": "Dejar el Wi-Fi principal abierto permite a cualquiera escanear tu red interna corporativa e infectar equipos.",
+            "efecto_izquierda": {
+                "presupuesto": 0,
+                "confidencialidad": -30,
+                "integridad": -20,
+                "disponibilidad": 0
+            },
+            "efecto_derecha": {
+                "presupuesto": -8,
+                "confidencialidad": 20,
+                "integridad": 15,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 0,
+            "contexto": "Los vendedores externos acceden a la contabilidad de la empresa desde casa directamente sin usar sistemas VPN cifrados.",
+            "texto_izquierda": "Obligar uso de VPN",
+            "texto_derecha": "Permitir acceso directo",
+            "correcto": -1.0,
+            "explicacion": "El acceso remoto sin cifrado VPN expone las credenciales de administración en internet a escaneos y hackeos.",
+            "efecto_izquierda": {
+                "presupuesto": -10,
+                "confidencialidad": 25,
+                "integridad": 20,
+                "disponibilidad": 10
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": -30,
+                "integridad": -25,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 1,
+            "contexto": "Te proponen renovar el router antiguo del proveedor por uno corporativo con cortafuegos (Firewall) integrado.",
+            "texto_izquierda": "Mantener router antiguo",
+            "texto_derecha": "Comprar nuevo router",
+            "correcto": 1.0,
+            "explicacion": "Los routers comerciales de hogar carecen de filtros de puertos. Un Firewall bloquea ataques automatizados provenientes de internet.",
+            "efecto_izquierda": {
+                "presupuesto": 15,
+                "confidencialidad": 0,
+                "integridad": -20,
+                "disponibilidad": -20
+            },
+            "efecto_derecha": {
+                "presupuesto": -15,
+                "confidencialidad": 0,
+                "integridad": 25,
+                "disponibilidad": 25
+            }
+        },
+        {
+            "imagen": 0,
+            "contexto": "Un técnico te aconseja mantener el acceso por defecto ('admin/admin') del portal de administración de tu router de red.",
+            "texto_izquierda": "Cambiar clave de router",
+            "texto_derecha": "Dejar clave de fábrica",
+            "correcto": -1.0,
+            "explicacion": "Cualquier atacante conoce las claves por defecto de los modelos de router comunes. Cambiarla evita tomas de control de tu red.",
+            "efecto_izquierda": {
+                "presupuesto": 0,
+                "confidencialidad": 20,
+                "integridad": 15,
+                "disponibilidad": 10
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": -35,
+                "integridad": -30,
+                "disponibilidad": -20
+            }
+        },
+        {
+            "imagen": 1,
+            "contexto": "Se detecta en el panel de red un celular conectado desconocido en el Wi-Fi privado de la PYME.",
+            "texto_izquierda": "Bloquear en el router",
+            "texto_derecha": "Ignorar por ahora",
+            "correcto": -1.0,
+            "explicacion": "Cualquier dispositivo desconocido en tu red Wi-Fi privada corporativa representa un peligro potencial de robo de datos o espionaje.",
+            "efecto_izquierda": {
+                "presupuesto": 0,
+                "confidencialidad": 15,
+                "integridad": 10,
+                "disponibilidad": 0
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": -25,
+                "integridad": -15,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 0,
+            "contexto": "Te recomiendan ocultar el nombre (SSID) de tu red Wi-Fi administrativa para que no aparezca en búsquedas de dispositivos cercanos.",
+            "texto_izquierda": "Ocultar nombre SSID",
+            "texto_derecha": "Mantener visible",
+            "correcto": -1.0,
+            "explicacion": "Ocultar la red dificulta que los atacantes comunes sepan a qué punto de acceso conectarse e intentar violar la seguridad.",
+            "efecto_izquierda": {
+                "presupuesto": 0,
+                "confidencialidad": 15,
+                "integridad": 0,
+                "disponibilidad": 0
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": -5,
+                "integridad": 0,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 1,
+            "contexto": "Un empleado solicita clave para conectar su consola de videojuegos personal a la red Wi-Fi privada de la contabilidad de la empresa.",
+            "texto_izquierda": "Facilitar clave Wi-Fi",
+            "texto_derecha": "Denegar acceso",
+            "correcto": 1.0,
+            "explicacion": "Los dispositivos recreativos personales carecen de parches corporativos y pueden propagar malware a la red de contabilidad.",
+            "efecto_izquierda": {
+                "presupuesto": 0,
+                "confidencialidad": -20,
+                "integridad": -15,
+                "disponibilidad": 0
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": 10,
+                "integridad": 10,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 0,
+            "contexto": "El cortafuegos corporativo reporta ataques repetitivos de escaneos de IP de origen desconocido.",
+            "texto_izquierda": "Bloquear rangos de IP",
+            "texto_derecha": "Desactivar alertas",
+            "correcto": -1.0,
+            "explicacion": "Aislar IPs sospechosas mitiga la posibilidad de que los atacantes encuentren vulnerabilidades expuestas.",
+            "efecto_izquierda": {
+                "presupuesto": -5,
+                "confidencialidad": 10,
+                "integridad": 15,
+                "disponibilidad": 20
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": -20,
+                "integridad": -20,
+                "disponibilidad": -20
+            }
+        },
+        {
+            "imagen": 1,
+            "contexto": "Proponen instalar un filtro de contenidos web en los equipos de la oficina para bloquear páginas maliciosas de descargas y apuestas.",
+            "texto_izquierda": "Contratar filtro",
+            "texto_derecha": "No restringir",
+            "correcto": -1.0,
+            "explicacion": "Bloquear páginas inseguras evita que los empleados descarguen adware o ransomware accidentalmente durante el trabajo.",
+            "efecto_izquierda": {
+                "presupuesto": -8,
+                "confidencialidad": 15,
+                "integridad": 15,
+                "disponibilidad": 10
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": -20,
+                "integridad": -20,
+                "disponibilidad": 0
+            }
+        }
+    ]
+}

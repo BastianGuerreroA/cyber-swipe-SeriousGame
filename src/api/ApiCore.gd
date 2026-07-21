@@ -28,7 +28,8 @@ func reset_active_mechanics() -> void:
 		"subsidio": false,
 		"ciberseguro": false
 	}
-	print("LSG-Core: Ventajas de la ronda reiniciadas.")
+	if LsgAuth.logged_in:
+		print("LSG-Core: Ventajas de la ronda reiniciadas.")
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS

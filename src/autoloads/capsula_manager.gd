@@ -32,7 +32,7 @@ const CONSEJOS_VICTORIA = {
 
 # Definimos la ruta del recurso del jugador en la carpeta de usuario del dispositivo
 const RUTA_GUARDADO_TRES = "user://progreso_usuario.tres"
-const RUTA_CONTENIDO_JSON = "res://resources/data/capsulas.json"
+const RUTA_CARPETA_CAPSULAS = "res://resources/data/capsules/"
 
 func _ready() -> void:
 	# 1. Cargar el contenido estático de las cápsulas (JSON generado por LLM o Desarrollador)
@@ -42,16 +42,33 @@ func _ready() -> void:
 	cargar_progreso_jugador()
 
 
-# Lee los datos de las cartas y textos (JSON)
+# Lee los datos de las cartas y textos desde archivos JSON independientes
 func cargar_contenido_capsulas() -> void:
-	if not FileAccess.file_exists(RUTA_CONTENIDO_JSON):
-		print("ERROR: No se encontró capsulas.json")
+	lista_capsulas.clear()
+	var dir = DirAccess.open(RUTA_CARPETA_CAPSULAS)
+	if not dir:
+		print("ERROR: No se pudo abrir la carpeta de cápsulas en: ", RUTA_CARPETA_CAPSULAS)
 		return
-	var archivo = FileAccess.open(RUTA_CONTENIDO_JSON, FileAccess.READ)
-	var json = JSON.new()
-	if json.parse(archivo.get_as_text()) == OK:
-		lista_capsulas = json.data["capsulas"]
-	archivo.close()
+	
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if not dir.current_is_dir() and file_name.ends_with(".json"):
+			var full_path = RUTA_CARPETA_CAPSULAS + file_name
+			var archivo = FileAccess.open(full_path, FileAccess.READ)
+			if archivo:
+				var json = JSON.new()
+				if json.parse(archivo.get_as_text()) == OK:
+					var capsula_data = json.data
+					lista_capsulas.append(capsula_data)
+				archivo.close()
+			else:
+				print("ERROR: No se pudo leer el archivo: ", full_path)
+		file_name = dir.get_next()
+		
+	# Ordenar las cápsulas por su ID para garantizar que aparezcan secuencialmente
+	lista_capsulas.sort_custom(func(a, b): return a["id"] < b["id"])
+	print("Se cargaron exitosamente ", lista_capsulas.size(), " cápsulas independientes.")
 
 
 # Carga los récords y datos del usuario (Resource)

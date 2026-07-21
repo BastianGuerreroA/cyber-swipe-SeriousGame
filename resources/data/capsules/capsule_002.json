@@ -1,0 +1,210 @@
+{
+    "id": 2,
+    "titulo": "Phishing y Correos Falsos",
+    "subtitulo": "Aprende a identificar correos fraudulentos, enlaces maliciosos y estafas digitales.",
+    "mini_descripcion": "Reconoce las principales trampas de ingeniería social digital que buscan robar la identidad de tu empresa o clonar tus cuentas.",
+    "contenido_estudio": "El Phishing es el vector de ataque más utilizado para comprometer a las PYMEs.\n\n[b]Señales de Alerta:[/b]\n* [b]Remitentes Sospechosos[/b]: Direcciones que dicen ser de instituciones públicas pero terminan en dominios genéricos.\n* [b]Urgencia Desmedida[/b]: Amenazas de multas tributarias, embargos o cobros judiciales en pocas horas.\n* [b]Archivos Adjuntos Peligrosos[/b]: Archivos PDF o ZIP con nombres genéricos que no has solicitado.",
+    "estado": "Disponible",
+    "cartas": [
+        {
+            "imagen": 1,
+            "contexto": "Llega un correo de 'Netflix' diciendo que tu cuenta corporativa de entretenimiento está suspendida y pide reingresar tu tarjeta en un link.",
+            "texto_izquierda": "Ignorar correo",
+            "texto_derecha": "Ingresar tarjeta",
+            "correcto": -1.0,
+            "explicacion": "Las plataformas oficiales nunca piden reingresar tarjetas bancarias a través de links directos en correos electrónicos.",
+            "efecto_izquierda": {
+                "presupuesto": 0,
+                "confidencialidad": 10,
+                "integridad": 0,
+                "disponibilidad": 0
+            },
+            "efecto_derecha": {
+                "presupuesto": -25,
+                "confidencialidad": -40,
+                "integridad": -20,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 0,
+            "contexto": "Llega un correo urgente del 'SII' advirtiendo sobre una multa tributaria. Pide descargar un PDF adjunto para ver el detalle.",
+            "texto_izquierda": "Borrar correo",
+            "texto_derecha": "Descargar PDF",
+            "correcto": -1.0,
+            "explicacion": "El SII de Chile nunca envía archivos adjuntos ni links de descarga directa para multas. Es un ataque clásico de malware.",
+            "efecto_izquierda": {
+                "presupuesto": 0,
+                "confidencialidad": 15,
+                "integridad": 10,
+                "disponibilidad": 0
+            },
+            "efecto_derecha": {
+                "presupuesto": -20,
+                "confidencialidad": -30,
+                "integridad": -35,
+                "disponibilidad": -20
+            }
+        },
+        {
+            "imagen": 1,
+            "contexto": "Recibes un WhatsApp de tu supuesto contador diciendo que cambió de número y pide transferir urgente sus honorarios a una nueva cuenta.",
+            "texto_izquierda": "Transferir rápido",
+            "texto_derecha": "Llamar al número antiguo",
+            "correcto": 1.0,
+            "explicacion": "La suplantación de identidad en WhatsApp es común. Llama siempre por el canal verificado antes de transferir dinero.",
+            "efecto_izquierda": {
+                "presupuesto": -40,
+                "confidencialidad": 0,
+                "integridad": 0,
+                "disponibilidad": 0
+            },
+            "efecto_derecha": {
+                "presupuesto": 10,
+                "confidencialidad": 10,
+                "integridad": 0,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 0,
+            "contexto": "Un correo de 'Soporte Técnico de Windows' solicita validar tu cuenta haciendo clic en un botón para evitar que tu PC se bloquee.",
+            "texto_izquierda": "Validar cuenta",
+            "texto_derecha": "Reportar como Spam",
+            "correcto": 1.0,
+            "explicacion": "Microsoft nunca solicita credenciales ni contraseñas a través de enlaces de correo electrónico.",
+            "efecto_izquierda": {
+                "presupuesto": 0,
+                "confidencialidad": -35,
+                "integridad": -20,
+                "disponibilidad": -10
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": 15,
+                "integridad": 0,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 1,
+            "contexto": "Un proveedor habitual te envía un correo formal pero con una redacción extraña y adjunta una factura en formato '.zip'.",
+            "texto_izquierda": "Descomprimir y abrir",
+            "texto_derecha": "Llamar para confirmar",
+            "correcto": 1.0,
+            "explicacion": "Los atacantes pueden hackear correos de tus proveedores reales. Descomprimir archivos '.zip' puede instalar virus espía.",
+            "efecto_izquierda": {
+                "presupuesto": -15,
+                "confidencialidad": -30,
+                "integridad": -35,
+                "disponibilidad": -25
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": 15,
+                "integridad": 15,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 0,
+            "contexto": "Correo de 'Correos de Chile' te pide pagar $1.500 en un enlace para destrabar una supuesta encomienda de insumos retenida.",
+            "texto_izquierda": "Pagar en el enlace",
+            "texto_derecha": "Borrar correo",
+            "correcto": 1.0,
+            "explicacion": "Es una campaña masiva de phishing. Buscan registrar tu tarjeta de crédito clonando la pasarela de pagos.",
+            "efecto_izquierda": {
+                "presupuesto": -30,
+                "confidencialidad": -30,
+                "integridad": 0,
+                "disponibilidad": 0
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": 10,
+                "integridad": 0,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 1,
+            "contexto": "Tu banco te envía un mail: 'Alerta de Fraude: Detectamos accesos desde el extranjero. Ingrese a su banca en este link para verificar'.",
+            "texto_izquierda": "Hacer clic en el link",
+            "texto_derecha": "Entrar por la web oficial",
+            "correcto": 1.0,
+            "explicacion": "Los bancos nunca envían enlaces para iniciar sesión. Es un clon falso para capturar tus coordenadas bancarias.",
+            "efecto_izquierda": {
+                "presupuesto": -40,
+                "confidencialidad": -40,
+                "integridad": -20,
+                "disponibilidad": 0
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": 15,
+                "integridad": 0,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 0,
+            "contexto": "Recibes un correo corporativo que parece venir de Recursos Humanos invitando a revisar la planilla de aguinaldos en un link de Drive.",
+            "texto_izquierda": "Abrir el archivo",
+            "texto_derecha": "Preguntar a RRHH primero",
+            "correcto": 1.0,
+            "explicacion": "Los correos internos suplantados son comunes. Validar la veracidad por llamada o en persona evita robos de credenciales.",
+            "efecto_izquierda": {
+                "presupuesto": 0,
+                "confidencialidad": -25,
+                "integridad": -15,
+                "disponibilidad": 0
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": 15,
+                "integridad": 0,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 1,
+            "contexto": "Un supuesto cliente nuevo te envía una cotización por correo desde una dirección @gmail.com genérica con un archivo '.exe' adjunto.",
+            "texto_izquierda": "Ejecutar archivo",
+            "texto_derecha": "Borrar y rechazar",
+            "correcto": 1.0,
+            "explicacion": "Las cotizaciones y facturas legítimas jamás son archivos ejecutables '.exe'. Contienen virus troyanos.",
+            "efecto_izquierda": {
+                "presupuesto": -25,
+                "confidencialidad": -30,
+                "integridad": -35,
+                "disponibilidad": -30
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": 15,
+                "integridad": 15,
+                "disponibilidad": 0
+            }
+        },
+        {
+            "imagen": 0,
+            "contexto": "Un correo te felicita diciendo que tu empresa ganó un premio al emprendimiento de Corfo y te solicita las claves API del banco para depositar.",
+            "texto_izquierda": "Entregar datos",
+            "texto_derecha": "Ignorar correo",
+            "correcto": 1.0,
+            "explicacion": "Corfo y los organismos del estado jamás solicitarán claves, coordenadas ni claves API para depositar fondos.",
+            "efecto_izquierda": {
+                "presupuesto": -50,
+                "confidencialidad": -40,
+                "integridad": -20,
+                "disponibilidad": 0
+            },
+            "efecto_derecha": {
+                "presupuesto": 0,
+                "confidencialidad": 15,
+                "integridad": 0,
+                "disponibilidad": 0
+            }
+        }
+    ]
+}
