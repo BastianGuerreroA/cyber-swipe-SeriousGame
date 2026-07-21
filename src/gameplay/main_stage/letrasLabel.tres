@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://cerof01pfs3b1"]
+
+[ext_resource type="FontFile" uid="uid://0jlmj72sqjkq" path="res://assets/Fuente/acknowtt.ttf" id="1_hdhx6"]
+
+[resource]
+font = ExtResource("1_hdhx6")
+font_size = 27

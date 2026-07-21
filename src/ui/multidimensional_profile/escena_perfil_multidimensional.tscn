@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=3 uid="uid://c65stvpbxdgyy"]
+
+[ext_resource type="Script" uid="uid://bemlcfgn07da1" path="res://src/ui/multidimensional_profile/escena_perfil_multidimensional.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://c7hhnf23k7xrq" path="res://assets/IconosPixelArt/MedallaPixelArt.png" id="2_medalla"]
+[ext_resource type="FontFile" uid="uid://0jlmj72sqjkq" path="res://assets/Fuente/acknowtt.ttf" id="3_c8ckd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.05882353, 0.08627451, 0.1607843, 0.960784)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.9607843, 0.83137256, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0.9607843, 0.83137256, 0.156863)
+shadow_size = 8
+
+[node name="PerfilMultidimensional" type="Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 50.0
+offset_bottom = 50.0
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="BotonPerfil" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_medalla")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PanelPerfil" type="PanelContainer" parent="."]
+z_index = 10
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 0
+offset_top = 65.0
+offset_right = 400.0
+offset_bottom = 365.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelPerfil"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelPerfil/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Titulo" type="Label" parent="PanelPerfil/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.9607843, 0.83137256, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_c8ckd")
+theme_override_font_sizes/font_size = 22
+text = "PERFIL LSG"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelPerfil/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ContenedorDimensiones" type="VBoxContainer" parent="PanelPerfil/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="CargandoLabel" type="Label" parent="PanelPerfil/MarginContainer/VBoxContainer/ContenedorDimensiones"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_c8ckd")
+theme_override_font_sizes/font_size = 18
+text = "Cargando puntos..."
+horizontal_alignment = 1
+
+[node name="BotonCerrar" type="Button" parent="PanelPerfil/MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 0.2, 0.2, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_c8ckd")
+theme_override_font_sizes/font_size = 18
+text = "CERRAR"
+
+[connection signal="pressed" from="BotonPerfil" to="." method="_on_boton_perfil_pressed"]
+[connection signal="pressed" from="PanelPerfil/MarginContainer/VBoxContainer/BotonCerrar" to="." method="_on_boton_cerrar_pressed"]

@@ -24,10 +24,10 @@ buses/default_bus_layout=""
 
 [autoload]
 
-CapsulaManager="*res://capsula_manager.gd"
-LsgAuth="*res://LSG_API/ApiAuth.gd"
-LsgCore="*res://LSG_API/ApiCore.gd"
-LsgLogger="*res://LSG_API/LsgLogger.gd"
+CapsulaManager="*res://src/autoloads/capsula_manager.gd"
+LsgAuth="*res://src/api/ApiAuth.gd"
+LsgCore="*res://src/api/ApiCore.gd"
+LsgLogger="*res://src/api/LsgLogger.gd"
 
 [display]
 
@@ -40,12 +40,12 @@ window/handheld/orientation=1
 [file_customization]
 
 folder_colors={
-"res://Game_over/": "red",
-"res://LSG_API/": "pink",
-"res://LoginLSG/": "pink",
-"res://Pause_Menu/": "yellow",
-"res://assests/": "yellow",
-"res://game_winner/": "green"
+"res://assets/": "yellow",
+"res://src/api/": "pink",
+"res://src/ui/game_over/": "red",
+"res://src/ui/game_winner/": "green",
+"res://src/ui/login/": "pink",
+"res://src/ui/pause_menu/": "yellow"
 }
 
 [input_devices]

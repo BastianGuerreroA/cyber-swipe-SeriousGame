@@ -1,0 +1,251 @@
+[gd_scene load_steps=13 format=3 uid="uid://ws6ctwd7ok53"]
+
+[ext_resource type="Texture2D" uid="uid://cd867roe3oh4u" path="res://assets/free-city-backgrounds-pixel-art/city 8/7.png" id="1_1dqjf"]
+[ext_resource type="Script" uid="uid://c35stvpbxdgyy" path="res://src/ui/capsula_selector/capsula_selector.gd" id="1_3qwwx"]
+[ext_resource type="Theme" uid="uid://dnpnaw8u2vfep" path="res://resources/themes/Capsulas.tres" id="1_ylymo"]
+[ext_resource type="PackedScene" uid="uid://ble7k06xecln5" path="res://src/gameplay/capsula_item/capsula_item.tscn" id="3_nfn5k"]
+[ext_resource type="Texture2D" uid="uid://bfunvlk0h5dda" path="res://assets/IconosPixelArt/Estrella_Puntaje.png" id="4_ylymo"]
+[ext_resource type="AudioStream" uid="uid://hyle428upvsc" path="res://assets/Musica/Clement Panchout_ Forest Of A Thousand Masks.wav" id="5_forest"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud"]
+bg_color = Color(0.05882353, 0.08627451, 0.1607843, 0.9490196)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0.9607843, 0.83137256, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+corner_detail = 1
+shadow_color = Color(0, 0.9607843, 0.83137256, 0.25098038)
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_bg"]
+bg_color = Color(0.02745098, 0.04313725, 0.07843137, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_fill"]
+bg_color = Color(0, 0.9607843, 0.83137256, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
+bg_color = Color(0.05882353, 0.08627451, 0.1607843, 0.9490196)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.9607843, 0.83137256, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 1
+shadow_color = Color(0, 0.9607843, 0.83137256, 0.2)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pressed"]
+bg_color = Color(0.03921569, 0.05882353, 0.10980392, 0.9490196)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.74509805, 0.64705884, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 1
+shadow_color = Color(0, 0.9607843, 0.83137256, 0.09803922)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.09019608, 0.12156863, 0.21960784, 0.9490196)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3019608, 1, 0.9019608, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 1
+shadow_color = Color(0, 0.9607843, 0.83137256, 0.4509804)
+shadow_size = 10
+
+[node name="CapsulaSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3qwwx")
+
+[node name="MusicaFondo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_forest")
+volume_db = -10.0
+autoplay = true
+
+[node name="Fondo" type="TextureRect" parent="."]
+modulate = Color(0.57720935, 0.22850424, 0.34832734, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1162.0
+offset_top = -647.0
+offset_right = 1142.0
+offset_bottom = 649.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1dqjf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxMain" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxMain"]
+layout_mode = 2
+theme = ExtResource("1_ylymo")
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxMain/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 19
+
+[node name="HContainer_Usuario" type="HBoxContainer" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="Usuario" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.9607843, 0.83137256, 1)
+theme_override_font_sizes/font_size = 30
+text = "Usuario"
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
+layout_mode = 2
+
+[node name="Iconos_puntaje" type="TextureRect" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("4_ylymo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Puntos" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "ptos."
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Hcontainer_Progreso" type="HBoxContainer" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso"]
+layout_mode = 2
+text = "Progreso General"
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="TotalCapsulas" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer"]
+layout_mode = 2
+text = "/4"
+
+[node name="Progreso" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer"]
+layout_mode = 2
+text = "Capsulas"
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_progress_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_progress_fill")
+max_value = 5.0
+value = 1.0
+show_percentage = false
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxMain"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer_capsulas" type="VBoxContainer" parent="MarginContainer/VBoxMain/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="CapsulaItem" parent="MarginContainer/VBoxMain/ScrollContainer/VBoxContainer_capsulas" instance=ExtResource("3_nfn5k")]
+layout_mode = 2
+
+[node name="CapsulaItem2" parent="MarginContainer/VBoxMain/ScrollContainer/VBoxContainer_capsulas" instance=ExtResource("3_nfn5k")]
+layout_mode = 2
+
+[node name="BotonVolver" type="Button" parent="MarginContainer/VBoxMain"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_ylymo")
+theme_override_colors/font_color = Color(0, 0.9607843, 0.83137256, 1)
+theme_override_colors/font_focus_color = Color(0, 0.9607843, 0.83137256, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.745098, 0.647059, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btn_normal")
+text = "Volver al Menú"

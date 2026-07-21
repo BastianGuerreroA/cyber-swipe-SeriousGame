@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3hui25oykrd4"]
+
+[ext_resource type="Theme" uid="uid://4pbh6v4ye1gf" path="res://resources/themes/Interfaz_ingame.tres" id="1_6nhsj"]
+[ext_resource type="Script" uid="uid://083rjqgrs333" path="res://src/gameplay/score_counter/contador_score.gd" id="2_h6r5u"]
+[ext_resource type="Theme" uid="uid://8pah7aw402av" path="res://src/gameplay/score_counter/contador_score.tres" id="2_nra87"]
+
+[node name="ContadorScore" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -720.0
+offset_bottom = -1280.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_h6r5u")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.0
+offset_right = 93.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme = ExtResource("2_nra87")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Puntaje" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6nhsj")
+text = "Puntaje:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Numero" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_6nhsj")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

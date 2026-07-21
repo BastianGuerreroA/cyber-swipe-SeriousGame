@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="ProgresoUsuario" load_steps=2 format=3 uid="uid://1fo704c8am3p"]
-
-[ext_resource type="Script" uid="uid://bt5jr8as8jyog" path="res://progreso_usuario.gd" id="1_lta4j"]
-
-[resource]
-script = ExtResource("1_lta4j")
-metadata/_custom_type_script = "uid://bt5jr8as8jyog"

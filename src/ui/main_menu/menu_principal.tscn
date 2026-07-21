@@ -1,0 +1,107 @@
+[gd_scene load_steps=14 format=3 uid="uid://blgfiuwr188ws"]
+
+[ext_resource type="Texture2D" uid="uid://dc687mpc3o8or" path="res://assets/free-city-backgrounds-pixel-art/city 1/6.png" id="1_80s3h"]
+[ext_resource type="Script" uid="uid://tvyvqar50dmn" path="res://src/ui/main_menu/menu_principal.gd" id="1_cvvk7"]
+[ext_resource type="PackedScene" uid="uid://cskrj3olvgnwh" path="res://src/ui/login/login_lsg.tscn" id="1_g85l6"]
+[ext_resource type="Shader" uid="uid://bpgekxfov7ajw" path="res://src/ui/main_menu/movimiento_fondo.gdshader" id="1_h33ay"]
+[ext_resource type="Theme" uid="uid://dndsbs88ttxmu" path="res://resources/themes/MenuPrincipal_Theme.tres" id="1_ujlky"]
+[ext_resource type="Script" uid="uid://bkhu44yd5jfcg" path="res://src/ui/main_menu/boton_jugar.gd" id="2_5pxfp"]
+[ext_resource type="Script" uid="uid://hklx1flumayc" path="res://src/ui/main_menu/boton_salir.gd" id="2_liwpa"]
+[ext_resource type="Theme" uid="uid://bladguv0bfvp6" path="res://resources/themes/botonesMenuPrincipal_hover.tres" id="4_h33ay"]
+[ext_resource type="Texture2D" uid="uid://saaumckevpun" path="res://src/ui/main_menu/Logo_Cyber.png" id="5_ujlky"]
+[ext_resource type="AudioStream" uid="uid://6ujp38r8q1cr" path="res://assets/Musica/Hover_mouse.mp3" id="8_kbxwo"]
+[ext_resource type="PackedScene" uid="uid://ws6ctwd7ok53" path="res://src/ui/capsula_selector/capsula_selector.tscn" id="9_ujlky"]
+[ext_resource type="AudioStream" uid="uid://daad7ic2t3gwt" path="res://assets/Musica/MusicMenu.mp3" id="11_ujlky"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbxwo"]
+shader = ExtResource("1_h33ay")
+shader_parameter/speed = 0.05
+
+[node name="MenuPrincipal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ujlky")
+script = ExtResource("1_cvvk7")
+
+[node name="Fondo" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_kbxwo")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1138.0
+offset_top = -646.0
+offset_right = -561.9999
+offset_bottom = -322.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.9599998, 3.9599998)
+texture = ExtResource("1_80s3h")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="MarginContainer"]
+
+[node name="LogoJuego" type="TextureRect" parent="MarginContainer/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = -430.0
+offset_right = 555.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5803638, 0.5803638)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_ujlky")
+
+[node name="LoginPanel" parent="MarginContainer/CanvasLayer" instance=ExtResource("1_g85l6")]
+offset_left = -1.0
+offset_right = -1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 47
+
+[node name="Comenzar" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_h33ay")
+text = "Comenzar"
+script = ExtResource("2_5pxfp")
+escena_capsulas = ExtResource("9_ujlky")
+
+[node name="Salir" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_h33ay")
+text = "Salir"
+script = ExtResource("2_liwpa")
+
+[node name="HoverAudio" type="AudioStreamPlayer" parent="MarginContainer/VBoxContainer"]
+stream = ExtResource("8_kbxwo")
+
+[node name="MusicMenu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ujlky")
+autoplay = true
+parameters/looping = true
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Comenzar" to="MarginContainer/VBoxContainer/Comenzar" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Salir" to="MarginContainer/VBoxContainer/Salir" method="_on_mouse_entered"]

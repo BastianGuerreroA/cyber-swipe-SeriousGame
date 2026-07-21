@@ -23,6 +23,4 @@ dist/
 *.aab
 
 # Documentación y GDD
-MANUAL_LSG-Core-API.md
-MANUAL_LSG-Auth - Servicio de Autenticación.md
-GDD/
+docs/

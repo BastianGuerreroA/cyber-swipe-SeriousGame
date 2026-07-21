@@ -1,0 +1,275 @@
+[gd_scene load_steps=23 format=3 uid="uid://odfyj72oue6"]
+
+[ext_resource type="Texture2D" uid="uid://cd867roe3oh4u" path="res://assets/free-city-backgrounds-pixel-art/city 8/7.png" id="1_o6xc7"]
+[ext_resource type="Script" uid="uid://daceevk44bc1f" path="res://src/gameplay/main_stage/escena_principal.gd" id="1_q275c"]
+[ext_resource type="Texture2D" uid="uid://c44uedwobr222" path="res://assets/LegacyQuest/Backgrounds/Poker/BG_Poker_UG_Dark_Gray.png" id="2_d1cnf"]
+[ext_resource type="Texture2D" uid="uid://d1muwdeuupni1" path="res://assets/LegacyQuest/Graphics/Mini_Title_UG.png" id="3_hn0be"]
+[ext_resource type="Texture2D" uid="uid://17w3mq6ny6do" path="res://assets/LegacyQuest/Graphics/Poker_Title_UG.png" id="3_tg03s"]
+[ext_resource type="PackedScene" uid="uid://cb432op86dqwa" path="res://src/gameplay/icons/iconos.tscn" id="4_jcddw"]
+[ext_resource type="PackedScene" uid="uid://bmu1i26chrdre" path="res://src/gameplay/card/carta_escena.tscn" id="6_4ta2l"]
+[ext_resource type="Script" uid="uid://boctujgcb14h6" path="res://src/gameplay/main_stage/card_manager.gd" id="6_tg03s"]
+[ext_resource type="AudioStream" uid="uid://vojpxr0efp03" path="res://assets/Musica/una-sola-tecla.mp3" id="7_1y13l"]
+[ext_resource type="Texture2D" uid="uid://b2er314hxb5i6" path="res://assets/Gemini/SEO.png" id="7_4ta2l"]
+[ext_resource type="LabelSettings" uid="uid://cerof01pfs3b1" path="res://src/gameplay/main_stage/letrasLabel.tres" id="7_xs3pw"]
+[ext_resource type="Texture2D" uid="uid://b7cmh0ip45am7" path="res://assets/Gemini/hacker.png" id="8_potmh"]
+[ext_resource type="Theme" uid="uid://8pah7aw402av" path="res://src/gameplay/score_counter/contador_score.tres" id="11_lhtw7"]
+[ext_resource type="Theme" uid="uid://dnpnaw8u2vfep" path="res://resources/themes/Capsulas.tres" id="12_ylymo"]
+[ext_resource type="AudioStream" uid="uid://c6bkhto670vdx" path="res://assets/Musica/2016_ Clement Panchout_ Life is full of Joy.mp3" id="13_pe32j"]
+[ext_resource type="PackedScene" uid="uid://cskrj3olvgnwh" path="res://src/ui/login/login_lsg.tscn" id="13_xs3pw"]
+[ext_resource type="PackedScene" uid="uid://b3hui25oykrd4" path="res://src/gameplay/score_counter/contador_score.tscn" id="14_id1wn"]
+[ext_resource type="PackedScene" uid="uid://di5rfu0k72qav" path="res://src/ui/pause_menu/pause_menu.tscn" id="15_mnli5"]
+[ext_resource type="FontFile" uid="uid://0jlmj72sqjkq" path="res://assets/Fuente/acknowtt.ttf" id="16_font"]
+[ext_resource type="Texture2D" uid="uid://borkngrn3l33e" path="res://assets/LegacyQuest/Backgrounds/Micro/BG_Micro_UG_Dark_Gray.png" id="17_poker_bg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bg"]
+texture = ExtResource("17_poker_bg")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fill"]
+bg_color = Color(0.09700208, 0.57421404, 0.21596056, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="EscenaPrincipal" type="Node2D" node_paths=PackedStringArray("MusicaFondo")]
+process_mode = 1
+script = ExtResource("1_q275c")
+MusicaFondo = NodePath("FondoGameMusic")
+
+[node name="Ciudad" type="TextureRect" parent="."]
+self_modulate = Color(0.4656148, 0.4110218, 0.38725305, 1)
+light_mask = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1152.0
+offset_top = -648.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_o6xc7")
+
+[node name="FondoCarta" type="Node2D" parent="."]
+scale = Vector2(0.7267002, 0.73095965)
+
+[node name="Sprite2D" type="Sprite2D" parent="FondoCarta"]
+texture = ExtResource("2_d1cnf")
+
+[node name="TextureRect2" type="TextureRect" parent="FondoCarta"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -423.83368
+offset_top = 551.33
+offset_right = 456.16632
+offset_bottom = 761.83
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+texture = ExtResource("3_hn0be")
+
+[node name="TextureRect" type="TextureRect" parent="FondoCarta"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -425.20978
+offset_top = -565.0107
+offset_right = 424.79022
+offset_bottom = -354.51068
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+texture = ExtResource("3_tg03s")
+
+[node name="BarraPresupuesto" type="ProgressBar" parent="FondoCarta/TextureRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -45.0
+offset_bottom = -9.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxTexture_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fill")
+value = 50.0
+show_percentage = false
+
+[node name="HBox" type="HBoxContainer" parent="FondoCarta/TextureRect/BarraPresupuesto"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="FondoCarta/TextureRect/BarraPresupuesto/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+
+[node name="LabelTitulo" type="Label" parent="FondoCarta/TextureRect/BarraPresupuesto/HBox/Margin"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_font")
+theme_override_font_sizes/font_size = 20
+text = "PRESUPUESTO"
+vertical_alignment = 1
+
+[node name="Margin2" type="MarginContainer" parent="FondoCarta/TextureRect/BarraPresupuesto/HBox"]
+layout_mode = 2
+theme_override_constants/margin_right = 12
+
+[node name="LabelCambio" type="Label" parent="FondoCarta/TextureRect/BarraPresupuesto/HBox/Margin2"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.85, 0.44, 1)
+theme_override_fonts/font = ExtResource("16_font")
+theme_override_font_sizes/font_size = 20
+text = "+10"
+vertical_alignment = 1
+
+[node name="Iconos" parent="FondoCarta/TextureRect" instance=ExtResource("4_jcddw")]
+light_mask = 0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.065, 2.065)
+
+[node name="LabelContexto" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -295.5
+offset_top = -256.0
+offset_right = 295.5
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Intentos de login, ¿Que deberiamos hacer?"
+label_settings = ExtResource("7_xs3pw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TypingSound" type="AudioStreamPlayer2D" parent="LabelContexto"]
+stream = ExtResource("7_1y13l")
+volume_db = -27.262
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ContadorScore" parent="CanvasLayer/MarginContainer" instance=ExtResource("14_id1wn")]
+layout_mode = 2
+
+[node name="PauseMenu" parent="CanvasLayer/MarginContainer" instance=ExtResource("15_mnli5")]
+layout_mode = 2
+
+[node name="BotonPausa" type="Button" parent="CanvasLayer/MarginContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = ExtResource("11_lhtw7")
+text = "PAUSA"
+
+[node name="LoginPanel" parent="CanvasLayer/MarginContainer" instance=ExtResource("13_xs3pw")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="FeedbackMenu" type="Control" parent="CanvasLayer/MarginContainer"]
+process_mode = 3
+visible = false
+layout_mode = 2
+theme = ExtResource("12_ylymo")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer/FeedbackMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -250.0
+offset_right = 280.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/FeedbackMenu/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/FeedbackMenu/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Titulo" type="Label" parent="CanvasLayer/MarginContainer/FeedbackMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.21960784, 0.21960784, 1)
+theme_override_font_sizes/font_size = 32
+text = "⚠️ INCIDENTE DETECTADO"
+horizontal_alignment = 1
+
+[node name="Explicacion" type="RichTextLabel" parent="CanvasLayer/MarginContainer/FeedbackMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "Explicación..."
+fit_content = true
+
+[node name="Continuar" type="Button" parent="CanvasLayer/MarginContainer/FeedbackMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "Continuar"
+
+[node name="CardManager" type="Node2D" parent="." node_paths=PackedStringArray("label_contexto", "typing_sound")]
+script = ExtResource("6_tg03s")
+carta_escena = ExtResource("6_4ta2l")
+imagenes = Array[Texture2D]([ExtResource("7_4ta2l"), ExtResource("8_potmh")])
+label_contexto = NodePath("../LabelContexto")
+typing_sound = NodePath("../LabelContexto/TypingSound")
+
+[node name="SpawnPoint" type="Node2D" parent="CardManager"]
+position = Vector2(0, 175)
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="FondoGameMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_pe32j")
+parameters/looping = true
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/BotonPausa" to="." method="_on_boton_pausa_pressed"]
+[connection signal="metricas_actualizadas" from="CardManager" to="FondoCarta/TextureRect/Iconos" method="_on_card_manager_metricas_actualizadas"]
