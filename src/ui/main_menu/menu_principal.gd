@@ -1,12 +1,10 @@
 extends Control
 @onready var music_menu: AudioStreamPlayer = $MusicMenu
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if not music_menu.finished.is_connected(_on_music_finished):
+		music_menu.finished.connect(_on_music_finished)
 	music_menu.play()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_music_finished() -> void:
+	music_menu.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://odfyj72oue6"]
+[gd_scene load_steps=26 format=3 uid="uid://odfyj72oue6"]
 
 [ext_resource type="Texture2D" uid="uid://cd867roe3oh4u" path="res://assets/free-city-backgrounds-pixel-art/city 8/7.png" id="1_o6xc7"]
 [ext_resource type="Script" uid="uid://daceevk44bc1f" path="res://src/gameplay/main_stage/escena_principal.gd" id="1_q275c"]
@@ -19,6 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://di5rfu0k72qav" path="res://src/ui/pause_menu/pause_menu.tscn" id="15_mnli5"]
 [ext_resource type="FontFile" uid="uid://0jlmj72sqjkq" path="res://assets/Fuente/acknowtt.ttf" id="16_font"]
 [ext_resource type="Texture2D" uid="uid://borkngrn3l33e" path="res://assets/LegacyQuest/Backgrounds/Micro/BG_Micro_UG_Dark_Gray.png" id="17_poker_bg"]
+[ext_resource type="Texture2D" uid="uid://tjonwf8gim6h" path="res://assets/Gemini/Adulto.png" id="18_adulto"]
+[ext_resource type="Texture2D" uid="uid://0sxbd65nxfy5" path="res://assets/Gemini/hacker2.png" id="19_hacker2"]
+[ext_resource type="Texture2D" uid="uid://wve58brnfrw0" path="res://assets/Gemini/MujerMayor.png" id="20_mujermayor"]
+[ext_resource type="Texture2D" uid="uid://cxch0gfna3581" path="res://assets/Gemini/SeoFemenino.png" id="21_seofemenino"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bg"]
 texture = ExtResource("17_poker_bg")
@@ -37,21 +41,19 @@ process_mode = 1
 script = ExtResource("1_q275c")
 MusicaFondo = NodePath("FondoGameMusic")
 
-[node name="Ciudad" type="TextureRect" parent="."]
+[node name="CanvasLayerFondo" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="Ciudad" type="TextureRect" parent="CanvasLayerFondo"]
 self_modulate = Color(0.4656148, 0.4110218, 0.38725305, 1)
 light_mask = 0
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1152.0
-offset_top = -648.0
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_o6xc7")
+expand_mode = 1
 
 [node name="FondoCarta" type="Node2D" parent="."]
 scale = Vector2(0.7267002, 0.73095965)
@@ -93,8 +95,8 @@ texture = ExtResource("3_tg03s")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = -45.0
-offset_bottom = -9.0
+offset_top = -54.0
+offset_bottom = -4.0
 grow_horizontal = 2
 theme_override_styles/background = SubResource("StyleBoxTexture_bg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fill")
@@ -117,7 +119,7 @@ theme_override_constants/margin_left = 12
 [node name="LabelTitulo" type="Label" parent="FondoCarta/TextureRect/BarraPresupuesto/HBox/Margin"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("16_font")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 35
 text = "PRESUPUESTO"
 vertical_alignment = 1
 
@@ -177,9 +179,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 10
 
 [node name="ContadorScore" parent="CanvasLayer/MarginContainer" instance=ExtResource("14_id1wn")]
@@ -194,6 +196,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme = ExtResource("11_lhtw7")
+theme_override_font_sizes/font_size = 45
 text = "PAUSA"
 
 [node name="FeedbackMenu" type="Control" parent="CanvasLayer/MarginContainer"]
@@ -251,7 +254,7 @@ text = "Continuar"
 [node name="CardManager" type="Node2D" parent="." node_paths=PackedStringArray("label_contexto", "typing_sound")]
 script = ExtResource("6_tg03s")
 carta_escena = ExtResource("6_4ta2l")
-imagenes = Array[Texture2D]([ExtResource("7_4ta2l"), ExtResource("8_potmh")])
+imagenes = Array[Texture2D]([ExtResource("7_4ta2l"), ExtResource("8_potmh"), ExtResource("18_adulto"), ExtResource("19_hacker2"), ExtResource("20_mujermayor"), ExtResource("21_seofemenino")])
 label_contexto = NodePath("../LabelContexto")
 typing_sound = NodePath("../LabelContexto/TypingSound")
 

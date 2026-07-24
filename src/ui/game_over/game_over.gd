@@ -28,7 +28,7 @@ func _ready() -> void:
 	if not LsgAuth.logged_in:
 		reanudar_btn.visible = false
 	else:
-		reanudar_btn.text = "Reanudar LSG (50 ptos Afectivo)"
+		reanudar_btn.text = "Reanudar LSG\n(50 ptos Afectivo)"
 
 # "Reanudar LSG" -> Continuar donde quedaste gastando puntos con lsg
 func _on_reanudar_pressed() -> void:
@@ -73,7 +73,7 @@ func _on_redeem_completed(success: bool, response_data: Dictionary) -> void:
 		queue_free()
 	else:
 		reanudar_btn.disabled = false
-		reanudar_btn.text = "Reanudar LSG (50 ptos Afectivo)"
+		reanudar_btn.text = "Reanudar LSG\n(50 ptos Afectivo)"
 		
 		var err_data = response_data
 		if response_data.has("detail"):

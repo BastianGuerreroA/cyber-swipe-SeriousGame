@@ -152,6 +152,9 @@ func submit_session_log() -> void:
 	
 	var http = HTTPRequest.new()
 	http.process_mode = Node.PROCESS_MODE_ALWAYS
+	http.use_threads = true
+	if url.begins_with("https://"):
+		http.set_tls_options(TLSOptions.client_unsafe())
 	add_child(http)
 	
 	var error = http.request(url, headers, HTTPClient.METHOD_POST, JSON.stringify(payload))

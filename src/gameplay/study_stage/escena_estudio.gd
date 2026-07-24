@@ -6,9 +6,22 @@ extends Control
 @onready var rich_text_contenido = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxScrollContent/ContentPanel/MarginContainer/VBoxContainer/TextoEstudio
 @onready var boton_volver = $PanelContainer/MarginContainer/VBoxContainer/HeaderContainer/HBoxContainer/BotonVolver
 @onready var icon_rect = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxScrollContent/IconPanel/MarginContainer/IconRect
+@onready var scroll_container = $PanelContainer/MarginContainer/VBoxContainer/ScrollContainer
+@onready var musica_fondo = $MusicaFondo
+
+# Variables para soporte de arrastre táctil en móviles
+var arrastrando_scroll: bool = false
+var ultimo_pos_y: float = 0.0
 
 func _ready() -> void:
 	boton_volver.pressed.connect(_on_volver_pressed)
+	
+	# Asegurar bucle infinito de música de fondo
+	if not musica_fondo.finished.is_connected(_on_musica_finished):
+		musica_fondo.finished.connect(_on_musica_finished)
+	
+	# Garantizar que el texto no bloquee los eventos de deslizamiento táctil
+	rich_text_contenido.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 	# Cargar los datos de la cápsula activa
 	var id_capsula = CapsulaManager.capsula_activa_id
@@ -20,16 +33,25 @@ func _ready() -> void:
 		label_subtitulo.text = datos_capsula.get("subtitulo", "")
 		rich_text_contenido.text = datos_capsula.get("contenido_estudio", "")
 		
-		# 2. Configurar icono de la cápsula dinámicamente
-		# Busca en la carpeta que creaste res://assets/IconosCapsulas/capsula_#.png
-		var ruta_icono = "res://assets/IconosCapsulas/capsula_" + str(id_capsula) + ".png"
-		if FileAccess.file_exists(ruta_icono):
-			icon_rect.texture = load(ruta_icono)
+		# 2. Configurar icono de la cápsula dinámicamente (garantizado en APK exportada)
+		icon_rect.texture = CapsulaManager.obtener_icono_capsula(id_capsula)
+
+func _on_musica_finished() -> void:
+	musica_fondo.play()
+
+func _input(event: InputEvent) -> void:
+	# Soporte universal de deslizamiento táctil (pantalla táctil / mouse)
+	if event is InputEventScreenTouch or (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT):
+		if event.pressed:
+			arrastrando_scroll = true
+			ultimo_pos_y = event.position.y
 		else:
-			# Si no existe, usamos MedallaPixelArt como placeholder por defecto
-			var ruta_defecto = "res://assets/IconosPixelArt/MedallaPixelArt.png"
-			if FileAccess.file_exists(ruta_defecto):
-				icon_rect.texture = load(ruta_defecto)
+			arrastrando_scroll = false
+
+	elif (event is InputEventScreenDrag or event is InputEventMouseMotion) and arrastrando_scroll:
+		var delta_y = ultimo_pos_y - event.position.y
+		scroll_container.scroll_vertical += int(delta_y)
+		ultimo_pos_y = event.position.y
 
 func _on_volver_pressed() -> void:
 	# Regresar a la escena de selección de cápsulas

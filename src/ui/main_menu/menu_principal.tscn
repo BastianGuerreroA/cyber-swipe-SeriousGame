@@ -31,27 +31,27 @@ script = ExtResource("1_cvvk7")
 texture_repeat = 2
 material = SubResource("ShaderMaterial_kbxwo")
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1138.0
-offset_top = -646.0
-offset_right = -561.9999
-offset_bottom = -322.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3.9599998, 3.9599998)
 texture = ExtResource("1_80s3h")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3.0
+offset_right = -3.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
 [node name="CanvasLayer" type="CanvasLayer" parent="MarginContainer"]
 
@@ -73,8 +73,15 @@ size_flags_vertical = 4
 texture = ExtResource("5_ujlky")
 
 [node name="LoginPanel" parent="MarginContainer/CanvasLayer" instance=ExtResource("1_g85l6")]
-offset_left = -1.0
-offset_right = -1.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 47.0
+offset_top = 50.0
+offset_right = 667.0
+offset_bottom = 1230.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2

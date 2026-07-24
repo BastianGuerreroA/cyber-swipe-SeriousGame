@@ -75,9 +75,7 @@ func start_session() -> void:
 		"session_metrics": {"platform": OS.get_name(), "device": OS.get_model_name()}
 	}
 	
-	var http = HTTPRequest.new()
-	http.process_mode = Node.PROCESS_MODE_ALWAYS
-	add_child(http)
+	var http = _crear_http(url)
 	
 	var error = http.request(url, headers, HTTPClient.METHOD_POST, JSON.stringify(payload))
 	if error != OK:
@@ -116,9 +114,7 @@ func end_session() -> void:
 		"Content-Type: application/json"
 	])
 	
-	var http = HTTPRequest.new()
-	http.process_mode = Node.PROCESS_MODE_ALWAYS
-	add_child(http)
+	var http = _crear_http(url)
 	
 	var error = http.request(url, headers, HTTPClient.METHOD_PATCH, "{}")
 	if error != OK:
@@ -149,9 +145,7 @@ func get_points_balance() -> void:
 	var url = BASE_URL + "/players/" + str(LsgAuth.player_id) + "/points/balance"
 	var headers = PackedStringArray(["Authorization: Bearer " + LsgAuth.access_token])
 	
-	var http = HTTPRequest.new()
-	http.process_mode = Node.PROCESS_MODE_ALWAYS
-	add_child(http)
+	var http = _crear_http(url)
 	
 	var error = http.request(url, headers, HTTPClient.METHOD_GET, "")
 	if error != OK:
@@ -202,9 +196,7 @@ func redeem_mechanic(mechanic_id: int, dimension_id: int, amount: int) -> void:
 		"metadata": {"session_id": active_session_id}
 	}
 	
-	var http = HTTPRequest.new()
-	http.process_mode = Node.PROCESS_MODE_ALWAYS
-	add_child(http)
+	var http = _crear_http(url)
 	
 	var error = http.request(url, headers, HTTPClient.METHOD_POST, JSON.stringify(payload))
 	if error != OK:
@@ -240,9 +232,7 @@ func get_attributes_points() -> void:
 	var url = BASE_URL + "/players/" + str(LsgAuth.player_id) + "/attributes/points"
 	var headers = PackedStringArray(["Authorization: Bearer " + LsgAuth.access_token])
 	
-	var http = HTTPRequest.new()
-	http.process_mode = Node.PROCESS_MODE_ALWAYS
-	add_child(http)
+	var http = _crear_http(url)
 	
 	var error = http.request(url, headers, HTTPClient.METHOD_GET, "")
 	if error != OK:
@@ -287,9 +277,7 @@ func adjust_points(attribute_id: int, direction: String, amount: int, reason: St
 		"videogame_id": GAME_ID
 	}
 	
-	var http = HTTPRequest.new()
-	http.process_mode = Node.PROCESS_MODE_ALWAYS
-	add_child(http)
+	var http = _crear_http(url)
 	
 	var error = http.request(url, headers, HTTPClient.METHOD_POST, JSON.stringify(payload))
 	if error != OK:
@@ -319,3 +307,12 @@ func adjust_points(attribute_id: int, direction: String, amount: int, reason: St
 	else:
 		print("LSG-Core: Error de ajuste de puntos en el servidor (Codigo ", response_code, "): ", response_data)
 		adjust_completed.emit(false, response_data)
+
+func _crear_http(url: String) -> HTTPRequest:
+	var http = HTTPRequest.new()
+	http.process_mode = Node.PROCESS_MODE_ALWAYS
+	http.use_threads = true
+	if url.begins_with("https://"):
+		http.set_tls_options(TLSOptions.client_unsafe())
+	add_child(http)
+	return http

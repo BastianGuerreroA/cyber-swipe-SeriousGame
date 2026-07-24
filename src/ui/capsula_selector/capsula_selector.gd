@@ -9,6 +9,7 @@ extends Control
 @onready var boton_volver = $MarginContainer/VBoxMain/BotonVolver
 @onready var boton_editar = $MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/BotonEditar
 @onready var edit_usuario = $MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/EditUsuario
+@onready var musica_fondo = $MusicaFondo
 
 # Precargamos la escena del item de la cápsula para instanciarla
 const CAPSULA_ITEM_ESCENA = preload("res://src/gameplay/capsula_item/capsula_item.tscn")
@@ -17,6 +18,9 @@ func _ready() -> void:
 	# Conectar el botón de volver
 	boton_volver.pressed.connect(_on_volver_pressed)
 	
+	if not musica_fondo.finished.is_connected(_on_musica_finished):
+		musica_fondo.finished.connect(_on_musica_finished)
+
 	# 1. Cargar datos del perfil de usuario
 	if LsgAuth.logged_in:
 		label_usuario.text = LsgAuth.player_name
@@ -57,8 +61,9 @@ func _ready() -> void:
 	progress_bar.max_value = CapsulaManager.lista_capsulas.size()
 	progress_bar.value = completadas
 	
-	# Limpiar placeholders
+	# Limpiar placeholders inmediatamente
 	for child in contenedor_capsulas.get_children():
+		contenedor_capsulas.remove_child(child)
 		child.queue_free()
 		
 	# 2. Rellenar la lista evaluando el estado de cada cápsula
@@ -78,6 +83,9 @@ func _ready() -> void:
 		var instancia = CAPSULA_ITEM_ESCENA.instantiate()
 		contenedor_capsulas.add_child(instancia)
 		instancia.configurar(datos_capsula)
+
+func _on_musica_finished() -> void:
+	musica_fondo.play()
 
 func _on_volver_pressed() -> void:
 	get_tree().change_scene_to_file("res://src/ui/main_menu/menu_principal.tscn")
@@ -105,3 +113,21 @@ func _confirmar_cambio_nombre() -> void:
 	label_usuario.visible = true
 	edit_usuario.visible = false
 	boton_editar.icon = load("res://assets/IconosPixelArt/pencil_icon.png")
+
+# Support for touch scroll dragging in capsula selector list
+@onready var scroll_container = $MarginContainer/VBoxMain/ScrollContainer
+var arrastrando_scroll: bool = false
+var ultimo_pos_y: float = 0.0
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch or (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT):
+		if event.pressed:
+			arrastrando_scroll = true
+			ultimo_pos_y = event.position.y
+		else:
+			arrastrando_scroll = false
+
+	elif (event is InputEventScreenDrag or event is InputEventMouseMotion) and arrastrando_scroll:
+		var delta_y = ultimo_pos_y - event.position.y
+		scroll_container.scroll_vertical += int(delta_y)
+		ultimo_pos_y = event.position.y

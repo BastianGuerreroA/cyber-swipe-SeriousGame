@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ble7k06xecln5" path="res://src/gameplay/capsula_item/capsula_item.tscn" id="3_nfn5k"]
 [ext_resource type="Texture2D" uid="uid://bfunvlk0h5dda" path="res://assets/IconosPixelArt/Estrella_Puntaje.png" id="4_ylymo"]
 [ext_resource type="AudioStream" uid="uid://hyle428upvsc" path="res://assets/Musica/Clement Panchout_ Forest Of A Thousand Masks.wav" id="5_forest"]
-[ext_resource type="Texture2D" path="res://assets/IconosPixelArt/pencil_icon.png" id="6_pencil"]
+[ext_resource type="Texture2D" uid="uid://djrwl1lfnd6ud" path="res://assets/IconosPixelArt/pencil_icon.png" id="6_pencil"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud"]
 bg_color = Color(0.05882353, 0.08627451, 0.1607843, 0.9490196)
@@ -101,18 +101,13 @@ autoplay = true
 [node name="Fondo" type="TextureRect" parent="."]
 modulate = Color(0.57720935, 0.22850424, 0.34832734, 1)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1162.0
-offset_top = -647.0
-offset_right = 1142.0
-offset_bottom = 649.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_1dqjf")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -122,9 +117,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_bottom = 24
 
 [node name="VBoxMain" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -153,19 +148,19 @@ theme_override_constants/separation = 11
 [node name="Usuario" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.9607843, 0.83137256, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 36
 text = "Usuario"
 
 [node name="EditUsuario" type="LineEdit" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
 visible = false
 custom_minimum_size = Vector2(180, 40)
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 24
 placeholder_text = "Ingresa tu nombre..."
 max_length = 15
 
 [node name="BotonEditar" type="Button" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario"]
-custom_minimum_size = Vector2(36, 36)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 theme = ExtResource("1_ylymo")
 icon = ExtResource("6_pencil")
@@ -180,7 +175,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="Iconos_puntaje" type="TextureRect" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("4_ylymo")
 expand_mode = 1
@@ -188,12 +183,12 @@ stretch_mode = 5
 
 [node name="Puntos" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 36
 text = "0"
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/HContainer_Usuario/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 36
 text = "ptos."
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer"]
@@ -204,6 +199,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "Progreso General"
 
 [node name="Spacer" type="Control" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso"]
@@ -215,14 +211,17 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "0"
 
 [node name="TotalCapsulas" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "/4"
 
 [node name="Progreso" type="Label" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer/Hcontainer_Progreso/HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "Capsulas"
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxMain/PanelContainer/MarginContainer/VBoxContainer"]
@@ -252,7 +251,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="BotonVolver" type="Button" parent="MarginContainer/VBoxMain"]
-custom_minimum_size = Vector2(250, 50)
+custom_minimum_size = Vector2(280, 56)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_ylymo")
@@ -261,6 +260,7 @@ theme_override_colors/font_focus_color = Color(0, 0.9607843, 0.83137256, 1)
 theme_override_colors/font_pressed_color = Color(0, 0.745098, 0.647059, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")

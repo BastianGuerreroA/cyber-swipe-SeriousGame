@@ -30,6 +30,9 @@ func _ready() -> void:
 
 # Llena la información de la cápsula dinámicamente desde el manager
 func configurar(datos: Dictionary) -> void:
+	if not is_node_ready():
+		await ready
+		
 	id_capsula = datos["id"]
 	label_titulo.text = datos["titulo"]
 	label_estado.text = datos["estado"]
@@ -37,15 +40,8 @@ func configurar(datos: Dictionary) -> void:
 	label_Subtitulo.text = datos["subtitulo"]
 	rich_text_mini_desc.text = datos["mini_descripcion"]
 	
-	# Carga de icono dinámico
-	var ruta_icono = "res://assets/IconosCapsulas/capsula_" + str(id_capsula) + ".png"
-	if FileAccess.file_exists(ruta_icono):
-		icon_rect.texture = load(ruta_icono)
-	else:
-		# Fallback a MedallaPixelArt si no existe el icono específico
-		var ruta_defecto = "res://assets/IconosPixelArt/MedallaPixelArt.png"
-		if FileAccess.file_exists(ruta_defecto):
-			icon_rect.texture = load(ruta_defecto)
+	# Carga de icono dinámico garantizado para exportaciones APK
+	icon_rect.texture = CapsulaManager.obtener_icono_capsula(id_capsula)
 	
 	if datos["estado"] == "Bloqueado":
 		boton_practicar.disabled = true

@@ -30,11 +30,14 @@ func login(email: String, password: String) -> void:
 	# Instanciamos el nodo HTTP de forma dinámica
 	var http = HTTPRequest.new()
 	http.process_mode = Node.PROCESS_MODE_ALWAYS
+	http.use_threads = true
+	if url.begins_with("https://"):
+		http.set_tls_options(TLSOptions.client_unsafe())
 	add_child(http)
 	
 	var error = http.request(url, headers, HTTPClient.METHOD_POST, request_data)
 	if error != OK:
-		login_failed.emit("Error al iniciar la petición de red.")
+		login_failed.emit("Error al iniciar la petición de red (" + str(error) + ").")
 		remove_child(http)
 		http.queue_free()
 		return
@@ -48,7 +51,10 @@ func login(email: String, password: String) -> void:
 	var body = response[3]
 	
 	if result != HTTPRequest.RESULT_SUCCESS:
-		login_failed.emit("Error de conexión al servidor.")
+		if result == HTTPRequest.RESULT_CANT_RESOLVE:
+			login_failed.emit("No se pudo resolver lsg.diinf.usach.cl. Verifica tu conexión a Wi-Fi/VPN USACH (Código 3).")
+		else:
+			login_failed.emit("Error de conexión al servidor (Código: " + str(result) + ").")
 		return
 		
 	if response_code == 200:
@@ -83,6 +89,9 @@ func fetch_whoami() -> void:
 	
 	var http = HTTPRequest.new()
 	http.process_mode = Node.PROCESS_MODE_ALWAYS
+	http.use_threads = true
+	if url.begins_with("https://"):
+		http.set_tls_options(TLSOptions.client_unsafe())
 	add_child(http)
 	
 	var error = http.request(url, headers, HTTPClient.METHOD_GET, "")

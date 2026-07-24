@@ -28,7 +28,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="Icono" type="TextureRect" parent="MarginContainer/VBoxHeader/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -42,14 +42,14 @@ size_flags_horizontal = 3
 [node name="LabelTitulo" type="Label" parent="MarginContainer/VBoxHeader/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 36
 text = "Bloqueo de Pantalla"
 autowrap_mode = 3
 
 [node name="Subtitulo" type="Label" parent="MarginContainer/VBoxHeader/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 22
 text = "Protege tu dispositivo con Pin y biometria Protege tu dispositivo con Pin y biometria."
 autowrap_mode = 2
 
@@ -60,7 +60,7 @@ alignment = 1
 [node name="Record" type="Label" parent="MarginContainer/VBoxHeader/HBoxContainer/VBoxDerecha"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.470588, 0.470588, 0.470588, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 18
 text = "Récord: 0 pts"
 horizontal_alignment = 2
 
@@ -80,7 +80,7 @@ theme_override_constants/margin_right = 5
 
 [node name="Estado" type="Label" parent="MarginContainer/VBoxHeader/HBoxContainer/VBoxDerecha/HBoxStatus/PanelContainer/MarginContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 20
 text = "Disponible"
 
 [node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxHeader/HBoxContainer/VBoxDerecha/HBoxStatus"]
@@ -98,14 +98,14 @@ layout_mode = 2
 
 [node name="MiniDescripcion" type="RichTextLabel" parent="MarginContainer/VBoxHeader/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/normal_font_size = 24
 text = "Un bloqueo de pantalla es la primera línea de defensa contra accesos no autorizados. Usar un PIN de al menos 6 dígitos combinado con autenticación bio..."
 fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxHeader/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 199
+theme_override_constants/separation = 155
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxHeader/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -116,7 +116,9 @@ texture = ExtResource("3_hxaqp")
 stretch_mode = 3
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxHeader/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(140, 48)
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "Estudiar"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxHeader/VBoxContainer/HBoxContainer"]
@@ -128,5 +130,7 @@ texture = ExtResource("4_ja2jg")
 stretch_mode = 3
 
 [node name="Button2" type="Button" parent="MarginContainer/VBoxHeader/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(140, 48)
 layout_mode = 2
+theme_override_font_sizes/font_size = 28
 text = "Practicar"

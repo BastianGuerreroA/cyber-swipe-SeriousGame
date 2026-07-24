@@ -14,7 +14,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="CyberSwipe-v2"
+config/name="CyberSwipe"
 run/main_scene="uid://blgfiuwr188ws"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
@@ -28,6 +28,7 @@ CapsulaManager="*res://src/autoloads/capsula_manager.gd"
 LsgAuth="*res://src/api/ApiAuth.gd"
 LsgCore="*res://src/api/ApiCore.gd"
 LsgLogger="*res://src/api/LsgLogger.gd"
+CryptoManager="*res://src/autoloads/CryptoManager.gd"
 
 [display]
 
@@ -58,3 +59,4 @@ textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.04, 0.05, 0.09, 1)

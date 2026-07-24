@@ -34,9 +34,27 @@ const CONSEJOS_VICTORIA = {
 const RUTA_GUARDADO_TRES = "user://progreso_usuario.tres"
 const RUTA_CARPETA_CAPSULAS = "res://resources/data/capsules/"
 
+# Rutas base para iconos dinámicos
+const RUTA_ICONOS_CAPSULAS = "res://assets/IconosCapsulas/capsula_"
+const RUTA_ICONO_DEFECTO = "res://assets/IconosPixelArt/MedallaPixelArt.png"
+
+# Obtiene dinámicamente el ícono de cualquier cápsula (funciona en editor y APK exportada)
+func obtener_icono_capsula(id: int) -> Texture2D:
+	var ruta_icono = RUTA_ICONOS_CAPSULAS + str(id) + ".png"
+	if ResourceLoader.exists(ruta_icono):
+		return load(ruta_icono) as Texture2D
+		
+	if ResourceLoader.exists(RUTA_ICONO_DEFECTO):
+		return load(RUTA_ICONO_DEFECTO) as Texture2D
+		
+	return null
+
 func _ready() -> void:
 	# 1. Cargar el contenido estático de las cápsulas (JSON generado por LLM o Desarrollador)
-	cargar_contenido_capsulas()
+	if existen_capsulas():
+		cargar_contenido_capsulas()
+	else:
+		print("No existen cápsulas instaladas.")
 	
 	# 2. Cargar el progreso del jugador (Resource nativo de Godot)
 	cargar_progreso_jugador()
@@ -44,32 +62,46 @@ func _ready() -> void:
 
 # Lee los datos de las cartas y textos desde archivos JSON independientes
 func cargar_contenido_capsulas() -> void:
-	lista_capsulas.clear()
-	var dir = DirAccess.open(RUTA_CARPETA_CAPSULAS)
-	if not dir:
-		print("ERROR: No se pudo abrir la carpeta de cápsulas en: ", RUTA_CARPETA_CAPSULAS)
-		return
-	
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	while file_name != "":
-		if not dir.current_is_dir() and file_name.ends_with(".json"):
-			var full_path = RUTA_CARPETA_CAPSULAS + file_name
-			var archivo = FileAccess.open(full_path, FileAccess.READ)
-			if archivo:
-				var json = JSON.new()
-				if json.parse(archivo.get_as_text()) == OK:
-					var capsula_data = json.data
-					lista_capsulas.append(capsula_data)
-				archivo.close()
-			else:
-				print("ERROR: No se pudo leer el archivo: ", full_path)
-		file_name = dir.get_next()
-		
-	# Ordenar las cápsulas por su ID para garantizar que aparezcan secuencialmente
-	lista_capsulas.sort_custom(func(a, b): return a["id"] < b["id"])
-	print("Se cargaron exitosamente ", lista_capsulas.size(), " cápsulas independientes.")
 
+	lista_capsulas.clear()
+
+	var dir := DirAccess.open(RUTA_CARPETA_CAPSULAS)
+
+	if dir == null:
+		push_error("No existe la carpeta de cápsulas: " + RUTA_CARPETA_CAPSULAS)
+		return
+
+	dir.list_dir_begin()
+
+	var file := dir.get_next()
+
+	while file != "":
+		if !dir.current_is_dir():
+			if file.ends_with(".lsg"):
+				# ignoramos el índice
+				if file == "index.lsg":
+					file = dir.get_next()
+					continue
+
+				var path := RUTA_CARPETA_CAPSULAS + file
+
+				var capsule := CryptoManager.load_capsule(path)
+
+				if !capsule.is_empty():
+					lista_capsulas.append(capsule)
+				else:
+					push_warning("No se pudo cargar " + file)
+
+		file = dir.get_next()
+
+	dir.list_dir_end()
+
+	lista_capsulas.sort_custom(
+		func(a,b):
+			return a.get("id", 0) < b.get("id", 0)
+	)
+
+	print("Capsulas cargadas: ", lista_capsulas.size())
 
 # Carga los récords y datos del usuario (Resource)
 func cargar_progreso_jugador() -> void:
@@ -145,4 +177,27 @@ func registrar_fin_de_juego(victoria: bool) -> void:
 	guardar_progreso()
 
 
-	
+func existen_capsulas() -> bool:
+
+	var dir := DirAccess.open(RUTA_CARPETA_CAPSULAS)
+
+	if dir == null:
+		return false
+
+	dir.list_dir_begin()
+
+	var file := dir.get_next()
+
+	while file != "":
+		if file.ends_with(".lsg"):
+			if file != "index.lsg":
+				dir.list_dir_end()
+				return true
+
+		file = dir.get_next()
+	dir.list_dir_end()
+	return false
+
+
+func obtener_total_capsulas()->int:
+	return lista_capsulas.size()

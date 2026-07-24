@@ -24,7 +24,7 @@ func _configurar_interfaz_lsg() -> void:
 	if perfil_previo:
 		perfil_previo.queue_free()
 		
-	# Instanciamos el HUD adecuado
+	# Instanciamos el HUD de perfil sólo si el usuario está autenticado
 	if LsgAuth.logged_in:
 		var perfil_escena = load("res://src/ui/multidimensional_profile/escena_perfil_multidimensional.tscn")
 		var perfil_instancia = perfil_escena.instantiate()
@@ -37,18 +37,6 @@ func _configurar_interfaz_lsg() -> void:
 		
 		margin_container.add_child(perfil_instancia)
 		print("LSG-Core: Cargada escena de Perfil Multidimensional en partida.")
-	else:
-		var login_escena = load("res://src/ui/login/login_lsg.tscn")
-		var login_instancia = login_escena.instantiate()
-		login_instancia.name = "LoginPanel"
-		
-		# Alinear en la esquina superior izquierda
-		login_instancia.layout_mode = 2
-		login_instancia.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-		login_instancia.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
-		
-		margin_container.add_child(login_instancia)
-		print("LSG-Core: Cargada escena de Login en partida.")
 
 func _on_boton_pausa_pressed() -> void:
 	# 1. Ocultamos el botón de pausa para que desaparezca
