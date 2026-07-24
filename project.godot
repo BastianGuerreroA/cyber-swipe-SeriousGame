@@ -24,6 +24,7 @@ buses/default_bus_layout=""
 
 [autoload]
 
+ContentManager="*res://src/autoloads/content_manager.gd"
 CapsulaManager="*res://src/autoloads/capsula_manager.gd"
 LsgAuth="*res://src/api/ApiAuth.gd"
 LsgCore="*res://src/api/ApiCore.gd"

@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://6ujp38r8q1cr" path="res://assets/Musica/Hover_mouse.mp3" id="8_kbxwo"]
 [ext_resource type="PackedScene" uid="uid://ws6ctwd7ok53" path="res://src/ui/capsula_selector/capsula_selector.tscn" id="9_ujlky"]
 [ext_resource type="AudioStream" uid="uid://daad7ic2t3gwt" path="res://assets/Musica/MusicMenu.mp3" id="11_ujlky"]
+[ext_resource type="Texture2D" uid="uid://8x1j0k2n3m" path="res://assets/IconosPixelArt/Estrella_Puntaje.png" id="12_spinner"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kbxwo"]
 shader = ExtResource("1_h33ay")
@@ -82,6 +83,43 @@ offset_right = 667.0
 offset_bottom = 1230.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="BadgeEstado" type="Label" parent="MarginContainer/CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -60.0
+offset_right = 250.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContenedorCargando" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="IconoSpinner" type="TextureRect" parent="MarginContainer/ContenedorCargando"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_spinner")
+expand_mode = 1
+
+[node name="LabelCargando" type="Label" parent="MarginContainer/ContenedorCargando"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Cargando cápsulas..."
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2

@@ -32,7 +32,7 @@ const CONSEJOS_VICTORIA = {
 
 # Definimos la ruta del recurso del jugador en la carpeta de usuario del dispositivo
 const RUTA_GUARDADO_TRES = "user://progreso_usuario.tres"
-const RUTA_CARPETA_CAPSULAS = "res://resources/data/capsules/"
+const RUTA_CARPETA_CAPSULAS = "user://capsules/"
 
 # Rutas base para iconos dinámicos
 const RUTA_ICONOS_CAPSULAS = "res://assets/IconosCapsulas/capsula_"
@@ -50,14 +50,25 @@ func obtener_icono_capsula(id: int) -> Texture2D:
 	return null
 
 func _ready() -> void:
-	# 1. Cargar el contenido estático de las cápsulas (JSON generado por LLM o Desarrollador)
-	if existen_capsulas():
-		cargar_contenido_capsulas()
-	else:
-		print("No existen cápsulas instaladas.")
+	# 1. Asegurar la existencia de user://capsules/ y copiar semillas si está vacía
+	ContentManager.preparar_directorio_local()
 	
-	# 2. Cargar el progreso del jugador (Resource nativo de Godot)
+	# 2. Cargar el contenido local de las cápsulas (.lsg)
+	cargar_contenido_capsulas()
+	
+	# 3. Cargar el progreso del jugador (Resource nativo de Godot)
 	cargar_progreso_jugador()
+	
+	# 4. Escuchar actualización de GitHub para recargar cápsulas automáticamente
+	if not ContentManager.content_sync_completed.is_connected(_on_content_sync_completed):
+		ContentManager.content_sync_completed.connect(_on_content_sync_completed)
+		
+	# 5. Iniciar sincronización remota desde GitHub en segundo plano
+	ContentManager.sincronizar_con_github()
+
+func _on_content_sync_completed(_success: bool) -> void:
+	print("CapsulaManager: Sincronización finalizada. Recargando cápsulas...")
+	cargar_contenido_capsulas()
 
 
 # Lee los datos de las cartas y textos desde archivos JSON independientes
