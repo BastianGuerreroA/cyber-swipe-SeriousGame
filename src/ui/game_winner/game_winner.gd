@@ -16,10 +16,7 @@ func _ready() -> void:
 	# Mostrar retroalimentación pedagógica de victoria
 	var id_capsula = CapsulaManager.capsula_activa_id
 	label_titulo_logro.text = "🏆 CÁPSULA " + str(id_capsula) + " COMPLETADA"
-	if CapsulaManager.CONSEJOS_VICTORIA.has(id_capsula):
-		label_consejo.text = CapsulaManager.CONSEJOS_VICTORIA[id_capsula]
-	else:
-		label_consejo.text = "¡Buen trabajo manteniendo protegida la ciberseguridad de tu PYME!"
+	label_consejo.text = CapsulaManager.obtener_consejo_victoria(id_capsula)
 
 # "Reintentar" -> Carga de nuevo la escena del juego
 func _on_reintentar_pressed() -> void:

@@ -278,3 +278,26 @@ func _realizar_canje_en_servidor(mechanic_id: int, dimension_id: int, amount: in
 	
 	var response_code = response[1]
 	return (response_code == 200 or response_code == 201)
+
+# Soporte táctil para el deslizamiento (Scroll) interno de la Tienda LSG
+@onready var scroll_container = $MarginContainer/VBoxMain/ScrollContainer
+var arrastrando_scroll_tienda: bool = false
+var ultimo_pos_y_tienda: float = 0.0
+
+func _input(event: InputEvent) -> void:
+	if not is_inside_tree() or not visible:
+		return
+
+	if event is InputEventScreenTouch or (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT):
+		if event.pressed:
+			var mouse_pos = get_global_mouse_position()
+			if scroll_container and scroll_container.get_global_rect().has_point(mouse_pos):
+				arrastrando_scroll_tienda = true
+				ultimo_pos_y_tienda = event.position.y
+		else:
+			arrastrando_scroll_tienda = false
+
+	elif (event is InputEventScreenDrag or event is InputEventMouseMotion) and arrastrando_scroll_tienda:
+		var delta_y = ultimo_pos_y_tienda - event.position.y
+		scroll_container.scroll_vertical += int(delta_y)
+		ultimo_pos_y_tienda = event.position.y

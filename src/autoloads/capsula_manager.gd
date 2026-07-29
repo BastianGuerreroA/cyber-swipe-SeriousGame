@@ -21,14 +21,26 @@ const CONSEJOS_DERROTA = {
 	"disponibilidad": "Fallo de Disponibilidad. Los sistemas quedaron inoperativos (ej. Ransomware). Implementa respaldos offline (fuera de red) y climatiza tus racks."
 }
 
-# Diccionario centralizado de consejos/resumen pedagógico por victoria
-const CONSEJOS_VICTORIA = {
-	1: "¡Excelente! Has aprendido a proteger tus dispositivos físicos con PIN y contraseñas robustas.",
-	2: "¡Genial! Sabes cómo identificar correos de phishing y evitar la descarga de archivos fraudulentos.",
-	3: "¡Muy bien! Tienes clara la regla de respaldos 3-2-1 para protegerte contra ataques de ransomware.",
-	4: "¡Perfecto! Has comprendido la importancia de segmentar tus redes Wi-Fi y usar conexiones VPN seguras.",
-	5: "¡Fantástico! Sabes reconocer trampas de ingeniería social física como el Baiting o el Vishing."
-}
+# Colección centralizada de consejos pedagógicos genéricos por victoria
+const CONSEJOS_VICTORIA_GENERICOS = [
+	"¡Excelente trabajo! Has demostrado una gran capacidad para tomar decisiones seguras y proteger los activos de la empresa.",
+	"¡Felicitaciones! Aplicaste correctamente las mejores prácticas de ciberseguridad para mitigar los riesgos digitales.",
+	"¡Gran desempeño! Mantener una postura preventiva es clave para defender la infraestructura y los datos de tu PYME.",
+	"¡Nivel superado! Demostraste un excelente criterio ante las amenazas y vulnerabilidades presentadas.",
+	"¡Fantástico! Tu gestión oportuna de los recursos evitó incidentes graves y fortaleció la ciberseguridad corporativa."
+]
+
+# Retorna el consejo de victoria (prioriza el JSON de la cápsula si existe, o usa el repertorio genérico)
+func obtener_consejo_victoria(id: int) -> String:
+	var cap = obtener_capsula(id)
+	if not cap.is_empty() and cap.has("consejo_victoria") and str(cap["consejo_victoria"]).strip_edges() != "":
+		return cap["consejo_victoria"]
+		
+	if CONSEJOS_VICTORIA_GENERICOS.size() > 0:
+		var idx = posmod(id - 1, CONSEJOS_VICTORIA_GENERICOS.size())
+		return CONSEJOS_VICTORIA_GENERICOS[idx]
+		
+	return "¡Buen trabajo manteniendo protegida la ciberseguridad de tu PYME!"
 
 # Definimos la ruta del recurso del jugador en la carpeta de usuario del dispositivo
 const RUTA_GUARDADO_TRES = "user://progreso_usuario.tres"
@@ -181,8 +193,8 @@ func registrar_fin_de_juego(victoria: bool) -> void:
 	
 	# 2. Desbloquear la siguiente cápsula si el jugador GANÓ la cápsula de su nivel máximo actual
 	if victoria and capsula_activa_id == progreso_general:
-		# Incrementamos en 1 el nivel desbloqueado (máximo número total de cápsulas)
-		progreso_general = clampi(progreso_general + 1, 1, lista_capsulas.size())
+		# Incrementamos en 1 el nivel desbloqueado (permitiendo superar la última cápsula)
+		progreso_general = clampi(progreso_general + 1, 1, lista_capsulas.size() + 1)
 	
 	# 3. Guardar cambios en el recurso .tres
 	guardar_progreso()

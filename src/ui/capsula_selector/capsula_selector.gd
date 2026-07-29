@@ -120,6 +120,11 @@ var arrastrando_scroll: bool = false
 var ultimo_pos_y: float = 0.0
 
 func _input(event: InputEvent) -> void:
+	# Si existe un modal activo como la Tienda LSG, no realizamos scroll en la pantalla de fondo
+	if _hay_modal_activo():
+		arrastrando_scroll = false
+		return
+
 	if event is InputEventScreenTouch or (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT):
 		if event.pressed:
 			arrastrando_scroll = true
@@ -131,3 +136,9 @@ func _input(event: InputEvent) -> void:
 		var delta_y = ultimo_pos_y - event.position.y
 		scroll_container.scroll_vertical += int(delta_y)
 		ultimo_pos_y = event.position.y
+
+func _hay_modal_activo() -> bool:
+	for child in get_children():
+		if child.name.begins_with("TiendaLSG") or child.name.contains("Tienda") or child.name.contains("Modal"):
+			return true
+	return false

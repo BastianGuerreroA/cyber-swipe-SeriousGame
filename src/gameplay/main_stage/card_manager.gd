@@ -25,58 +25,7 @@ var confidencialidad_actual: int = 50
 var integridad_actual: int = 50
 var disponibilidad_actual: int = 50
 
-var cartas = [
-	{
-		"imagen": 0, 
-		"contexto": "Llega un correo urgente del 'SII' advirtiendo sobre una multa por diferencias en la Declaración de Renta. Pide descargar un PDF adjunto para ver el detalle en 24 horas o habrá embargo.",
-		"texto_izquierda": "Borrar correo",
-		"texto_derecha": "Descargar PDF",
-		"correcto": -1.0, 
-		"explicacion": "El SII nunca envía archivos PDF adjuntos ni links de descarga directa para multas. Es un clásico ataque de Phishing para instalar malware.",
-		"efecto_izquierda": { "presupuesto": 0, "confidencialidad": +10, "integridad": +10, "disponibilidad": 0 },
-		"efecto_derecha": { "presupuesto": -20, "confidencialidad": -30, "integridad": -30, "disponibilidad": -10 }
-	},
-	{
-		"imagen": 1, 
-		"contexto": "Recibes un WhatsApp de un número desconocido, pero tiene la foto de tu contador. Dice: 'Hola, cambié de número. Tuve un problema con el banco, ¿me puedes transferir urgente los honorarios a esta nueva Cuenta RUT?'",
-		"texto_izquierda": "Transferir rápido",
-		"texto_derecha": "Llamar al número antiguo",
-		"correcto": 1.0, 
-		"explicacion": "Es el 'Cuento del Tío' digital (Suplantación de identidad). Siempre debes verificar por otro canal de comunicación antes de transferir dinero a cuentas nuevas.",
-		"efecto_izquierda": { "presupuesto": -40, "confidencialidad": -10, "integridad": 0, "disponibilidad": 0 },
-		"efecto_derecha": { "presupuesto": +10, "confidencialidad": +10, "integridad": 0, "disponibilidad": 0 }
-	},
-	{
-		"imagen": 0, 
-		"contexto": "El encargado de bodega encuentra un pendrive plateado tirado en el estacionamiento de la empresa. Te lo trae a tu escritorio para que lo revises y veas si tiene el nombre del dueño adentro.",
-		"texto_izquierda": "Entregar a TI / Botar",
-		"texto_derecha": "Conectarlo al PC",
-		"correcto": -1.0, 
-		"explicacion": "Ataque de 'Baiting' (Cebo). Conectar un USB desconocido puede ejecutar un código malicioso instantáneamente en la red de la empresa sin que te des cuenta.",
-		"efecto_izquierda": { "presupuesto": 0, "confidencialidad": 0, "integridad": +15, "disponibilidad": +10 },
-		"efecto_derecha": { "presupuesto": -15, "confidencialidad": -20, "integridad": -35, "disponibilidad": -25 }
-	},
-	{
-		"imagen": 1, 
-		"contexto": "Aparece un mensaje en el servidor principal de ventas: 'Actualización crítica de sistema pendiente'. Requiere reiniciar el equipo y tomará unos 45 minutos. Estamos en pleno horario de atención a clientes.",
-		"texto_izquierda": "Posponer 1 semana",
-		"texto_derecha": "Actualizar ahora",
-		"correcto": 1.0, 
-		"explicacion": "Los ciberdelincuentes aprovechan las vulnerabilidades no parcheadas. Aunque cueste ventas momentáneas, posponer parches de seguridad abre la puerta a ataques de Ransomware.",
-		"efecto_izquierda": { "presupuesto": +15, "confidencialidad": -20, "integridad": -30, "disponibilidad": +15 },
-		"efecto_derecha": { "presupuesto": -15, "confidencialidad": +20, "integridad": +30, "disponibilidad": -20 }
-	},
-	{
-		"imagen": 0, 
-		"contexto": "Entró un practicante nuevo. Como aún no le crean su correo, tu socio sugiere que use la cuenta compartida 'ventas@mipyme.cl' y le demos la clave 'Ventas2026' por mientras.",
-		"texto_izquierda": "Prestarle la cuenta",
-		"texto_derecha": "Exigir cuenta propia",
-		"correcto": 1.0, 
-		"explicacion": "Compartir credenciales rompe el principio de 'No repudio'. Si ocurre una filtración o un error grave desde esa cuenta, será imposible auditar quién fue el responsable.",
-		"efecto_izquierda": { "presupuesto": 0, "confidencialidad": -25, "integridad": -15, "disponibilidad": 0 },
-		"efecto_derecha": { "presupuesto": -10, "confidencialidad": +25, "integridad": +10, "disponibilidad": 0 }
-	}
-]
+var cartas = []
 
 func _ready():
 	randomize()
@@ -87,11 +36,10 @@ func _ready():
 	# Reiniciar el puntaje de la ronda actual a 0 al comenzar la partida
 	CapsulaManager.puntaje_ronda_actual = 0
 	
-	# Cartas Dinamicas (Se deja obsoleto las cartas anteriores, mas tarde las borro :D)
+	# Cartas Dinamicas (Se aleatoriza la dirección de las opciones con probabilidad del 50%)
 	var cartas_dinamicas = CapsulaManager.obtener_cartas_de_capsula_activa()
 	if not cartas_dinamicas.is_empty():
-		# Duplicamos con .duplicate() para no vaciar el JSON original en memoria
-		cartas = cartas_dinamicas.duplicate()
+		cartas = _aleatorizar_direcciones_cartas(cartas_dinamicas)
 	
 	# Fallback dinámico si no está enlazado en el inspector
 	if not feedback_menu:
@@ -413,3 +361,27 @@ func revivir_jugador() -> void:
 	
 	# Continuar partida
 	generar_carta()
+
+# Aleatoriza la dirección (izquierda/derecha) de las respuestas con 50% de probabilidad
+func _aleatorizar_direcciones_cartas(lista_original: Array) -> Array:
+	var lista_resultado: Array = []
+	
+	for carta_dict in lista_original:
+		var c = carta_dict.duplicate(true)
+		
+		# 50% de probabilidad de invertir los lados
+		if randf() < 0.5:
+			var temp_texto = c.get("texto_izquierda", "")
+			c["texto_izquierda"] = c.get("texto_derecha", "")
+			c["texto_derecha"] = temp_texto
+			
+			var temp_efecto = c.get("efecto_izquierda", {}).duplicate()
+			c["efecto_izquierda"] = c.get("efecto_derecha", {}).duplicate()
+			c["efecto_derecha"] = temp_efecto
+			
+			if c.has("correcto"):
+				c["correcto"] = -float(c["correcto"])
+				
+		lista_resultado.append(c)
+		
+	return lista_resultado
