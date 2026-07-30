@@ -83,6 +83,45 @@ func _ready() -> void:
 		var instancia = CAPSULA_ITEM_ESCENA.instantiate()
 		contenedor_capsulas.add_child(instancia)
 		instancia.configurar(datos_capsula)
+		
+	# Si ya completó todas las cápsulas, mostramos el botón para ver el certificado global
+	if CapsulaManager.progreso_general > CapsulaManager.lista_capsulas.size() and CapsulaManager.lista_capsulas.size() > 0:
+		var boton_cert = Button.new()
+		boton_cert.text = "VER RESUMEN GLOBAL"
+		
+		var font_pixel = load("res://assets/Fuente/acknowtt.ttf")
+		if font_pixel:
+			boton_cert.add_theme_font_override("font", font_pixel)
+		boton_cert.add_theme_font_size_override("font_size", 22)
+		boton_cert.add_theme_color_override("font_color", Color(1.0, 0.85, 0.3, 1)) # Dorado
+		boton_cert.add_theme_color_override("font_hover_color", Color(1.0, 1.0, 1.0, 1))
+		boton_cert.add_theme_color_override("font_pressed_color", Color(0.9, 0.7, 0.2, 1))
+		
+		var style_normal = StyleBoxFlat.new()
+		style_normal.bg_color = Color(0.06, 0.1, 0.18, 0.95)
+		style_normal.border_width_left = 2
+		style_normal.border_width_top = 2
+		style_normal.border_width_right = 2
+		style_normal.border_width_bottom = 2
+		style_normal.border_color = Color(1.0, 0.85, 0.3, 1) # Borde Dorado
+		style_normal.set_corner_radius_all(8)
+		
+		var style_hover = style_normal.duplicate()
+		style_hover.bg_color = Color(0.25, 0.2, 0.05, 0.95)
+		
+		boton_cert.add_theme_stylebox_override("normal", style_normal)
+		boton_cert.add_theme_stylebox_override("hover", style_hover)
+		boton_cert.add_theme_stylebox_override("pressed", style_normal)
+		boton_cert.add_theme_stylebox_override("focus", style_normal)
+		
+		boton_cert.custom_minimum_size = Vector2(300, 48)
+		boton_cert.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		boton_volver.get_parent().add_child(boton_cert)
+		boton_volver.get_parent().move_child(boton_cert, boton_volver.get_index())
+		boton_cert.pressed.connect(_on_certificado_pressed)
+
+func _on_certificado_pressed() -> void:
+	get_tree().change_scene_to_file("res://src/ui/global_summary/resumen_global.tscn")
 
 func _on_musica_finished() -> void:
 	musica_fondo.play()

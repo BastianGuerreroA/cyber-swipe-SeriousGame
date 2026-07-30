@@ -1,0 +1,260 @@
+[gd_scene load_steps=11 format=3 uid="uid://c6v2n8472q"]
+
+[ext_resource type="Theme" uid="uid://dndsbs88ttxmu" path="res://resources/themes/MenuPrincipal_Theme.tres" id="1_theme"]
+[ext_resource type="Shader" uid="uid://bpgekxfov7ajw" path="res://src/ui/main_menu/movimiento_fondo.gdshader" id="2_shader"]
+[ext_resource type="Texture2D" uid="uid://dc687mpc3o8or" path="res://assets/free-city-backgrounds-pixel-art/city 1/6.png" id="3_bg"]
+[ext_resource type="Script" uid="uid://df752k481l" path="res://src/ui/global_summary/resumen_global.gd" id="4_script"]
+[ext_resource type="FontFile" uid="uid://0jlmj72sqjkq" path="res://assets/Fuente/acknowtt.ttf" id="6_font"]
+[ext_resource type="AudioStream" uid="uid://bo2d4qf7vmnp0" path="res://assets/Musica/2017 12_ Clement Panchout_ Omno (Demo)_ Contemplative.wav" id="7_music"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bg"]
+shader = ExtResource("2_shader")
+shader_parameter/speed = 0.03
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel_centrado"]
+bg_color = Color(0.05, 0.08, 0.15, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.9607843, 0.83137256, 0.85)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
+bg_color = Color(0.06, 0.1, 0.18, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.9607843, 0.83137256, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pressed"]
+bg_color = Color(0.02, 0.2, 0.2, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.8, 0.7, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0, 0.35, 0.35, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 1, 0.9, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="ResumenGlobal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_theme")
+script = ExtResource("4_script")
+
+[node name="Fondo" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_bg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_bg")
+expand_mode = 1
+
+[node name="PanelPrincipal" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(670, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -335.0
+offset_top = -540.0
+offset_right = 335.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel_centrado")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelPrincipal"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxMain" type="VBoxContainer" parent="PanelPrincipal/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HeaderTitle" type="Label" parent="PanelPrincipal/MarginContainer/VBoxMain"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.96, 0.83, 1)
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 28
+text = "RESUMEN GLOBAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PanelMetricas" type="PanelContainer" parent="PanelPrincipal/MarginContainer/VBoxMain"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelPrincipal/MarginContainer/VBoxMain/PanelMetricas"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxMetricas" type="VBoxContainer" parent="PanelPrincipal/MarginContainer/VBoxMain/PanelMetricas/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="HBoxPuntos" type="HBoxContainer" parent="PanelPrincipal/MarginContainer/VBoxMain/PanelMetricas/MarginContainer/VBoxMetricas"]
+layout_mode = 2
+
+[node name="LabelPuntos" type="Label" parent="PanelPrincipal/MarginContainer/VBoxMain/PanelMetricas/MarginContainer/VBoxMetricas/HBoxPuntos"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 21
+text = "Puntaje Total Acumulado:"
+
+[node name="ValorPuntos" type="Label" parent="PanelPrincipal/MarginContainer/VBoxMain/PanelMetricas/MarginContainer/VBoxMetricas/HBoxPuntos"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 25
+text = "0 PTS"
+
+[node name="HBoxProgreso" type="HBoxContainer" parent="PanelPrincipal/MarginContainer/VBoxMain/PanelMetricas/MarginContainer/VBoxMetricas"]
+layout_mode = 2
+
+[node name="LabelProgreso" type="Label" parent="PanelPrincipal/MarginContainer/VBoxMain/PanelMetricas/MarginContainer/VBoxMetricas/HBoxProgreso"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 21
+text = "Capsulas Completadas:"
+
+[node name="ValorProgreso" type="Label" parent="PanelPrincipal/MarginContainer/VBoxMain/PanelMetricas/MarginContainer/VBoxMetricas/HBoxProgreso"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.96, 0.83, 1)
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 25
+text = "0 / 0 (0%)"
+
+[node name="LabelSeccionDesglose" type="Label" parent="PanelPrincipal/MarginContainer/VBoxMain"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 22
+text = "DESGLOSE DE RESULTADOS POR CAPSULA:"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelPrincipal/MarginContainer/VBoxMain"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxDesglose" type="VBoxContainer" parent="PanelPrincipal/MarginContainer/VBoxMain/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="PanelDiagnostico" type="PanelContainer" parent="PanelPrincipal/MarginContainer/VBoxMain"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelPrincipal/MarginContainer/VBoxMain/PanelDiagnostico"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxDiagnostico" type="VBoxContainer" parent="PanelPrincipal/MarginContainer/VBoxMain/PanelDiagnostico/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="TituloDiagnostico" type="Label" parent="PanelPrincipal/MarginContainer/VBoxMain/PanelDiagnostico/MarginContainer/VBoxDiagnostico"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.96, 0.83, 1)
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 22
+text = "DIAGNOSTICO DE COMPETENCIAS"
+autowrap_mode = 2
+
+[node name="TextoDiagnostico" type="Label" parent="PanelPrincipal/MarginContainer/VBoxMain/PanelDiagnostico/MarginContainer/VBoxDiagnostico"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 19
+text = "Cargando evaluacion..."
+autowrap_mode = 2
+
+[node name="VBoxBotones" type="VBoxContainer" parent="PanelPrincipal/MarginContainer/VBoxMain"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BotonRepasar" type="Button" parent="PanelPrincipal/MarginContainer/VBoxMain/VBoxBotones"]
+custom_minimum_size = Vector2(420, 52)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0.9607843, 0.83137256, 1)
+theme_override_colors/font_focus_color = Color(0, 0.9607843, 0.83137256, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.745098, 0.647059, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btn_normal")
+text = "SELECCIONAR CAPSULAS"
+
+[node name="BotonMenu" type="Button" parent="PanelPrincipal/MarginContainer/VBoxMain/VBoxBotones"]
+custom_minimum_size = Vector2(420, 52)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0.9607843, 0.83137256, 1)
+theme_override_colors/font_focus_color = Color(0, 0.9607843, 0.83137256, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.745098, 0.647059, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_font")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_btn_normal")
+text = "VOLVER AL MENU"
+
+[node name="MusicaFondo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_music")
+volume_db = -10.0
+autoplay = true

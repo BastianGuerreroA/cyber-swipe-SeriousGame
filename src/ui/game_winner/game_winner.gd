@@ -7,6 +7,8 @@ extends Control
 @onready var label_titulo_logro = $PanelContainer/MarginContainer/VBoxContainer/PanelFeedback/MarginContainer/VBoxContainer/TituloLogro
 @onready var label_consejo = $PanelContainer/MarginContainer/VBoxContainer/PanelFeedback/MarginContainer/VBoxContainer/Consejo
 
+@onready var boton_exit = $PanelContainer/MarginContainer/VBoxContainer/ExitGame
+
 func _ready() -> void:
 	# Mostrar los puntajes
 	var record = CapsulaManager.obtener_record_capsula(CapsulaManager.capsula_activa_id)
@@ -15,8 +17,12 @@ func _ready() -> void:
 	
 	# Mostrar retroalimentación pedagógica de victoria
 	var id_capsula = CapsulaManager.capsula_activa_id
-	label_titulo_logro.text = "🏆 CÁPSULA " + str(id_capsula) + " COMPLETADA"
+	label_titulo_logro.text = "CAPSULA " + str(id_capsula) + " COMPLETADA"
 	label_consejo.text = CapsulaManager.obtener_consejo_victoria(id_capsula)
+	
+	# Si es la última cápsula del juego, personalizar el botón de salida
+	if id_capsula >= CapsulaManager.lista_capsulas.size():
+		boton_exit.text = "VER RESUMEN GLOBAL"
 
 # "Reintentar" -> Carga de nuevo la escena del juego
 func _on_reintentar_pressed() -> void:
@@ -27,4 +33,8 @@ func _on_reintentar_pressed() -> void:
 func _on_exit_game_pressed() -> void:
 	get_tree().paused = false
 	LsgCore.reset_active_mechanics()
-	get_tree().change_scene_to_packed(escena_capsulas)
+	
+	if CapsulaManager.capsula_activa_id >= CapsulaManager.lista_capsulas.size():
+		get_tree().change_scene_to_file("res://src/ui/global_summary/resumen_global.tscn")
+	else:
+		get_tree().change_scene_to_packed(escena_capsulas)
