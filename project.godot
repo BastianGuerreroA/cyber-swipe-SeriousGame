@@ -17,6 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="CyberSwipe"
 run/main_scene="uid://blgfiuwr188ws"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+run/max_fps=60
 
 [audio]
 
@@ -24,6 +25,7 @@ buses/default_bus_layout=""
 
 [autoload]
 
+PerformanceLogger="*res://src/autoloads/performance_logger.gd"
 ContentManager="*res://src/autoloads/content_manager.gd"
 CapsulaManager="*res://src/autoloads/capsula_manager.gd"
 LsgAuth="*res://src/api/ApiAuth.gd"

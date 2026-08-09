@@ -27,9 +27,13 @@ func _actualizar_estado_interfaz() -> void:
 		contenedor_botones.visible = false
 		contenedor_cargando.visible = true
 		badge_estado.text = ""
+		set_process(true)
 	else:
 		contenedor_cargando.visible = false
 		contenedor_botones.visible = true
+		set_process(false)
+		if PerformanceLogger:
+			PerformanceLogger.mark_initial_load_complete()
 		if ContentManager.last_sync_success:
 			badge_estado.text = ""
 		else:

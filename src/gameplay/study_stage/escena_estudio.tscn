@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cvwv4r0r5uqmy" path="res://src/gameplay/study_stage/escena_estudio.gd" id="1_m66y7"]
 [ext_resource type="Texture2D" uid="uid://dpj51wu0v11vg" path="res://assets/free-city-backgrounds-pixel-art/city 2/10.png" id="2_nv5j8"]
 [ext_resource type="Theme" uid="uid://dnpnaw8u2vfep" path="res://resources/themes/Capsulas.tres" id="3_ylymo"]
-[ext_resource type="AudioStream" uid="uid://di28ytsuqqau2" path="res://assets/Musica/2014 07_ Clement Panchout_ Partycles OST_ Cheerful Title Screen.wav" id="4_partycles"]
+[ext_resource type="AudioStream" uid="uid://di28ytsuqqau2" path="res://assets/Musica/2014 07_ Clement Panchout_ Partycles OST_ Cheerful Title Screen.mp3" id="4_partycles"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
 bg_color = Color(0.05882353, 0.08627451, 0.1607843, 0.9490196)

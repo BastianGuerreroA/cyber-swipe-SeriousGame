@@ -26,6 +26,7 @@ var integridad_actual: int = 50
 var disponibilidad_actual: int = 50
 
 var cartas = []
+var nodo_carta = null
 
 func _ready():
 	randomize()
@@ -68,37 +69,35 @@ func _ready():
 
 	
 	
-func _process(_delta):
-	if not label_contexto:
-		return
-	
-	var actuales = label_contexto.visible_characters
-	
+func _actualizar_caracteres_visibles(actuales: int) -> void:
+	if label_contexto:
+		label_contexto.visible_characters = actuales
 	if actuales > chars_mostrados:
 		chars_mostrados = actuales
-		
-		# Evita sonido en espacios
 		if chars_mostrados <= texto_actual.length():
-			var char = texto_actual[chars_mostrados - 1]
-			if char != " ":
+			var char_actual = texto_actual[chars_mostrados - 1]
+			if char_actual != " " and typing_sound:
 				typing_sound.play()
 
 func generar_carta():
 	# Si ya no quedan cartas en la baraja local, el jugador ha ganado
 	if cartas.is_empty():
+		if nodo_carta and is_instance_valid(nodo_carta):
+			nodo_carta.visible = false
 		ganar_juego()
 		return
 		
 	if imagenes.is_empty():
 		return
 	
-	var nueva_carta = carta_escena.instantiate()
-	# Forzar que la carta sea pausada cuando get_tree().paused es true
-	nueva_carta.process_mode = Node.PROCESS_MODE_PAUSABLE
-	add_child(nueva_carta)
+	if not nodo_carta or not is_instance_valid(nodo_carta):
+		nodo_carta = carta_escena.instantiate()
+		nodo_carta.process_mode = Node.PROCESS_MODE_PAUSABLE
+		add_child(nodo_carta)
 	
-	# Posición controlada por el spawn
-	nueva_carta.set_posicion_inicial(spawn_point.global_position)
+	nodo_carta.visible = true
+	nodo_carta.rotation_degrees = 0.0
+	nodo_carta.set_posicion_inicial(spawn_point.global_position)
 	
 	var indice = obtener_indice_carta()
 	var data = cartas[indice]
@@ -106,12 +105,18 @@ func generar_carta():
 	# Removemos la carta seleccionada para vaciar la lista
 	cartas.remove_at(indice)
 	
-	var textura = imagenes[data["imagen"]] #Guarda la textura seleccionada en el data
+	var textura = imagenes[data["imagen"]]
 	
-	nueva_carta.configurar(data, textura) # Configuración completa de la carta
-	nueva_carta.carta_procesada.connect(_on_carta_procesada.bind(data)) # Conectar señal
-	nueva_carta.intencion_decision.connect(_on_intencion_decision.bind(data))
-	# Mostrar contexto con animación
+	nodo_carta.configurar(data, textura)
+	
+	if nodo_carta.carta_procesada.is_connected(_on_carta_procesada):
+		nodo_carta.carta_procesada.disconnect(_on_carta_procesada)
+	if nodo_carta.intencion_decision.is_connected(_on_intencion_decision):
+		nodo_carta.intencion_decision.disconnect(_on_intencion_decision)
+		
+	nodo_carta.carta_procesada.connect(_on_carta_procesada.bind(data))
+	nodo_carta.intencion_decision.connect(_on_intencion_decision.bind(data))
+	
 	mostrar_contexto(data["contexto"])
 
 func obtener_indice_carta() -> int:
@@ -127,15 +132,8 @@ func mostrar_contexto(texto: String):
 	chars_mostrados = 0
 	
 	tween_texto = get_tree().create_tween()
-	
-	var duracion = texto.length() * 0.05
-	
-	tween_texto.tween_property(
-		label_contexto,
-		"visible_characters",
-		texto.length(),
-		duracion
-	)
+	var duracion = texto.length() * 0.04
+	tween_texto.tween_method(_actualizar_caracteres_visibles, 0, texto.length(), duracion)
 
 func obtener_efectos_modificados(efecto: Dictionary, es_correcta: bool) -> Dictionary:
 	var modificado = efecto.duplicate()

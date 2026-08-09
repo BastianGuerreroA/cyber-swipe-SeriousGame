@@ -136,6 +136,12 @@ func finalizar_arrastre():
 func set_posicion_inicial(pos: Vector2): 
 	posicion_inicial = pos
 	global_position = pos
+	rotation_degrees = 0.0
+	arrastrando = false
+	intencion_actual = 0
+	if overlay:
+		overlay.visible = false
+		overlay.modulate.a = 0
 
 func regresar_al_centro():
 	# Animación de retorno a la posición inicial
@@ -167,11 +173,10 @@ func ejecutar_salida(direccion: float):
 	)
 
 func _on_carta_fuera(direccion):
-	# Emitimos la señal avisando que ya terminamos
-	carta_procesada.emit(direccion)
-	#if direccion > 0: #Cuando es 1.0 signfica derecha
-		#print("Derecha")
-	#else:			  #Cuando es -1.0 signfica izquierda
-		#print("izquierda")
 	overlay.visible = false
-	queue_free() # Elimina la carta
+	overlay.modulate.a = 0
+	rotation_degrees = 0.0
+	arrastrando = false
+	intencion_actual = 0
+	visible = false
+	carta_procesada.emit(direccion)

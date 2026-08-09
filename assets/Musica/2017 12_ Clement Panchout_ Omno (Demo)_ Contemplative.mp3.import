@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://u1o1tvb10mng"
+path="res://.godot/imported/2017 12_ Clement Panchout_ Omno (Demo)_ Contemplative.mp3-bee32026a3cfd036765b47c57fc77824.mp3str"
+
+[deps]
+
+source_file="res://assets/Musica/2017 12_ Clement Panchout_ Omno (Demo)_ Contemplative.mp3"
+dest_files=["res://.godot/imported/2017 12_ Clement Panchout_ Omno (Demo)_ Contemplative.mp3-bee32026a3cfd036765b47c57fc77824.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

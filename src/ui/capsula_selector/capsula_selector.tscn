@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://dnpnaw8u2vfep" path="res://resources/themes/Capsulas.tres" id="1_ylymo"]
 [ext_resource type="PackedScene" uid="uid://ble7k06xecln5" path="res://src/gameplay/capsula_item/capsula_item.tscn" id="3_nfn5k"]
 [ext_resource type="Texture2D" uid="uid://bfunvlk0h5dda" path="res://assets/IconosPixelArt/Estrella_Puntaje.png" id="4_ylymo"]
-[ext_resource type="AudioStream" uid="uid://hyle428upvsc" path="res://assets/Musica/Clement Panchout_ Forest Of A Thousand Masks.wav" id="5_forest"]
+[ext_resource type="AudioStream" uid="uid://hyle428upvsc" path="res://assets/Musica/Clement Panchout_ Forest Of A Thousand Masks.mp3" id="5_forest"]
 [ext_resource type="Texture2D" uid="uid://djrwl1lfnd6ud" path="res://assets/IconosPixelArt/pencil_icon.png" id="6_pencil"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud"]

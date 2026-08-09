@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dopf0cgrc2lsi"
+path="res://.godot/imported/2014 07_ Clement Panchout_ Partycles OST_ Cheerful Title Screen.mp3-f78bd59c51b13bc132c5291a7677ef97.mp3str"
+
+[deps]
+
+source_file="res://assets/Musica/2014 07_ Clement Panchout_ Partycles OST_ Cheerful Title Screen.mp3"
+dest_files=["res://.godot/imported/2014 07_ Clement Panchout_ Partycles OST_ Cheerful Title Screen.mp3-f78bd59c51b13bc132c5291a7677ef97.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
