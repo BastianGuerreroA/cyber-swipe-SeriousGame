@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://blgfiuwr188ws"]
+[gd_scene load_steps=15 format=3 uid="uid://blgfiuwr188ws"]
 
 [ext_resource type="Texture2D" uid="uid://dc687mpc3o8or" path="res://assets/free-city-backgrounds-pixel-art/city 1/6.png" id="1_80s3h"]
 [ext_resource type="Script" uid="uid://tvyvqar50dmn" path="res://src/ui/main_menu/menu_principal.gd" id="1_cvvk7"]
@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://6ujp38r8q1cr" path="res://assets/Musica/Hover_mouse.mp3" id="8_kbxwo"]
 [ext_resource type="PackedScene" uid="uid://ws6ctwd7ok53" path="res://src/ui/capsula_selector/capsula_selector.tscn" id="9_ujlky"]
 [ext_resource type="AudioStream" uid="uid://daad7ic2t3gwt" path="res://assets/Musica/MusicMenu.mp3" id="11_ujlky"]
-[ext_resource type="Texture2D" uid="uid://8x1j0k2n3m" path="res://assets/IconosPixelArt/Estrella_Puntaje.png" id="12_spinner"]
+[ext_resource type="Texture2D" uid="uid://bfunvlk0h5dda" path="res://assets/IconosPixelArt/Estrella_Puntaje.png" id="12_spinner"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kbxwo"]
 shader = ExtResource("1_h33ay")
@@ -78,9 +78,9 @@ anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 47.0
-offset_top = 50.0
+offset_top = 47.0
 offset_right = 667.0
-offset_bottom = 1230.0
+offset_bottom = 1227.0
 grow_horizontal = 1
 grow_vertical = 1
 
